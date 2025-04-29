@@ -41,4 +41,4 @@
 #include "Definitions/Kongkong.Std_Namespace.h"
 #include "Definitions/Kongkong.UnsafeLazyObject.h"
 
-#endif  //!__KONGKONG__
+#endif  //!KONGKONG_H
