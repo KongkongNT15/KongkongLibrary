@@ -1,0 +1,11 @@
+#ifndef KONGKONG_APPLEDEVICE_FOUNDATION_TEXT_H
+#define KONGKONG_APPLEDEVICE_FOUNDATION_TEXT_H
+
+#ifdef KONGKONG_OBJECTIVE_C_ENABLED
+
+#include "Definitions/Base.h"
+#include "Definitions/Kongkong.AppleDevice.Foundation.Text.NSScanner.h"
+
+#endif //KONGKONG_OBJECTIVE_C_ENABLED
+
+#endif //!KONGKONG_APPLEDEVICE_FOUNDATION_TEXT_H

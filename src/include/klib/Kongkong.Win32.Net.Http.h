@@ -1,0 +1,9 @@
+#ifndef KONGKONG_WIN32_NET_HTTP_H
+#define KONGKONG_WIN32_NET_HTTP_H
+
+#include "Definitions/Base.h"
+
+#ifdef KONGKONG_ENV_WINDOWS
+
+#endif //KONGKONG_ENV_WINDOWS
+#endif //!KONGKONG_WIN32_NET_HTTP_H

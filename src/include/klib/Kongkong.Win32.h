@@ -1,0 +1,58 @@
+#ifndef KONGKONG_WIN32_H
+#define KONGKONG_WIN32_H
+
+#include "Definitions/Base.h"
+
+//Windowsのみ
+#ifdef KONGKONG_ENV_WINDOWS
+
+#include "Definitions/Kongkong.Win32.CharHelper.h"
+#include "Definitions/Kongkong.Win32.ClassType.h"
+#include "Definitions/Kongkong.Win32.ClassTypeHelper.h"
+#include "Definitions/Kongkong.Win32.CodePage.h"
+#include "Definitions/Kongkong.Win32.ComputerName.h"
+#include "Definitions/Kongkong.Win32.ConsoleBackground.h"
+#include "Definitions/Kongkong.Win32.ConsoleForeground.h"
+#include "Definitions/Kongkong.Win32.ConsolePoint.h"
+#include "Definitions/Kongkong.Win32.CtrlKeyEventKind.h"
+#include "Definitions/Kongkong.Win32.DwmTitleBarTheme.h"
+#include "Definitions/Kongkong.Win32.Environment.h"
+#include "Definitions/Kongkong.Win32.Handle.h"
+#include "Definitions/Kongkong.Win32.HandleFrag.h"
+#include "Definitions/Kongkong.Win32.HResultException.h"
+#include "Definitions/Kongkong.Win32.LoadLibraryFlag.h"
+#include "Definitions/Kongkong.Win32.LocalTime.h"
+#include "Definitions/Kongkong.Win32.MemoryStatus.h"
+#include "Definitions/Kongkong.Win32.MessageBeepKind.h"
+#include "Definitions/Kongkong.Win32.MessageBox.h"
+#include "Definitions/Kongkong.Win32.MessageBoxButton.h"
+#include "Definitions/Kongkong.Win32.MessageBoxDefaultButton.h"
+#include "Definitions/Kongkong.Win32.MessageBoxImage.h"
+#include "Definitions/Kongkong.Win32.MessageBoxModality.h"
+#include "Definitions/Kongkong.Win32.MessageBoxOtherOptions.h"
+#include "Definitions/Kongkong.Win32.MessageBoxResult.h"
+#include "Definitions/Kongkong.Win32.MinWinHelper.h"
+#include "Definitions/Kongkong.Win32.OSVersionInfo.h"
+#include "Definitions/Kongkong.Win32.ProcessorArchitecture.h"
+#include "Definitions/Kongkong.Win32.RegistryKey.h"
+#include "Definitions/Kongkong.Win32.RegistryKeyAccessRight.h"
+#include "Definitions/Kongkong.Win32.RegistryKeyBase.h"
+#include "Definitions/Kongkong.Win32.RegistryKeyView.h"
+#include "Definitions/Kongkong.Win32.RegistryOption.h"
+#include "Definitions/Kongkong.Win32.RegistryValue.h"
+#include "Definitions/Kongkong.Win32.RegistryValueType.h"
+#include "Definitions/Kongkong.Win32.SecurityFlag.h"
+#include "Definitions/Kongkong.Win32.Sound.h"
+#include "Definitions/Kongkong.Win32.SoundFlag.h"
+#include "Definitions/Kongkong.Win32.SoundKind.h"
+#include "Definitions/Kongkong.Win32.StringHelper.h"
+#include "Definitions/Kongkong.Win32.SystemInfo.h"
+#include "Definitions/Kongkong.Win32.SystemTime.h"
+#include "Definitions/Kongkong.Win32.SystemTimeBase.h"
+#include "Definitions/Kongkong.Win32.VersionNT.h"
+#include "Definitions/Kongkong.Win32.VersionSuite.h"
+#include "Definitions/Kongkong.Win32.WaitObjectInfo.h"
+#include "Definitions/Kongkong.Win32.WaitStatus.h"
+
+#endif //KONGKONG_ENV_WINDOWS
+#endif //!KONGKONG_WIN32_H

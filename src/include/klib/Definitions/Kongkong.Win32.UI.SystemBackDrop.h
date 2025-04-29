@@ -1,0 +1,19 @@
+#ifndef KONGKONG_WIN32_UI_SYSTEMBACKDROP_H
+#define KONGKONG_WIN32_UI_SYSTEMBACKDROP_H
+
+#include "Base.h"
+
+namespace KONGKONG_NAMESPACE::Win32::UI
+{
+    //ウィンドウの背景
+    //Mica、アクリルなど
+    enum struct SystemBackDrop {
+        Auto    = ::DWM_SYSTEMBACKDROP_TYPE::DWMSBT_AUTO,
+        None    = ::DWM_SYSTEMBACKDROP_TYPE::DWMSBT_NONE,
+        Mica    = ::DWM_SYSTEMBACKDROP_TYPE::DWMSBT_MAINWINDOW,
+        Acrylic = ::DWM_SYSTEMBACKDROP_TYPE::DWMSBT_TRANSIENTWINDOW,
+        MicaAlt = ::DWM_SYSTEMBACKDROP_TYPE::DWMSBT_TABBEDWINDOW,
+    };
+}
+
+#endif //!KONGKONG_WIN32_UI_SYSTEMBACKDROP_H
