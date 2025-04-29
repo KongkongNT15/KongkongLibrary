@@ -66,12 +66,6 @@ namespace KONGKONG_NAMESPACE::Text::Json
         String& GetString() const;
 
         [[nodiscard]]
-        String ToString() const;
-
-        [[nodiscard]]
-        String ToString(uint32_t indent1, uint32_t indent2, uint32_t indent3) const;
-
-        [[nodiscard]]
         constexpr Object const& Value() const noexcept { return _value; }
 
         void Value(::std::nullptr_t) noexcept;
@@ -95,6 +89,11 @@ namespace KONGKONG_NAMESPACE::Text::Json
         friend bool operator<=(JsonValue const&, JsonValue const&) noexcept;
         friend bool operator>(JsonValue const&, JsonValue const&) noexcept;
         friend bool operator>=(JsonValue const&, JsonValue const&) noexcept;
+
+        friend constexpr bool operator==(JsonValue const&, std::nullptr_t) noexcept;
+        friend constexpr bool operator==(std::nullptr_t, JsonValue const&) noexcept;
+        friend constexpr bool operator!=(JsonValue const&, std::nullptr_t) noexcept;
+        friend constexpr bool operator!=(std::nullptr_t, JsonValue const&) noexcept;
     };
 
     [[nodiscard]] bool operator==(JsonValue const& left, JsonValue const& right) noexcept;
@@ -103,6 +102,11 @@ namespace KONGKONG_NAMESPACE::Text::Json
     [[nodiscard]] bool operator<=(JsonValue const& left, JsonValue const& right) noexcept;
     [[nodiscard]] bool operator>(JsonValue const& left, JsonValue const& right) noexcept;
     [[nodiscard]] bool operator>=(JsonValue const& left, JsonValue const& right) noexcept;
+
+    [[nodiscard]] constexpr bool operator==(JsonValue const& left, ::std::nullptr_t) noexcept { return left._valueType == JsonValueType::Null; }
+    [[nodiscard]] constexpr bool operator==(::std::nullptr_t, JsonValue const& right) noexcept { JsonValueType::Null == right._valueType; }
+    [[nodiscard]] constexpr bool operator!=(JsonValue const& left, ::std::nullptr_t) noexcept { return left._valueType != JsonValueType::Null; }
+    [[nodiscard]] constexpr bool operator!=(::std::nullptr_t, JsonValue const& right) noexcept { JsonValueType::Null != right._valueType; }
 }
 
 #endif //!KONGKONG_TEXT_JSON_JSONVALUE_H

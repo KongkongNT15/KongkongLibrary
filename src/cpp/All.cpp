@@ -44,6 +44,7 @@
 #include "Definitions/Kongkong.Bits.ConstBitSetIterator.cpp"
 
 #include "Definitions/Kongkong.Collections._keyValuePairMethods.cpp"
+#include "Definitions/Kongkong.Collections._stackElementMethods.cpp"
 #include "Definitions/Kongkong.Collections._treeNodeMethods.cpp"
 #include "Definitions/Kongkong.Collections.ArrayChangingEventArgs.cpp"
 #include "Definitions/Kongkong.Collections.CollectionHelper.cpp"
@@ -197,6 +198,7 @@
 #include "Definitions/Kongkong.Posix.Threading.Mutex.cpp"
 #include "Definitions/Kongkong.Posix.Threading.Thread.cpp"
 #include "Definitions/Kongkong.Posix.Threading.ThreadAttribute.cpp"
+#include "Definitions/Kongkong.Posix.Threading.ThreadPool.cpp"
 
 #endif //__POSIX__
 

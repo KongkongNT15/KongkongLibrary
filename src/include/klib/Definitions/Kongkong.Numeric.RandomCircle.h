@@ -2,7 +2,7 @@
 #define KONGKONG_NUMERIC_RANDOMCIRCLE_H
 
 #include "Base.h"
-#include "Definitions/Kongkong.Numeric.RandomCircleBase.h"
+#include "Kongkong.Numeric.RandomCircleBase.h"
 
 #include <random>
 

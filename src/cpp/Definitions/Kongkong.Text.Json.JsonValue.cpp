@@ -59,50 +59,6 @@ namespace KONGKONG_NAMESPACE::Text::Json
         return _value.Cast<String>();
     }
 
-    String JsonValue::ToString() const
-    {
-        return ToString(0, 4, 0);
-    }
-
-    String JsonValue::ToString(uint32_t indent1, uint32_t indent2, uint32_t indent3) const
-    {
-        String str;
-
-        if (indent1 != 0) str.AppendUnsafe(indent1, u' ');
-
-        switch (_valueType) {
-            case JsonValueType::Null:
-            {
-                str.AppendUnsafe(4, u"Null");
-                break;
-            }
-            case JsonValueType::Boolean:
-            case JsonValueType::Number:
-            {
-                auto& obj = Object::GetInstanceUnsafe(_value);
-                str.Append(obj.ToString());
-                break;
-            }
-            case JsonValueType::String:
-            {
-                auto& obj = Object::GetInstanceUnsafe(_value);
-                str.Append(u'"');
-                str.Append(obj.ToString());
-                str.Append(u'"');
-                break;
-            }
-            case JsonValueType::Object:
-            {
-                auto obj = _value.As<JsonObject>();
-                auto& instance = Object::GetInstanceUnsafe(obj);
-
-                break;
-            }
-        }
-
-        return str;
-    }
-
     void JsonValue::Value(::std::nullptr_t) noexcept
     {
         _value = nullptr;

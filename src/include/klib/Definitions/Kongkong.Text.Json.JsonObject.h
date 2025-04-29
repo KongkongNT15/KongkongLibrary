@@ -35,9 +35,6 @@ namespace KONGKONG_NAMESPACE::Text::Json::IMPLEMENTATION
 
         bool Remove(String const& name) noexcept;
 
-        String ToString() const override;
-        String ToString(uint32_t indent1, uint32_t indent2, uint32_t indent3) const;
-
         private:
 
         Collections::Turbo::FastArrayMap<String, JsonValue> _map;
@@ -58,7 +55,7 @@ namespace KONGKONG_NAMESPACE::Text::Json
         OBJECT_GET_INSTANCE(ImplType)
 
         [[nodiscard]]
-        JsonValue& operator[](String const& name) const;
+        JsonValue& operator[](String const& name) const { return _getPtr<ImplType>()->operator[](name); }
 
         [[nodiscard]] auto begin() noexcept { return _getPtr<ImplType>()->begin(); }
         [[nodiscard]] auto begin() const noexcept { return _getPtr<ImplType>()->begin(); }

@@ -94,6 +94,9 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
             if (this->_length == 0) {
                 _current = e;
                 _last = e;
+                ++this->_length;
+
+                return;
             }
 
             _last->Next(e);
@@ -127,6 +130,7 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
         T Pop()
         {
             CollectionHelper::CheckBackFront(this->_length);
+            return PopUnsafe();
         }
 
         [[nodiscard]]
@@ -134,7 +138,7 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
         {
             T value = std::move(_current->Value());
 
-            StackElement<T>* tmp = _current;
+            StackElement<T>* tmp = _current->Next();
 
             delete _current;
 

@@ -217,6 +217,7 @@
     className() = delete;                               \
     className(className const&) = delete;               \
     className(className&&) = delete;                    \
+    ~className() = delete;                              \
     className& operator=(className const&) = delete;    \
     className& operator=(className&&) = delete;         
 
@@ -524,6 +525,7 @@ namespace KONGKONG_NAMESPACE::Collections
     enum struct CollectionChange : uint8_t;
 
     struct _keyValuePairMethods;
+    struct _stackElementMethods;
     struct _treeNodeMethods;
 
     struct ArrayChangingEventArgs;
@@ -1058,6 +1060,7 @@ namespace KONGKONG_NAMESPACE::Posix::Threading
     struct Thread;
     struct ThreadAttribute;
     struct ThreadStackInfo;
+    struct ThreadPool;
 }
 
 #endif

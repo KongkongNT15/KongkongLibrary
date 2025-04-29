@@ -4,6 +4,7 @@
 #include "Definitions/Base.h"
 
 #include "Definitions/Kongkong.Collections._keyValuePairMethods.h"
+#include "Definitions/Kongkong.Collections._stackElementMethods.h"
 #include "Definitions/Kongkong.Collections._treeNodeMethods.h"
 #include "Definitions/Kongkong.Collections.Array.h"
 #include "Definitions/Kongkong.Collections.ArrayHelper.h"

@@ -10,6 +10,7 @@
 #include "Definitions/Kongkong.Posix.Threading.Thread.h"
 #include "Definitions/Kongkong.Posix.Threading.ThreadAttribute.h"
 #include "Definitions/Kongkong.Posix.Threading.ThreadCreate.h"
+#include "Definitions/Kongkong.Posix.Threading.ThreadPool.h"
 #include "Definitions/Kongkong.Posix.Threading.ThreadScope.h"
 #include "Definitions/Kongkong.Posix.Threading.ThreadStackInfo.h"
 

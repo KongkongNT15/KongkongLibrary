@@ -10,15 +10,18 @@
 namespace KONGKONG_NAMESPACE::Numeric
 {
     //割り算の症とあまり
-    template <NumberType Num>
+    template <NumberType TNum>
     struct Div final : public ValueType {
 
-        constexpr Div(Num quot, Num rem) noexcept : _quotient(quot), _remainder(rem) {}
+        constexpr Div(TNum quot, TNum rem) noexcept : _quotient(quot), _remainder(rem) {}
 
-        //あまり
-        constexpr Num Remainder() const noexcept { return _remainder; }
-        //省
-        constexpr Num Quotient() const noexcept { return _quotient; }
+        /// @brief 余り
+        [[nodiscard]]
+        constexpr TNum Remainder() const noexcept { return _remainder; }
+        
+        /// @brief 商
+        [[nodiscard]]
+        constexpr TNum Quotient() const noexcept { return _quotient; }
 
         /// @brief 商とあまりの文字列表現を取得
         /// @return u"(商, 余)"
@@ -26,9 +29,21 @@ namespace KONGKONG_NAMESPACE::Numeric
         String ToString() const;
 
         private:
-        Num _remainder;
-        Num _quotient;
+        TNum _remainder;
+        TNum _quotient;
+
+        template <NumberType UNum>
+        friend constexpr operator==(Div<UNum> const&, Div<UNum> const&) noexcept;
+
+        template <NumberType UNum>
+        friend constexpr operator!=(Div<UNum> const&, Div<UNum> const&) noexcept;
     };
+
+    template <NumberType TNum>
+    [[nodiscard]] constexpr bool operator==(Div<TNum> const& left, Div<TNum> const& right) noexcept { return left._remainder == right._remainder && left._quotient == right._quotient; }
+
+    template <NumberType TNum>
+    [[nodiscard]] constexpr bool operator!=(Div<TNum> const& left, Div<TNum> const& right) noexcept { return left._remainder != right._remainder && left._quotient != right._quotient; }
 }
 
 namespace KONGKONG_NAMESPACE::Numeric

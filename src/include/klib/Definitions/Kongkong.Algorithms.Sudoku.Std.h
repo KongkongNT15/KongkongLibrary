@@ -2,7 +2,7 @@
 #define KONGKONG_ALGORITHMS_SUDOKU_STD_H
 
 #include "Base.h"
-#include "Definitions/Kongkong.Algorithms.Sudoku.SudokuNumber.h"
+#include "Kongkong.Algorithms.Sudoku.SudokuNumber.h"
 
 namespace std
 {
