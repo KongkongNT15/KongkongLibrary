@@ -8,6 +8,9 @@
 
 #ifdef KONGKONG_OBJECTIVE_C_ENABLED
     #include "Kongkong.AppleDevice.Foundation.Threading.NSOperationQueue.h"
+#elif defined(__POSIX__)
+    #include "Kongkong.Posix.Threading.ThreadPool.h"
+    #include "Kongkong.LazyObject.h"
 #endif
 
 namespace KONGKONG_NAMESPACE::Threading
@@ -17,7 +20,7 @@ namespace KONGKONG_NAMESPACE::Threading
 
         STATIC_CLASS(ThreadPool)
 
-#if defined(KONGKONG_ENV_WINDOWS) || defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#if defined(KONGKONG_ENV_WINDOWS) || defined(KONGKONG_OBJECTIVE_C_ENABLED) || defined(__POSIX__)
 
         /// @brief ふぁ！？っく
         static AsyncAction RunAsync(::std::nullptr_t) = delete;
@@ -224,8 +227,45 @@ namespace KONGKONG_NAMESPACE::Threading
 
         static AppleDevice::Foundation::Threading::NSOperationQueue _queue;
 
+#elif defined(__POSIX__)
+
+        static LazyObject<Posix::Threading::ThreadPool> s_pool;
+
+        static void _callback0(void* args);
+        static void _callback1(void* args);
+
+        template <class TFArg, class TValue>
+        static void _callback2(void* args);
+
+        template <class TFArg, class TValue>
+        static void _callback3(void* args);
+
+        struct _tmpS0 {
+            void(*cb)(void);
+            ::std::coroutine_handle<> h;
+        };
+
+        struct _tmpS1 {
+            ::std::function<void(void)> cb;
+            ::std::coroutine_handle<> h;
+        };
+
+        template <class TFArg, class TValue>
+        struct _tmpS2 {
+            void(*cb)(TFArg);
+            TValue v;
+            ::std::coroutine_handle<> h;
+        };
+
+        template <class TFArg, class TValue>
+        struct _tmpS3 {
+            ::std::function<void(TFArg)> cb;
+            TValue v;
+            ::std::coroutine_handle<> h;
+        };
+
 #endif
-#endif //defined(KONGKONG_ENV_WINDOWS) || defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#endif //defined(KONGKONG_ENV_WINDOWS) || defined(KONGKONG_OBJECTIVE_C_ENABLED) || defined(__POSIX__)
     };
 }
 

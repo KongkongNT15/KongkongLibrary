@@ -62,7 +62,7 @@ namespace KONGKONG_NAMESPACE::Posix::Threading
             ::pthread_cond_wait(&m_cond, &m_mutex);
         }
 
-        if (m_taskQueue.Length() == 0) return s_task{};
+        if (!m_isRunning || m_taskQueue.Length() == 0) return s_task{};
 
         return s_task{ m_taskQueue.PopUnsafe() };
     }

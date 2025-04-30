@@ -82,8 +82,6 @@ namespace KONGKONG_NAMESPACE::Posix::Threading
 
         void m_initialize(ssize_t threadCount);
 
-        
-
         static void* s_threadEntryPoint(void* pThreadPool);
     };
 }

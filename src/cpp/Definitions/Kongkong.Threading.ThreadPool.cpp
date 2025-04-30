@@ -2,11 +2,13 @@
 
 namespace KONGKONG_NAMESPACE::Threading
 {
-#if defined(KONGKONG_ENV_WINDOWS) || defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#if defined(KONGKONG_ENV_WINDOWS) || defined(KONGKONG_OBJECTIVE_C_ENABLED) || defined(__POSIX__)
 
 #ifdef KONGKONG_OBJECTIVE_C_ENABLED
     constinit AppleDevice::Foundation::Threading::NSOperationQueue ThreadPool::_queue = nullptr;
-#endif //KONGKONG_OBJECTIVE_C_ENABLED
+#elif defined(__POSIX__)
+    constinit LazyObject<Posix::Threading::ThreadPool> ThreadPool::s_pool;
+#endif
 
     AsyncAction ThreadPool::RunAsync(void(*callback)(void))
     {
@@ -24,20 +26,32 @@ namespace KONGKONG_NAMESPACE::Threading
                 //この時点で_queueはnullptrでない
 
                 ThreadPool::_queue.AddOperationWithBlockUnsafe(^() { _callback(); h.resume(); });
+#elif defined(__POSIX__)
+                //この時点で_poolはnullptrでない
+
+                m_s.h = h;
+
+                ThreadPool::s_pool.GetValueUnsafe().AppendTask(ThreadPool::_callback0, &m_s);
 #endif
             }
             constexpr void await_resume() noexcept {}
 #ifdef KONGKONG_ENV_WINDOWS
-            _tmpS0 _s;
-
+            ThreadPool::_tmpS0 _s;
 #elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
             void(*_callback)(void);
+#elif defined(__POSIX__)
+            ThreadPool::_tmpS0 m_s;
 #endif
         };
 #ifdef KONGKONG_ENV_WINDOWS
         co_await tmpAwaiter{ callback };
 #elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
         if (_queue == nullptr) _queue = AppleDevice::Foundation::Threading::NSOperationQueue();
+
+        co_await tmpAwaiter{ callback };
+#elif defined(__POSIX__)
+
+        if (!s_pool) s_pool.InitializeUnsafe();
 
         co_await tmpAwaiter{ callback };
 #endif
@@ -61,13 +75,20 @@ namespace KONGKONG_NAMESPACE::Threading
                 auto* fp = &_callback;
 
                 ThreadPool::_queue.AddOperationWithBlockUnsafe(^() { fp->operator()(); h.resume(); });
+#elif defined(__POSIX__)
+                //この時点で_poolはnullptrでない
+                m_s.h = h;
+
+                s_pool.GetValueUnsafe().AppendTask(ThreadPool::_callback1, &m_s);
 #endif
             }
             constexpr void await_resume() noexcept {}
 #ifdef KONGKONG_ENV_WINDOWS
-            _tmpS1 _s;
+            ThreadPool::_tmpS1 _s;
 #elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
             const ::std::function<void(void)> _callback;
+#elif defined(__POSIX__)
+            ThreadPool::_tmpS1 m_s;
 #endif
         };
 
@@ -75,6 +96,11 @@ namespace KONGKONG_NAMESPACE::Threading
         co_await tmpAwaiter{ callback };
 #elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
         if (_queue == nullptr) _queue = AppleDevice::Foundation::Threading::NSOperationQueue();
+
+        co_await tmpAwaiter{ callback };
+#elif defined(__POSIX__)
+
+        if (!s_pool) s_pool.InitializeUnsafe();
 
         co_await tmpAwaiter{ callback };
 #endif
@@ -98,13 +124,21 @@ namespace KONGKONG_NAMESPACE::Threading
                 auto* fp = &_callback;
 
                 ThreadPool::_queue.AddOperationWithBlockUnsafe(^() { fp->operator()(); h.resume(); });
+#elif defined(__POSIX__)
+                //この時点で_poolはnullptrでない
+
+                m_s.h = h;
+
+                ThreadPool::s_pool.GetValueUnsafe().AppendTask(ThreadPool::_callback0, &m_s);
 #endif
             }
             constexpr void await_resume() noexcept {}
 #ifdef KONGKONG_ENV_WINDOWS
-            _tmpS1 _s;
+            ThreadPool::_tmpS1 _s;
 #elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
             const ::std::function<void(void)> _callback;
+#elif defined(__POSIX__)
+            ThreadPool::_tmpS1 m_s;
 #endif
         };
 
@@ -112,6 +146,11 @@ namespace KONGKONG_NAMESPACE::Threading
         co_await tmpAwaiter{ ::std::move(callback) };
 #elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
         if (_queue == nullptr) _queue = AppleDevice::Foundation::Threading::NSOperationQueue();
+
+        co_await tmpAwaiter{ ::std::move(callback) };
+#elif defined(__POSIX__)
+
+        if (!s_pool) s_pool.InitializeUnsafe();
 
         co_await tmpAwaiter{ ::std::move(callback) };
 #endif
@@ -455,7 +494,7 @@ namespace KONGKONG_NAMESPACE::Threading
             void await_suspend(::std::coroutine_handle<> h) {
 #ifdef KONGKONG_ENV_WINDOWS
                 _s.h = h;
-                ::PTP_WORK work = ::CreateThreadpoolWork(_callback2<TFArg, TValue>, &_s, nullptr);
+                ::PTP_WORK work = ::CreateThreadpoolWork(ThreadPool::_callback2<TFArg, TValue>, &_s, nullptr);
 
                 ::SubmitThreadpoolWork(work);
 
@@ -464,22 +503,32 @@ namespace KONGKONG_NAMESPACE::Threading
                 //この時点で_queueはnullptrでない
 
                 ThreadPool::_queue.AddOperationWithBlockUnsafe(^() { _callback(_value); h.resume(); });
+#elif defined(__POSIX__)
+                //この時点で_poolはnullptrでない
+
+                m_s.h = h;
+
+                ThreadPool::s_pool.GetValueUnsafe().AppendTask(ThreadPool::_callback2<TFArg, TValue>, &m_s);
 #endif
             }
             constexpr void await_resume() noexcept {}
 #ifdef KONGKONG_ENV_WINDOWS
-            _tmpS2<TFArg, TValue> _s;
-
+            ThreadPool::_tmpS2<TFArg, TValue> _s;
 #elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
             void(*_callback)(TFArg);
             TValue _value;
+#elif defined(__POSIX__)
+            ThreadPool::_tmpS2<TFArg, TValue> m_s;
 #endif
         };
 #ifdef KONGKONG_ENV_WINDOWS
         co_await tmpAwaiter{ callback, ::std::move(value) };
-        
 #elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
         if (_queue == nullptr) _queue = AppleDevice::Foundation::Threading::NSOperationQueue();
+
+        co_await tmpAwaiter{ callback, ::std::move(value) };
+#elif defined(__POSIX__)
+        if (!s_pool) s_pool.InitializeUnsafe();
 
         co_await tmpAwaiter{ callback, ::std::move(value) };
 #endif
@@ -493,7 +542,7 @@ namespace KONGKONG_NAMESPACE::Threading
             void await_suspend(::std::coroutine_handle<> h) {
 #ifdef KONGKONG_ENV_WINDOWS
                 _s.h = h;
-                ::PTP_WORK work = ::CreateThreadpoolWork(_callback3<TFArg, TValue>, &_s, nullptr);
+                ::PTP_WORK work = ::CreateThreadpoolWork(ThreadPool::_callback3<TFArg, TValue>, &_s, nullptr);
 
                 ::SubmitThreadpoolWork(work);
 
@@ -504,14 +553,22 @@ namespace KONGKONG_NAMESPACE::Threading
                 auto* fp = &_callback;
 
                 ThreadPool::_queue.AddOperationWithBlockUnsafe(^() { fp->operator()(_value); h.resume(); });
+#elif defined(__POSIX__)
+                //この時点で_poolはnullptrでない
+
+                m_s.h = h;
+
+                ThreadPool::s_pool.GetValueUnsafe().AppendTask(ThreadPool::_callback3<TFArg, TValue>, &m_s);
 #endif
             }
             constexpr void await_resume() noexcept {}
 #ifdef KONGKONG_ENV_WINDOWS
-            _tmpS3<TFArg, TValue> _s;
+            ThreadPool::_tmpS3<TFArg, TValue> _s;
 #elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
             const ::std::function<void(TFArg)> _callback;
             TValue _value;
+#elif defined(__POSIX__)
+            ThreadPool::_tmpS3<TFArg, TValue> m_s;
 #endif
         };
 
@@ -519,6 +576,10 @@ namespace KONGKONG_NAMESPACE::Threading
         co_await tmpAwaiter{ callback, ::std::move(value) };
 #elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
         if (_queue == nullptr) _queue = AppleDevice::Foundation::Threading::NSOperationQueue();
+
+        co_await tmpAwaiter{ callback, ::std::move(value) };
+#elif defined(__POSIX__)
+        if (!s_pool) s_pool.InitializeUnsafe();
 
         co_await tmpAwaiter{ callback, ::std::move(value) };
 #endif
@@ -532,7 +593,7 @@ namespace KONGKONG_NAMESPACE::Threading
             void await_suspend(::std::coroutine_handle<> h) {
 #ifdef KONGKONG_ENV_WINDOWS
                 _s.h = h;
-                ::PTP_WORK work = ::CreateThreadpoolWork(_callback3<TFArg, TValue>, &_s, nullptr);
+                ::PTP_WORK work = ::CreateThreadpoolWork(ThreadPool::_callback3<TFArg, TValue>, &_s, nullptr);
 
                 ::SubmitThreadpoolWork(work);
 
@@ -543,14 +604,22 @@ namespace KONGKONG_NAMESPACE::Threading
                 auto* fp = &_callback;
 
                 ThreadPool::_queue.AddOperationWithBlockUnsafe(^() { fp->operator()(_value); h.resume(); });
+#elif defined(__POSIX__)
+                //この時点で_poolはnullptrでない
+
+                m_s.h = h;
+
+                ThreadPool::s_pool.GetValueUnsafe().AppendTask(ThreadPool::_callback3<TFArg, TValue>, &m_s);
 #endif
             }
             constexpr void await_resume() noexcept {}
 #ifdef KONGKONG_ENV_WINDOWS
-            _tmpS3<TFArg, TValue> _s;
+            ThreadPool::_tmpS3<TFArg, TValue> _s;
 #elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
             const ::std::function<void(TFArg)> _callback;
             TValue _value;
+#elif defined(__POSIX__)
+            ThreadPool::_tmpS3<TFArg, TValue> m_s;
 #endif
         };
 
@@ -558,6 +627,10 @@ namespace KONGKONG_NAMESPACE::Threading
         co_await tmpAwaiter{ ::std::move(callback), ::std::move(value) };
 #elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
         if (_queue == nullptr) _queue = AppleDevice::Foundation::Threading::NSOperationQueue();
+
+        co_await tmpAwaiter{ ::std::move(callback), ::std::move(value) };
+#elif defined(__POSIX__)
+        if (!s_pool) s_pool.InitializeUnsafe();
 
         co_await tmpAwaiter{ ::std::move(callback), ::std::move(value) };
 #endif
@@ -597,7 +670,46 @@ namespace KONGKONG_NAMESPACE::Threading
         p->cb(p->v);
         p->h.resume();
     }
-#endif //KONGKONG_ENV_WINDOWS
+
+#elif defined(__POSIX__)
+
+    void ThreadPool::_callback0(void* args)
+    {
+        _tmpS0& s = *static_cast<_tmpS0*>(args);
+
+        s.cb();
+
+        s.h.resume();
+    }
+
+    void ThreadPool::_callback1(void* args)
+    {
+        _tmpS1& s = *static_cast<_tmpS1*>(args);
+
+        s.cb();
+
+        s.h.resume();
+    }
+
+    template <class TFArg, class TValue>
+    void ThreadPool::_callback2(void* args)
+    {
+        auto& s = *static_cast<_tmpS2<TFArg, TValue>*>(args);
+        s.cb(s.v);
+
+        s.h.resume();
+    }
+
+    template <class TFArg, class TValue>
+    void ThreadPool::_callback3(void* args)
+    {
+        auto& s = *static_cast<_tmpS3<TFArg, TValue>*>(args);
+        s.cb(s.v);
+
+        s.h.resume();
+    }
+
+#endif
 #endif //defined(KONGKONG_ENV_WINDOWS) || defined(KONGKONG_OBJECTIVE_C_ENABLED)
 
 }

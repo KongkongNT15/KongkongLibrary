@@ -11,6 +11,9 @@ namespace KONGKONG_NAMESPACE
         [[nodiscard]]
         constexpr operator bool() const noexcept { return _isInitialized; }
 
+        [[nodiscard]]
+        constexpr bool operator!() const noexcept { return !_isInitialized; }
+
         /// @brief 値を持っているかを確認
         [[nodiscard]]
         constexpr bool IsInitialized() const noexcept { return _isInitialized; }
