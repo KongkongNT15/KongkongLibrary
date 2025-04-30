@@ -3,7 +3,7 @@
 
 #include "Definitions/Base.h"
 
-#ifdef __POSIX__
+#ifdef KONGKONG_ENV_UNIX
 
 #include "Definitions/Kongkong.Posix.IO.Directory.h"
 #include "Definitions/Kongkong.Posix.IO.DirectoryEntry.h"
@@ -24,6 +24,6 @@
 #include "Definitions/Kongkong.Posix.IO.Path.h"
 #include "Definitions/Kongkong.Posix.IO.RWDevice.h"
 
-#endif //__POSIX__
+#endif //KONGKONG_ENV_UNIX
 
 #endif //!KONGKONG_POSIX_IO_H

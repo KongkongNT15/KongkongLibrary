@@ -52,7 +52,7 @@ namespace KONGKONG_NAMESPACE::Threading
         if (::ReleaseMutex(_hMutex) == FALSE) [[unlikely]] throw InvalidOperationException(u"Mutexのアンロック操作に失敗しました");
     }
 
-#elif defined(__POSIX__)
+#elif defined(KONGKONG_ENV_UNIX)
     Mutex::Mutex() noexcept : _isActive(true)
     {
         ::pthread_mutex_init(&_mutex, nullptr);

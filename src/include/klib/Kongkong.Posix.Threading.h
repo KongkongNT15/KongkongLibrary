@@ -3,7 +3,7 @@
 
 #include "Definitions/Base.h"
 
-#ifdef __POSIX__
+#ifdef KONGKONG_ENV_UNIX
 
 #include "Definitions/Kongkong.Posix.Threading.Mutex.h"
 #include "Definitions/Kongkong.Posix.Threading.MutexKind.h"
@@ -14,6 +14,6 @@
 #include "Definitions/Kongkong.Posix.Threading.ThreadScope.h"
 #include "Definitions/Kongkong.Posix.Threading.ThreadStackInfo.h"
 
-#endif //__POSIX__
+#endif //KONGKONG_ENV_UNIX
 
 #endif //!KONGKONG_POSIX_THREADING_H

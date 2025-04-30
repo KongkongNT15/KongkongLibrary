@@ -20,7 +20,7 @@ namespace KONGKONG_NAMESPACE::IO::Storage
             }
         }
         
-#elif defined(__POSIX__)
+#elif defined(KONGKONG_ENV_UNIX)
 
 #endif
     }
@@ -41,7 +41,7 @@ namespace KONGKONG_NAMESPACE::IO::Storage
         String str = path;
         Create(str.c_str());
 
-#elif defined(__POSIX__)
+#elif defined(KONGKONG_ENV_UNIX)
 
 #endif
     }
@@ -60,7 +60,7 @@ namespace KONGKONG_NAMESPACE::IO::Storage
             ArgumentNullException::ThrowWithName(u"path");
         }
 
-#elif defined(__POSIX__)
+#elif defined(KONGKONG_ENV_UNIX)
 
 #else
 
@@ -77,7 +77,7 @@ namespace KONGKONG_NAMESPACE::IO::Storage
         return Exists(str);
 
 
-#elif defined(__POSIX__)
+#elif defined(KONGKONG_ENV_UNIX)
 
 #endif
     }
@@ -98,7 +98,7 @@ namespace KONGKONG_NAMESPACE::IO::Storage
             ArgumentNullException::ThrowWithName(u"path");
         }
 
-#elif defined(__POSIX__)
+#elif defined(KONGKONG_ENV_UNIX)
 
 #endif
     }

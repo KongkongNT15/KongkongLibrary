@@ -9,7 +9,7 @@ namespace std
 
         return to_string(::KONGKONG_NAMESPACE::StringView(value));
 
-#elif defined(__POSIX__)
+#elif defined(KONGKONG_ENV_UNIX)
 
         std::filesystem::path p(value.begin(), value.end());
 
@@ -64,7 +64,7 @@ namespace std
             ::KONGKONG_NAMESPACE::ArgumentNullException::ThrowWithName(u"value");
         }
 
-#elif defined(__POSIX__)
+#elif defined(KONGKONG_ENV_UNIX)
 
         std::filesystem::path p = value;
 
@@ -98,7 +98,7 @@ namespace std
 
         return str;
 
-#elif defined(__POSIX__)
+#elif defined(KONGKONG_ENV_UNIX)
 
         std::filesystem::path p = value.c_str();
 
@@ -132,7 +132,7 @@ namespace std
 
         return str;
 
-#elif defined(__POSIX__)
+#elif defined(KONGKONG_ENV_UNIX)
 
         std::filesystem::path p = tmp;
 
@@ -161,7 +161,7 @@ namespace std
 
         return str;
 
-#elif defined(__POSIX__)
+#elif defined(KONGKONG_ENV_UNIX)
 
         std::filesystem::path p = value;
 

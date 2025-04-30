@@ -7,7 +7,7 @@ namespace KONGKONG_NAMESPACE::Threading
 // なにもしない
 #elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
     constinit AppleDevice::Foundation::Threading::NSOperationQueue ThreadPool::_queue = nullptr;
-#elif defined(__POSIX__)
+#elif defined(KONGKONG_ENV_UNIX)
     constinit LazyObject<Posix::Threading::ThreadPool> ThreadPool::s_pool;
 #else
     constinit LazyObject<Std::StlThreadPool> ThreadPool::s_pool;
@@ -674,7 +674,7 @@ namespace KONGKONG_NAMESPACE::Threading
         p->h.resume();
     }
 
-#else
+#elif !defined(KONGKONG_OBJECTIVE_C_ENABLED)
 
     void ThreadPool::_callback0(void* args)
     {

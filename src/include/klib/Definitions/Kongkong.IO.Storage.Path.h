@@ -16,7 +16,7 @@ namespace KONGKONG_NAMESPACE::IO::Storage
         {
 #ifdef KONGKONG_ENV_WINDOWS
             return u'\\';
-#elif defined(__POSIX__)
+#elif defined(KONGKONG_ENV_UNIX)
             return u'/';
 #endif
         }

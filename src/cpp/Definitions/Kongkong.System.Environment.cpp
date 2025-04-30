@@ -11,7 +11,7 @@ namespace KONGKONG_NAMESPACE::System
         //auto& manager = Object::GetInstanceUnsafe(AppleDevice::Foundation::FileSystem::NSFileManager::DefaultManager());
 
         //return manager.CurrentDirectory().ToString();
-#elif defined(__POSIX__)
+#elif defined(KONGKONG_ENV_UNIX)
         return Posix::Environment::CurrentDirectory();
 #else
         return std::filesystem::current_path().u16string();
@@ -81,7 +81,7 @@ namespace KONGKONG_NAMESPACE::System
     {
 #ifdef KONGKONG_ENV_WINDOWS
         return Win32::Environment::NewLine();
-#elif defined(__POSIX__)
+#elif defined(KONGKONG_ENV_UNIX)
         return Posix::Environment::NewLine();
 #endif
     }

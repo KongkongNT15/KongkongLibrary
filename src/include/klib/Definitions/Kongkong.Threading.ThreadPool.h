@@ -10,7 +10,7 @@
 // なにもしない
 #elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
     #include "Kongkong.AppleDevice.Foundation.Threading.NSOperationQueue.h"
-#elif defined(__POSIX__)
+#elif defined(KONGKONG_ENV_UNIX)
     #include "Kongkong.Posix.Threading.ThreadPool.h"
     #include "Kongkong.LazyObject.h"
 #else
@@ -232,7 +232,7 @@ namespace KONGKONG_NAMESPACE::Threading
 
 #else
 
-#ifdef __POSIX__
+#ifdef KONGKONG_ENV_UNIX
         static LazyObject<Posix::Threading::ThreadPool> s_pool;
 #else
         static LazyObject<Std::StlThreadPool> s_pool;

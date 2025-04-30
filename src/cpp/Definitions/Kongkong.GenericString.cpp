@@ -635,7 +635,7 @@ namespace KONGKONG_NAMESPACE
 #ifdef KONGKONG_ENV_WINDOWS
         constexpr TChar newLine[]{ (TChar)'\r', (TChar)'\n' };
         AppendUnsafe(2, newLine);
-#elif defined(__POSIX__)
+#elif defined(KONGKONG_ENV_UNIX)
         Append((TChar)'\n');
 #else
         Append((TChar)'\n');

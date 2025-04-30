@@ -1,7 +1,7 @@
 //このcppファイルをコンパイルに含めないでください
 
 //Unixのみ
-#ifdef __POSIX__
+#ifdef KONGKONG_ENV_UNIX
 
 namespace KONGKONG_NAMESPACE::Posix::IO
 {
@@ -129,4 +129,4 @@ namespace KONGKONG_NAMESPACE::Posix::IO
 
 }
 
-#endif //__POSIX__
+#endif //KONGKONG_ENV_UNIX

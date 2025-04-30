@@ -133,11 +133,11 @@
 #include "Definitions/Kongkong.Std.StdString.cpp"
 #include "Definitions/Kongkong.Std.StlThreadPool.cpp"
 
-#ifdef __POSIX__
+#ifdef KONGKONG_ENV_UNIX
     #include "Definitions/Kongkong.Std.PosixFileIOBuffer.cpp"
     #include "Definitions/Kongkong.Std.PosixIOBuffer.cpp"
 
-#endif //__POSIX__
+#endif //KONGKONG_ENV_UNIX
 
 #include "Definitions/Kongkong.System.CppVersion.cpp"
 #include "Definitions/Kongkong.System.BuildVersion.cpp"
@@ -175,7 +175,7 @@
 #include "Definitions/Kongkong.Threading.Thread.cpp"
 #include "Definitions/Kongkong.Threading.ThreadPool.cpp"
 
-#ifdef __POSIX__
+#ifdef KONGKONG_ENV_UNIX
 
 #include "Definitions/Kongkong.Posix.Environment.cpp"
 #include "Definitions/Kongkong.Posix.Process.cpp"
@@ -201,7 +201,7 @@
 #include "Definitions/Kongkong.Posix.Threading.ThreadAttribute.cpp"
 #include "Definitions/Kongkong.Posix.Threading.ThreadPool.cpp"
 
-#endif //__POSIX__
+#endif //KONGKONG_ENV_UNIX
 
 #ifdef KONGKONG_ENV_WINDOWS
 

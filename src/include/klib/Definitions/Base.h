@@ -28,6 +28,8 @@
         #define KONGKONG_COMPILER_MSVC 1
         #define KONGKONG_CPP_LANG_VERSION _MSVC_LANG
     #else
+        #define KONGKONG_COMPILER_MINGW 1
+        #define KONGKONG_COMPILER_GCC 1
         #define KONGKONG_CPP_LANG_VERSION __cplusplus
     #endif
 
@@ -40,12 +42,6 @@
 
     #include <Windows.h>
     #include <dwmapi.h>
-    
-    //winrtライブラリ
-    #if 0
-        #include <hstring.h>
-        #include <winstring.h>
-    #endif
 
     //ふぁ！？っくなマクロを削除
     #undef max
@@ -71,11 +67,12 @@
     #undef SetFileAttributes
     #undef WaitNamedPipe
     
-
-    #if defined(_AMD64_) || defined(_ARM64_)
-        typedef long long ssize_t;
-    #elif defined(_X86_) || defined(_ARM_)
-        typedef long ssize_t;
+    #ifdef KONGKONG_COMPILER_MSVC
+        #if defined(_AMD64_) || defined(_ARM64_)
+            typedef long long ssize_t;
+        #elif defined(_X86_) || defined(_ARM_)
+            typedef long ssize_t;
+        #endif
     #endif
 
     #define CREATE_CLASS_TYPE(className, classType) \
@@ -85,12 +82,9 @@
             ::KONGKONG_NAMESPACE::Win32::ClassType ClassTypeHelper::ClassType<className>() noexcept { return ::KONGKONG_NAMESPACE::Win32::ClassType::classType; } \
         }
         
-        
-
 #endif
 
-#if __has_include(<unistd.h>)
-    #define __POSIX__
+#if __has_include(<unistd.h>) && !defined(KONGKONG_ENV_WINDOWS)
     #define KONGKONG_ENV_UNIX 1
     #include <dirent.h>
     #include <fcntl.h>
@@ -101,6 +95,8 @@
 #endif
 
 #ifdef __APPLE__
+    #define KONGKONG_ENV_APPLE
+
     #ifdef KONGKONG_OBJECTIVE_C_DISABLED
     #ifndef KONGKONG_OBJECTIVE_C_METAL_DISABLED
         #define KONGKONG_OBJECTIVE_C_METAL_DISABLED 1
@@ -1004,7 +1000,7 @@ namespace KONGKONG_NAMESPACE::Numeric::Statistics
 }
 
 //Posixのみ
-#ifdef __POSIX__
+#ifdef KONGKONG_ENV_UNIX
 
 namespace KONGKONG_NAMESPACE::Posix
 {
@@ -1077,7 +1073,7 @@ namespace KONGKONG_NAMESPACE::Std
 
     struct StlThreadPool;
 
-#ifdef __POSIX__
+#ifdef KONGKONG_ENV_UNIX
 
     template <CharType TChar>
     class GenericPosixFileIOBuffer;
@@ -1085,7 +1081,7 @@ namespace KONGKONG_NAMESPACE::Std
     template <CharType TChar>
     class GenericPosixIOBuffer;
 
-#endif //__POSIX__
+#endif //KONGKONG_ENV_UNIX
 }
 
 namespace KONGKONG_NAMESPACE::System
@@ -1486,7 +1482,7 @@ namespace KONGKONG_NAMESPACE::Std
     using Utf8OutStringStream = GenericOutStringStream<char8_t>;
     using Utf32OutStringStream = GenericOutStringStream<char32_t>;
 
-#ifdef __POSIX__
+#ifdef KONGKONG_ENV_UNIX
 
     using PosixIOBuffer = GenericPosixIOBuffer<char16_t>;
 
@@ -1502,14 +1498,14 @@ namespace KONGKONG_NAMESPACE::Std
     using Utf8PosixFileIOBuffer = GenericPosixFileIOBuffer<char8_t>;
     using Utf32PosixFileIOBuffer = GenericPosixFileIOBuffer<char32_t>;
 
-#endif //__POSIX__
+#endif //KONGKONG_ENV_UNIX
 }
 
 namespace KONGKONG_NAMESPACE::System
 {
 #ifdef KONGKONG_ENV_WINDOWS
     using Environment = ::KONGKONG_NAMESPACE::Win32::Environment;
-#elif defined(__POSIX__)
+#elif defined(KONGKONG_ENV_UNIX)
     using Environment = ::KONGKONG_NAMESPACE::Posix::Environment;
 #else
     class Environment;

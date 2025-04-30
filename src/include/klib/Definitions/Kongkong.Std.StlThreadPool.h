@@ -10,11 +10,12 @@
 
 namespace KONGKONG_NAMESPACE::Std
 {
+    /// @brief STLの機能を使ったスレッドプール
     struct StlThreadPool final : public ValueType {
         using TaskEntryPoint = void(*)(void*);
 
-        StlThreadPool();
-        StlThreadPool(ssize_t threadCount);
+        explicit StlThreadPool();
+        explicit StlThreadPool(ssize_t threadCount);
 
         StlThreadPool(StlThreadPool const&) = delete;
         StlThreadPool(StlThreadPool&&) = delete;
@@ -49,9 +50,12 @@ namespace KONGKONG_NAMESPACE::Std
         /// @param args パラメータ
         void AppendTask(TaskEntryPoint entryPoint, void* args);
 
+        /// @brief ワーカースレッド数
         [[nodiscard]]
         constexpr ssize_t ThreadCount() const noexcept { return m_workers.Length(); }
 
+        /// @brief 型名を取得
+        /// @throws MemoryAllocationException: インスタンスの作成に失敗したとき
         [[nodiscard]]
         String ToString() const;
         

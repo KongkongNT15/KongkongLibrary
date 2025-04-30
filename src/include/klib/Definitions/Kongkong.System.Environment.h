@@ -5,7 +5,7 @@
 
 #ifdef KONGKONG_ENV_WINDOWS
     #include "Kongkong.Win32.Environment.h"
-#elif defined(__POSIX__)
+#elif defined(KONGKONG_ENV_UNIX)
     #include "Kongkong.Posix.Environment.h"
 #else
 namespace KONGKONG_NAMESPACE::System

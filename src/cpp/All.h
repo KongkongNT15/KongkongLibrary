@@ -9,7 +9,7 @@
     #include <Unknwn.h>
 #endif
 
-#ifdef __POSIX__
+#ifdef KONGKONG_ENV_UNIX
     #include <iconv.h>
 #endif
 
@@ -93,7 +93,7 @@
 
 #endif //KONGKONG_OBJECTIVE_C_ENABLED
 
-#ifdef __POSIX__
+#ifdef KONGKONG_ENV_UNIX
 
 #include <klib/Kongkong.Posix.h>
 #include <klib/Kongkong.Posix.IO.h>
