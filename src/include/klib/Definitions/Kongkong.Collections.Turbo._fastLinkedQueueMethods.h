@@ -15,6 +15,14 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
         private:
 
         _fastLinkedQueueMethods() = default;
+        _fastLinkedQueueMethods(_fastLinkedQueueMethods const&) = default;
+        _fastLinkedQueueMethods(_fastLinkedQueueMethods&&) = default;
+
+        _fastLinkedQueueMethods& operator=(_fastLinkedQueueMethods const&) = default;
+        _fastLinkedQueueMethods& operator=(_fastLinkedQueueMethods&&) = default;
+
+        template <class T>
+        friend struct FastLinkedQueue;
     };
 }
 

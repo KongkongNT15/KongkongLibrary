@@ -3,7 +3,7 @@
 namespace std
 {
 
-    string to_string(KONGKONG_NAMESPACE::String const& value)
+    string to_string(::KONGKONG_NAMESPACE::String const& value)
     {
 #ifdef KONGKONG_ENV_WINDOWS
 
@@ -18,7 +18,7 @@ namespace std
 #endif
     }
 
-    string to_string(KONGKONG_NAMESPACE::StringView const& value)
+    string to_string(::KONGKONG_NAMESPACE::StringView const& value)
     {
         if (value.Length() == 0) [[unlikely]] return string();
 
@@ -82,7 +82,7 @@ namespace std
         return to_string(str);
     }
 
-    u8string to_u8string(KONGKONG_NAMESPACE::String const& value)
+    u8string to_u8string(::KONGKONG_NAMESPACE::String const& value)
     {
 #ifdef KONGKONG_ENV_WINDOWS
 
@@ -107,7 +107,7 @@ namespace std
 #endif
     }
 
-    u8string to_u8string(KONGKONG_NAMESPACE::StringView const& value)
+    u8string to_u8string(::KONGKONG_NAMESPACE::StringView const& value)
     {
         ssize_t size = (ssize_t)((value.Length() + 1) * 3);
 

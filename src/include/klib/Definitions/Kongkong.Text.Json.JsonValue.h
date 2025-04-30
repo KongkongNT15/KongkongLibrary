@@ -104,9 +104,9 @@ namespace KONGKONG_NAMESPACE::Text::Json
     [[nodiscard]] bool operator>=(JsonValue const& left, JsonValue const& right) noexcept;
 
     [[nodiscard]] constexpr bool operator==(JsonValue const& left, ::std::nullptr_t) noexcept { return left._valueType == JsonValueType::Null; }
-    [[nodiscard]] constexpr bool operator==(::std::nullptr_t, JsonValue const& right) noexcept { JsonValueType::Null == right._valueType; }
+    [[nodiscard]] constexpr bool operator==(::std::nullptr_t, JsonValue const& right) noexcept { return JsonValueType::Null == right._valueType; }
     [[nodiscard]] constexpr bool operator!=(JsonValue const& left, ::std::nullptr_t) noexcept { return left._valueType != JsonValueType::Null; }
-    [[nodiscard]] constexpr bool operator!=(::std::nullptr_t, JsonValue const& right) noexcept { JsonValueType::Null != right._valueType; }
+    [[nodiscard]] constexpr bool operator!=(::std::nullptr_t, JsonValue const& right) noexcept { return JsonValueType::Null != right._valueType; }
 }
 
 #endif //!KONGKONG_TEXT_JSON_JSONVALUE_H

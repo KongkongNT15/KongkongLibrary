@@ -8,13 +8,13 @@
 namespace std
 {
     //Kongkong::Stringからstd::stringに変換
-    string to_string(Kongkong::String const& value);
-    string to_string(Kongkong::StringView const& value);
+    string to_string(::KONGKONG_NAMESPACE::String const& value);
+    string to_string(::KONGKONG_NAMESPACE::StringView const& value);
     string to_string(const char16_t* value);
     string to_string(char16_t value);
     
-    u8string to_u8string(Kongkong::String const& value);
-    u8string to_u8string(Kongkong::StringView const& value);
+    u8string to_u8string(::KONGKONG_NAMESPACE::String const& value);
+    u8string to_u8string(::KONGKONG_NAMESPACE::StringView const& value);
     u8string to_u8string(const char16_t* value);
     u8string to_u8string(char16_t value);
 
@@ -26,7 +26,7 @@ namespace std
     ostream& operator<<(ostream& out, ::KONGKONG_NAMESPACE::CharString const& str);
     ostream& operator<<(ostream& out, ::KONGKONG_NAMESPACE::CharStringView const& str);
 
-    template <::KONGKONG_NAMESPACE::KONGKONG_NAMESPACEValueType TValue>
+    template <::KONGKONG_NAMESPACE::KongkongValueType TValue>
     ostream& operator<<(ostream& out, TValue const& value)
     {
         return out << value.ToString();

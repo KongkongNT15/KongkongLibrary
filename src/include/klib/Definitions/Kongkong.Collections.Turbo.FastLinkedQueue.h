@@ -88,7 +88,7 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
         template <class... Args>
         void Emplace(Args&&... args)
         {
-            StackElement<T>* e = NEW StackElement<T>(nullptr, std::forward(args)...);
+            StackElement<T>* e = NEW StackElement<T>(nullptr, std::forward<Args>(args)...);
             MemoryAllocationException::CheckNull(e);
 
             if (this->_length == 0) {

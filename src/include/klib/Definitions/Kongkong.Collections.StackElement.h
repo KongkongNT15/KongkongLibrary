@@ -12,7 +12,7 @@ namespace KONGKONG_NAMESPACE::Collections
 
         template <class... Args>
         explicit StackElement(StackElement<T>* next, Args&&... args) noexcept(noexcept(T(::std::forward<Args>(args)...)))
-            : _next(next), _value(std::forward(args)...)
+            : _next(next), _value(std::forward<Args>(args)...)
         {
         }
 

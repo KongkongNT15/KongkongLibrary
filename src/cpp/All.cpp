@@ -3,7 +3,7 @@
 #include <klib/Definitions/Base.h>
 
 #ifdef KONGKONG_COMPILER_MSVC
-    // #pragma warning(disable:4996)
+    #pragma warning(disable:4996)
 #endif
 
 #include "All.h"

@@ -33,10 +33,10 @@ namespace KONGKONG_NAMESPACE::Numeric
         TNum _quotient;
 
         template <NumberType UNum>
-        friend constexpr operator==(Div<UNum> const&, Div<UNum> const&) noexcept;
+        friend constexpr bool operator==(Div<UNum> const&, Div<UNum> const&) noexcept;
 
         template <NumberType UNum>
-        friend constexpr operator!=(Div<UNum> const&, Div<UNum> const&) noexcept;
+        friend constexpr bool operator!=(Div<UNum> const&, Div<UNum> const&) noexcept;
     };
 
     template <NumberType TNum>
