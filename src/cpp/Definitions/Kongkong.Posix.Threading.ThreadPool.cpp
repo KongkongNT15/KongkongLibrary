@@ -64,12 +64,16 @@ namespace KONGKONG_NAMESPACE::Posix::Threading
 
         if (!m_isRunning || m_taskQueue.Length() == 0) return s_task{};
 
-        return s_task{ m_taskQueue.PopUnsafe() };
+        return m_taskQueue.PopUnsafe();
     }
 
     void ThreadPool::m_initialize(ssize_t threadCount)
     {
         constexpr char16_t errorMessage[] = u"スレッドプールの初期化に失敗しました";
+
+#if KONGKONG_HAS_CPP23
+        [[assume(threadCount >= 1)]];
+#endif
         
         if (::pthread_mutex_init(&m_mutex, nullptr) != 0) [[unlikely]] throw Kongkong::Threading::ThreadStateException(errorMessage);
 

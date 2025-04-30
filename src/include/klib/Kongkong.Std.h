@@ -6,6 +6,7 @@
 #include "Definitions/Kongkong.Std.GenericOutStringStream.h"
 #include "Definitions/Kongkong.Std.GenericStringBuffer.h"
 #include "Definitions/Kongkong.Std.StdString.h"
+#include "Definitions/Kongkong.Std.StlThreadPool.h"
 
 #ifdef __POSIX__
     #include "Definitions/Kongkong.Std.PosixFileIOBuffer.h"

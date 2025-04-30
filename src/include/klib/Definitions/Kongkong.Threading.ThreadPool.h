@@ -6,11 +6,16 @@
 #include <functional>
 #include <coroutine>
 
-#ifdef KONGKONG_OBJECTIVE_C_ENABLED
+#ifdef KONGKONG_ENV_WINDOWS
+// なにもしない
+#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
     #include "Kongkong.AppleDevice.Foundation.Threading.NSOperationQueue.h"
 #elif defined(__POSIX__)
     #include "Kongkong.Posix.Threading.ThreadPool.h"
     #include "Kongkong.LazyObject.h"
+#else
+    #include "Kongkong.LazyObject.h"
+    #include "Kongkong.Std.StlThreadPool.h"
 #endif
 
 namespace KONGKONG_NAMESPACE::Threading
@@ -19,8 +24,6 @@ namespace KONGKONG_NAMESPACE::Threading
         public:
 
         STATIC_CLASS(ThreadPool)
-
-#if defined(KONGKONG_ENV_WINDOWS) || defined(KONGKONG_OBJECTIVE_C_ENABLED) || defined(__POSIX__)
 
         /// @brief ふぁ！？っく
         static AsyncAction RunAsync(::std::nullptr_t) = delete;
@@ -227,10 +230,13 @@ namespace KONGKONG_NAMESPACE::Threading
 
         static AppleDevice::Foundation::Threading::NSOperationQueue _queue;
 
-#elif defined(__POSIX__)
+#else
 
+#ifdef __POSIX__
         static LazyObject<Posix::Threading::ThreadPool> s_pool;
-
+#else
+        static LazyObject<Std::StlThreadPool> s_pool;
+#endif
         static void _callback0(void* args);
         static void _callback1(void* args);
 
@@ -265,7 +271,6 @@ namespace KONGKONG_NAMESPACE::Threading
         };
 
 #endif
-#endif //defined(KONGKONG_ENV_WINDOWS) || defined(KONGKONG_OBJECTIVE_C_ENABLED) || defined(__POSIX__)
     };
 }
 

@@ -1075,6 +1075,8 @@ namespace KONGKONG_NAMESPACE::Std
     
     class StdString;
 
+    struct StlThreadPool;
+
 #ifdef __POSIX__
 
     template <CharType TChar>
@@ -1178,6 +1180,7 @@ namespace KONGKONG_NAMESPACE::Threading
     enum struct TaskStatus;
 
     struct _asyncOperationBase;
+
     struct _awaiterBase;
 
     struct AsyncAction;

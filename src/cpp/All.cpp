@@ -131,6 +131,7 @@
 
 #include "Definitions/Kongkong.Std.GenericStringBuffer.cpp"
 #include "Definitions/Kongkong.Std.StdString.cpp"
+#include "Definitions/Kongkong.Std.StlThreadPool.cpp"
 
 #ifdef __POSIX__
     #include "Definitions/Kongkong.Std.PosixFileIOBuffer.cpp"
