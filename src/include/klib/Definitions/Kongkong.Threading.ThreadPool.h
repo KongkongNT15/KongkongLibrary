@@ -2,6 +2,7 @@
 #define KONGKONG_THREADING_THREADPOOL_H
 
 #include "Base.h"
+#include "Kongkong.Threading.AsyncAction.h"
 
 #include <functional>
 #include <coroutine>
@@ -98,99 +99,18 @@ namespace KONGKONG_NAMESPACE::Threading
         /// @return 非同期オブジェクト
         static AsyncAction RunAsync(::std::function<void(void)>&& callback);
 
-        static AsyncAction RunAsync(void(*callback)(char), char arg);
-        static AsyncAction RunAsync(::std::function<void(char)> const& callback, char arg);
-        static AsyncAction RunAsync(::std::function<void(char)>&& callback, char arg);
+        template <class TFArg, class TValue>
+        static AsyncAction RunAsync(void(*callback)(TFArg), TValue value);
 
-        static AsyncAction RunAsync(void(*callback)(signed char), signed char arg);
-        static AsyncAction RunAsync(::std::function<void(signed char)> const& callback, signed char arg);
-        static AsyncAction RunAsync(::std::function<void(signed char)>&& callback, signed char arg);
+        template <class TFArg, class TValue>
+        static AsyncAction RunAsync(::std::function<void(TFArg)> const& callback, TValue value);
 
-        static AsyncAction RunAsync(void(*callback)(unsigned char), unsigned char arg);
-        static AsyncAction RunAsync(::std::function<void(unsigned char)> const& callback, unsigned char arg);
-        static AsyncAction RunAsync(::std::function<void(unsigned char)>&& callback, unsigned char arg);
-
-        static AsyncAction RunAsync(void(*callback)(short), short arg);
-        static AsyncAction RunAsync(::std::function<void(short)> const& callback, short arg);
-        static AsyncAction RunAsync(::std::function<void(short)>&& callback, short arg);
-
-        static AsyncAction RunAsync(void(*callback)(unsigned short), unsigned short arg);
-        static AsyncAction RunAsync(::std::function<void(unsigned short)> const& callback, unsigned short arg);
-        static AsyncAction RunAsync(::std::function<void(unsigned short)>&& callback, unsigned short arg);
-
-        static AsyncAction RunAsync(void(*callback)(int), int arg);
-        static AsyncAction RunAsync(::std::function<void(int)> const& callback, int arg);
-        static AsyncAction RunAsync(::std::function<void(int)>&& callback, int arg);
-
-        static AsyncAction RunAsync(void(*callback)(unsigned int), unsigned int arg);
-        static AsyncAction RunAsync(::std::function<void(unsigned int)> const& callback, unsigned int arg);
-        static AsyncAction RunAsync(::std::function<void(unsigned int)>&& callback, unsigned int arg);
-
-        static AsyncAction RunAsync(void(*callback)(long), long arg);
-        static AsyncAction RunAsync(::std::function<void(long)> const& callback, long arg);
-        static AsyncAction RunAsync(::std::function<void(long)>&& callback, long arg);
-
-        static AsyncAction RunAsync(void(*callback)(unsigned long), unsigned long arg);
-        static AsyncAction RunAsync(::std::function<void(unsigned long)> const& callback, unsigned long arg);
-        static AsyncAction RunAsync(::std::function<void(unsigned long)>&& callback, unsigned long arg);
-
-        static AsyncAction RunAsync(void(*callback)(long long), long long arg);
-        static AsyncAction RunAsync(::std::function<void(long long)> const& callback, long long arg);
-        static AsyncAction RunAsync(::std::function<void(long long)>&& callback, long long arg);
-
-        static AsyncAction RunAsync(void(*callback)(unsigned long long), unsigned long long arg);
-        static AsyncAction RunAsync(::std::function<void(unsigned long long)> const& callback, unsigned long long arg);
-        static AsyncAction RunAsync(::std::function<void(unsigned long long)>&& callback, unsigned long long arg);
-
-        static AsyncAction RunAsync(void(*callback)(float), float arg);
-        static AsyncAction RunAsync(::std::function<void(float)> const& callback, float arg);
-        static AsyncAction RunAsync(::std::function<void(float)>&& callback, float arg);
-
-        static AsyncAction RunAsync(void(*callback)(double), double arg);
-        static AsyncAction RunAsync(::std::function<void(double)> const& callback, double arg);
-        static AsyncAction RunAsync(::std::function<void(double)>&& callback, double arg);
-
-        static AsyncAction RunAsync(void(*callback)(long double), long double arg);
-        static AsyncAction RunAsync(::std::function<void(long double)> const& callback, long double arg);
-        static AsyncAction RunAsync(::std::function<void(long double)>&& callback, long double arg);
-
-        static AsyncAction RunAsync(void(*callback)(void*), void* arg);
-        static AsyncAction RunAsync(void(*callback)(void*), ::std::nullptr_t);
-        static AsyncAction RunAsync(::std::function<void(void*)> const& callback, void* arg);
-        static AsyncAction RunAsync(::std::function<void(void*)> const& callback, ::std::nullptr_t);
-        static AsyncAction RunAsync(::std::function<void(void*)>&& callback, void* arg);
-        static AsyncAction RunAsync(::std::function<void(void*)>&& callback, ::std::nullptr_t);
-
-        static AsyncAction RunAsync(void(*callback)(const void*), const void* arg);
-        static AsyncAction RunAsync(void(*callback)(const void*), void* arg);
-        static AsyncAction RunAsync(void(*callback)(const void*), ::std::nullptr_t);
-        static AsyncAction RunAsync(::std::function<void(const void*)> const& callback, const void* arg);
-        static AsyncAction RunAsync(::std::function<void(const void*)> const& callback, void* arg);
-        static AsyncAction RunAsync(::std::function<void(const void*)> const& callback, ::std::nullptr_t);
-        static AsyncAction RunAsync(::std::function<void(const void*)>&& callback, const void* arg);
-        static AsyncAction RunAsync(::std::function<void(const void*)>&& callback, void* arg);
-        static AsyncAction RunAsync(::std::function<void(const void*)>&& callback, ::std::nullptr_t);
-
-        static AsyncAction RunAsync(void(*callback)(Object const&), Object const& arg);
-        static AsyncAction RunAsync(void(*callback)(Object const&), Object&& arg);
-        static AsyncAction RunAsync(void(*callback)(Object const&), ::std::nullptr_t);
-        static AsyncAction RunAsync(::std::function<void(Object const&)> const& callback, Object const& arg);
-        static AsyncAction RunAsync(::std::function<void(Object const&)> const& callback, Object&& arg);
-        static AsyncAction RunAsync(::std::function<void(Object const&)> const& callback, ::std::nullptr_t);
-        static AsyncAction RunAsync(::std::function<void(Object const&)>&& callback, Object const& arg);
-        static AsyncAction RunAsync(::std::function<void(Object const&)>&& callback, Object&& arg);
-        static AsyncAction RunAsync(::std::function<void(Object const&)>&& callback, ::std::nullptr_t);
+        template <class TFArg, class TValue>
+        static AsyncAction RunAsync(::std::function<void(TFArg)>&& callback, TValue value);
     
         private:
 
-        template <class TFArg, class TValue>
-        static AsyncAction _runAsync0(void(*callback)(TFArg), TValue value);
-
-        template <class TFArg, class TValue>
-        static AsyncAction _runAsync1(::std::function<void(TFArg)> const& callback, TValue value);
-
-        template <class TFArg, class TValue>
-        static AsyncAction _runAsync2(::std::function<void(TFArg)>&& callback, TValue value);
+        
 
 #ifdef KONGKONG_ENV_WINDOWS
         static void _callback0(::PTP_CALLBACK_INSTANCE instance, ::PVOID context, ::PTP_WORK work);
@@ -272,6 +192,219 @@ namespace KONGKONG_NAMESPACE::Threading
 
 #endif
     };
+}
+
+namespace KONGKONG_NAMESPACE::Threading
+{
+template <class TFArg, class TValue>
+    AsyncAction ThreadPool::RunAsync(void(*callback)(TFArg), TValue value)
+    {
+        struct tmpAwaiter {
+            constexpr bool await_ready() noexcept { return false; } // すぐには完了しない
+            void await_suspend(::std::coroutine_handle<> h) {
+#ifdef KONGKONG_ENV_WINDOWS
+                _s.h = h;
+                ::PTP_WORK work = ::CreateThreadpoolWork(ThreadPool::_callback2<TFArg, TValue>, &_s, nullptr);
+
+                ::SubmitThreadpoolWork(work);
+
+                ::CloseThreadpoolWork(work);
+#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+                //この時点で_queueはnullptrでない
+
+                ThreadPool::_queue.AddOperationWithBlockUnsafe(^() { _callback(_value); h.resume(); });
+#else
+                //この時点で_poolはnullptrでない
+
+                m_s.h = h;
+
+                ThreadPool::s_pool.GetValueUnsafe().AppendTask(ThreadPool::_callback2<TFArg, TValue>, &m_s);
+#endif
+            }
+            constexpr void await_resume() noexcept {}
+#ifdef KONGKONG_ENV_WINDOWS
+            ThreadPool::_tmpS2<TFArg, TValue> _s;
+#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+            void(*_callback)(TFArg);
+            TValue _value;
+#else
+            ThreadPool::_tmpS2<TFArg, TValue> m_s;
+#endif
+        };
+#ifdef KONGKONG_ENV_WINDOWS
+        co_await tmpAwaiter{ callback, ::std::move(value) };
+#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+        if (_queue == nullptr) _queue = AppleDevice::Foundation::Threading::NSOperationQueue();
+
+        co_await tmpAwaiter{ callback, ::std::move(value) };
+#else
+        if (!s_pool) s_pool.InitializeUnsafe();
+
+        co_await tmpAwaiter{ callback, ::std::move(value) };
+#endif
+    }
+
+    template <class TFArg, class TValue>
+    AsyncAction ThreadPool::RunAsync(::std::function<void(TFArg)> const& callback, TValue value)
+    {
+        struct tmpAwaiter {
+            constexpr bool await_ready() noexcept { return false; } // すぐには完了しない
+            void await_suspend(::std::coroutine_handle<> h) {
+#ifdef KONGKONG_ENV_WINDOWS
+                _s.h = h;
+                ::PTP_WORK work = ::CreateThreadpoolWork(ThreadPool::_callback3<TFArg, TValue>, &_s, nullptr);
+
+                ::SubmitThreadpoolWork(work);
+
+                ::CloseThreadpoolWork(work);
+#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+                //この時点で_queueはnullptrでない
+
+                auto* fp = &_callback;
+
+                ThreadPool::_queue.AddOperationWithBlockUnsafe(^() { fp->operator()(_value); h.resume(); });
+#else
+                //この時点で_poolはnullptrでない
+
+                m_s.h = h;
+
+                ThreadPool::s_pool.GetValueUnsafe().AppendTask(ThreadPool::_callback3<TFArg, TValue>, &m_s);
+#endif
+            }
+            constexpr void await_resume() noexcept {}
+#ifdef KONGKONG_ENV_WINDOWS
+            ThreadPool::_tmpS3<TFArg, TValue> _s;
+#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+            const ::std::function<void(TFArg)> _callback;
+            TValue _value;
+#else
+            ThreadPool::_tmpS3<TFArg, TValue> m_s;
+#endif
+        };
+
+#ifdef KONGKONG_ENV_WINDOWS
+        co_await tmpAwaiter{ callback, ::std::move(value) };
+#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+        if (_queue == nullptr) _queue = AppleDevice::Foundation::Threading::NSOperationQueue();
+
+        co_await tmpAwaiter{ callback, ::std::move(value) };
+#else
+        if (!s_pool) s_pool.InitializeUnsafe();
+
+        co_await tmpAwaiter{ callback, ::std::move(value) };
+#endif
+    }
+
+    template <class TFArg, class TValue>
+    AsyncAction ThreadPool::RunAsync(::std::function<void(TFArg)>&& callback, TValue value)
+    {
+        struct tmpAwaiter {
+            constexpr bool await_ready() noexcept { return false; } // すぐには完了しない
+            void await_suspend(::std::coroutine_handle<> h) {
+#ifdef KONGKONG_ENV_WINDOWS
+                _s.h = h;
+                ::PTP_WORK work = ::CreateThreadpoolWork(ThreadPool::_callback3<TFArg, TValue>, &_s, nullptr);
+
+                ::SubmitThreadpoolWork(work);
+
+                ::CloseThreadpoolWork(work);
+#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+                //この時点で_queueはnullptrでない
+
+                auto* fp = &_callback;
+
+                ThreadPool::_queue.AddOperationWithBlockUnsafe(^() { fp->operator()(_value); h.resume(); });
+#else
+                //この時点で_poolはnullptrでない
+
+                m_s.h = h;
+
+                ThreadPool::s_pool.GetValueUnsafe().AppendTask(ThreadPool::_callback3<TFArg, TValue>, &m_s);
+#endif
+            }
+            constexpr void await_resume() noexcept {}
+#ifdef KONGKONG_ENV_WINDOWS
+            ThreadPool::_tmpS3<TFArg, TValue> _s;
+#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+            const ::std::function<void(TFArg)> _callback;
+            TValue _value;
+#else
+            ThreadPool::_tmpS3<TFArg, TValue> m_s;
+#endif
+        };
+
+#ifdef KONGKONG_ENV_WINDOWS
+        co_await tmpAwaiter{ ::std::move(callback), ::std::move(value) };
+#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+        if (_queue == nullptr) _queue = AppleDevice::Foundation::Threading::NSOperationQueue();
+
+        co_await tmpAwaiter{ ::std::move(callback), ::std::move(value) };
+#else
+        if (!s_pool) s_pool.InitializeUnsafe();
+
+        co_await tmpAwaiter{ ::std::move(callback), ::std::move(value) };
+#endif
+    }
+
+#ifdef KONGKONG_ENV_WINDOWS
+
+    template <class TFArg, class TValue>
+    void ThreadPool::_callback2(::PTP_CALLBACK_INSTANCE instance, ::PVOID context, ::PTP_WORK work)
+    {
+        _tmpS2<TFArg, TValue>* p = (_tmpS2<TFArg, TValue>*)context;
+
+        p->cb(p->v);
+        p->h.resume();
+    }
+
+    template <class TFArg, class TValue>
+    void ThreadPool::_callback3(::PTP_CALLBACK_INSTANCE instance, ::PVOID context, ::PTP_WORK work)
+    {
+        _tmpS3<TFArg, TValue>* p = (_tmpS3<TFArg, TValue>*)context;
+
+        p->cb(p->v);
+        p->h.resume();
+    }
+
+#elif !defined(KONGKONG_OBJECTIVE_C_ENABLED)
+
+    void ThreadPool::_callback0(void* args)
+    {
+        _tmpS0& s = *static_cast<_tmpS0*>(args);
+
+        s.cb();
+
+        s.h.resume();
+    }
+
+    void ThreadPool::_callback1(void* args)
+    {
+        _tmpS1& s = *static_cast<_tmpS1*>(args);
+
+        s.cb();
+
+        s.h.resume();
+    }
+
+    template <class TFArg, class TValue>
+    void ThreadPool::_callback2(void* args)
+    {
+        auto& s = *static_cast<_tmpS2<TFArg, TValue>*>(args);
+        s.cb(s.v);
+
+        s.h.resume();
+    }
+
+    template <class TFArg, class TValue>
+    void ThreadPool::_callback3(void* args)
+    {
+        auto& s = *static_cast<_tmpS3<TFArg, TValue>*>(args);
+        s.cb(s.v);
+
+        s.h.resume();
+    }
+
+#endif
 }
 
 #endif //!KONGKONG_THREADING_THREADPOOL_H

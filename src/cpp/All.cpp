@@ -171,6 +171,7 @@
 #include "Definitions/Kongkong.Threading._awaiterBase.cpp"
 #include "Definitions/Kongkong.Threading.AsyncAction.cpp"
 #include "Definitions/Kongkong.Threading.Mutex.cpp"
+#include "Definitions/Kongkong.Threading.ParallelFor.cpp"
 #include "Definitions/Kongkong.Threading.ScopeLock.cpp"
 #include "Definitions/Kongkong.Threading.Thread.cpp"
 #include "Definitions/Kongkong.Threading.ThreadPool.cpp"

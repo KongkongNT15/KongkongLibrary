@@ -1190,8 +1190,9 @@ namespace KONGKONG_NAMESPACE::Threading
     struct ScopeLock;
 
     template <class T>
-    struct YieldGenerator;
+    struct Generator;
 
+    class ParallelFor;
     class Thread;
     class ThreadPool;
 }

@@ -1,5 +1,5 @@
-#ifndef KONGKONG_THREADING_YIELDGENERATOR_H
-#define KONGKONG_THREADING_YIELDGENERATOR_H
+#ifndef KONGKONG_THREADING_GENERATOR_H
+#define KONGKONG_THREADING_GENERATOR_H
 
 #include "Base.h"
 #include "Kongkong.ValueType.h"
@@ -13,14 +13,14 @@
 namespace KONGKONG_NAMESPACE::Threading
 {
     template <class T>
-    struct YieldGenerator final : public ValueType {
+    struct Generator final : public ValueType {
 
         struct Iterator;
         struct promise_type final {
 
             constexpr promise_type() noexcept : _value(), _pIterator(nullptr), _pGenerator(nullptr) {}
 
-            YieldGenerator get_return_object() noexcept { return *this; }
+            Generator get_return_object() noexcept { return *this; }
 
             static constexpr ::std::suspend_always initial_suspend() noexcept { return {}; }
             static constexpr ::std::suspend_always final_suspend() noexcept { return {}; }
@@ -56,10 +56,10 @@ namespace KONGKONG_NAMESPACE::Threading
             private:
             LazyObject<T> _value;
 
-            YieldGenerator* _pGenerator;
+            Generator* _pGenerator;
             Iterator* _pIterator;
 
-            friend YieldGenerator;
+            friend Generator;
             friend Iterator;
         };
 
@@ -111,14 +111,14 @@ namespace KONGKONG_NAMESPACE::Threading
                 h.promise()._pIterator = this;
             }
 
-            friend YieldGenerator;
+            friend Generator;
             friend promise_type;
         };
 
-        YieldGenerator(YieldGenerator const&) = delete;
-        constexpr YieldGenerator(YieldGenerator&& right) noexcept : _h(right._h), _begun(right.begun) { right._h = nullptr; }
+        Generator(Generator const&) = delete;
+        constexpr Generator(Generator&& right) noexcept : _h(right._h), _begun(right.begun) { right._h = nullptr; }
 
-        ~YieldGenerator()
+        ~Generator()
         {
             if (!_h) return;
             
@@ -129,7 +129,7 @@ namespace KONGKONG_NAMESPACE::Threading
             if (promise._pIterator == nullptr) _h.destroy();
         }
 
-        YieldGenerator& operator=(YieldGenerator const&) = delete;
+        Generator& operator=(Generator const&) = delete;
 
         [[nodiscard]]
         Iterator begin()
@@ -153,7 +153,7 @@ namespace KONGKONG_NAMESPACE::Threading
         handleType _h;
         bool _begun;
 
-        YieldGenerator(promise_type& promise) noexcept : _h(handleType::from_promise(promise)), _begun(false)
+        Generator(promise_type& promise) noexcept : _h(handleType::from_promise(promise)), _begun(false)
         {
             promise._pGenerator = this;
         }
@@ -163,7 +163,7 @@ namespace KONGKONG_NAMESPACE::Threading
 namespace KONGKONG_NAMESPACE::Threading
 {
     template <class T>
-    void YieldGenerator<T>::promise_type::unhandled_exception()
+    void Generator<T>::promise_type::unhandled_exception()
     {
         auto h = _pGenerator->_h;
         _pGenerator->_h = nullptr;
@@ -176,4 +176,4 @@ namespace KONGKONG_NAMESPACE::Threading
     }
 }
 
-#endif //!KONGKONG_THREADING_YIELDGENERATOR_H
+#endif //!KONGKONG_THREADING_GENERATOR_H
