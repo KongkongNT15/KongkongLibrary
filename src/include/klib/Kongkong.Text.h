@@ -1,7 +1,10 @@
 #ifndef KONGKONG_TEXT_H
 #define KONGKONG_TEXT_H
 
+#include "Definitions/Kongkong.Text.AsciiEncoding.h"
+#include "Definitions/Kongkong.Text.Encoding.h"
 #include "Definitions/Kongkong.Text.GenericFixedString.h"
+#include "Definitions/Kongkong.Text.InvalidCodePointException.h"
 #include "Definitions/Kongkong.Text.Utf8CharAttribute.h"
 #include "Definitions/Kongkong.Text.StaticStringData.h"
 #include "Definitions/Kongkong.Text.StringHelper.h"

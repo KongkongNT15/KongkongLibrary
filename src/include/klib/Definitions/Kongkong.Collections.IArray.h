@@ -10,6 +10,8 @@ namespace KONGKONG_NAMESPACE::Collections::IMPLEMENTATION
     template <class T>
     INTERFACE IArray : public IReadOnlyArray<T>, virtual public ICollection<T> {
 
+        constexpr ssize_t Length() const noexcept override { return -1; }
+
         /// @brief 指定した番号の要素を取得
         /// @attention 範囲外の要素を指定した場合の動作は未定義だよ
         /// @param index 要素番号

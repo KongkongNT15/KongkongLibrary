@@ -144,12 +144,21 @@
 
 #include "Definitions/Kongkong.Text._stringPointer.cpp"
 #include "Definitions/Kongkong.Text._stringPointerBase.cpp"
+#include "Definitions/Kongkong.Text.AsciiEncoding.cpp"
+#include "Definitions/Kongkong.Text.Encoding.cpp"
+#include "Definitions/Kongkong.Text.InvalidCodePointException.cpp"
 #include "Definitions/Kongkong.Text.StringHelper.cpp"
 
 #include "Definitions/Kongkong.Text.Json.JsonArray.cpp"
 #include "Definitions/Kongkong.Text.Json.JsonObject.cpp"
 #include "Definitions/Kongkong.Text.Json.JsonParser.cpp"
 #include "Definitions/Kongkong.Text.Json.JsonValue.cpp"
+
+#include "Definitions/Kongkong.Text.Unicode.SurrogatePair.cpp"
+#include "Definitions/Kongkong.Text.Unicode.UnicodeConverter.cpp"
+#include "Definitions/Kongkong.Text.Unicode.UnicodeRange.cpp"
+#include "Definitions/Kongkong.Text.Unicode.UnicodeRangeIterator.cpp"
+#include "Definitions/Kongkong.Text.Unicode.Utf8Char.cpp"
 
 #if false
 #include "Definitions/Kongkong.Text.Yaml.YamlNode.cpp"

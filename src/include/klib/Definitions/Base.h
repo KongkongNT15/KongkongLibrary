@@ -1104,12 +1104,22 @@ namespace KONGKONG_NAMESPACE::Text
     template <CharType TChar, ssize_t N> requires (N >= 1)
     struct GenericFixedString;
 
+    struct InvalidCodePointException;
+
     template <CharType TChar, ssize_t N>
     struct StaticStringData;
 
     class _stringGC;
+    class AsciiEncoding;
+    class Encoding;
     class StaticStringDataCreater;
     class StringHelper;
+}
+
+namespace KONGKONG_NAMESPACE::Text::IMPLEMENTATION
+{
+    struct AsciiEncoding;
+    struct Encoding;
 }
 
 namespace KONGKONG_NAMESPACE::Text::Json
@@ -1127,6 +1137,18 @@ namespace KONGKONG_NAMESPACE::Text::Json::IMPLEMENTATION
 {
     struct JsonArray;
     struct JsonObject;
+}
+
+namespace KONGKONG_NAMESPACE::Text::Unicode
+{
+    struct SurrogatePair;
+    struct UnicodeRange;
+    struct UnicodeRangeIterator;
+    struct Utf8Char;
+
+    class ByteOrderMark;
+    class UnicodeConverter;
+    class UnicodeTraits;
 }
 
 namespace KONGKONG_NAMESPACE::Text::Yaml

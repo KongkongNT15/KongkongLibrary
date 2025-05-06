@@ -74,6 +74,7 @@
 #include <klib/Kongkong.System.h>
 #include <klib/Kongkong.Text.h>
 #include <klib/Kongkong.Text.Json.h>
+#include <klib/Kongkong.Text.Unicode.h>
 //#include <klib/Kongkong.Text.Yaml.h>
 //#include <klib/Kongkong.Text.Xml.h>
 #include <klib/Kongkong.Threading.h>

@@ -10,6 +10,8 @@ namespace KONGKONG_NAMESPACE::Collections::IMPLEMENTATION
     template <class T>
     struct ArrayListBase : public List<T>, public IArray<T> {
 
+        constexpr ssize_t Length() const noexcept override { return -1; }
+
         /// @brief 容量
         [[nodiscard]]
         virtual ssize_t Capacity() const noexcept = 0;

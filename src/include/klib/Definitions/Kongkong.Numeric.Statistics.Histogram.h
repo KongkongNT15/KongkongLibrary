@@ -58,7 +58,7 @@ namespace KONGKONG_NAMESPACE::Numeric::Statistics
 
         constexpr void AppendHistogram(Histogram const& histogram)
         {
-            if (histogram._binWidth != _binWidth) [[unlikeky]] throw InvalidArgumentException(u"階級の幅が一致していません");
+            if (histogram._binWidth != _binWidth) [[unlikely]] throw InvalidArgumentException(u"階級の幅が一致していません");
             if (histogram._minValue != _minValue) [[unlikely]] throw InvalidArgumentException(u"最小値が一致していません");
             if (histogram._frequencies.Length() != this->_frequencies.Length()) [[unlikely]] throw InvalidArgumentException(u"階級の数が一致していません");
 
