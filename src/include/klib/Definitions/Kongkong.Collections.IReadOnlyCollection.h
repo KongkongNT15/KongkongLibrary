@@ -8,7 +8,7 @@
 namespace KONGKONG_NAMESPACE::Collections::IMPLEMENTATION
 {
     template <class T>
-    INTERFACE IReadOnlyCollection : virtual public IReadOnlyIterable<T> {
+    KONGKONG_INTERFACE IReadOnlyCollection : virtual public IReadOnlyIterable<T> {
         /// @brief 要素数
         [[nodiscard]]
         virtual ssize_t Length() const noexcept { return -1; }
@@ -48,7 +48,7 @@ namespace KONGKONG_NAMESPACE::Collections::IMPLEMENTATION
 namespace KONGKONG_NAMESPACE::Collections
 {
     template <class T>
-    INTERFACE IReadOnlyCollection final : public Interface {
+    KONGKONG_INTERFACE IReadOnlyCollection final : public Interface {
         public:
         using ImplType = IMPLEMENTATION::IReadOnlyCollection<T>;
 

@@ -4,7 +4,7 @@
 #define KONGKONG_VERSION_MAJOR       0
 #define KONGKONG_VERSION_MINOR       1
 #define KONGKONG_VERSION_PATCH       0
-#define KONGKONG_VERSION_BUILDNUMBER 9
+#define KONGKONG_VERSION_BUILDNUMBER 23
 
 #define KONGKONG_NAMESPACE klib::Kongkong
 
@@ -48,7 +48,6 @@
     #undef min
 
     //何かと干渉するマクロを削除
-    #undef INTERFACE
 
     #undef CopyFile
     #undef CreateDirectory
@@ -164,7 +163,7 @@
 #define EXCEPTION_MESSAGE "Exception Thrown\n" "file name : "  __FILE__ "\n" "line : " EXPAND(__LINE__)
 
 #define IMPLEMENTATION implementation
-#define INTERFACE struct
+#define KONGKONG_INTERFACE struct
 
 #define KONGKONG_INCOMPLETED_CLASS [[deprecated("このクラス・構造体は未完成です。使用しないでください。")]]
 #define KONGKONG_INCOMPLETED_FUNCTION [[deprecated("この関数は未完成です。使用しないでください。")]]
@@ -224,8 +223,8 @@ namespace KONGKONG_NAMESPACE
 
     struct ValueType;
 
-    INTERFACE Interface;
-    INTERFACE InterfaceType;
+    KONGKONG_INTERFACE Interface;
+    KONGKONG_INTERFACE InterfaceType;
 
     class HandleType;
     class PointerType;
@@ -472,7 +471,7 @@ namespace KONGKONG_NAMESPACE::AppleDevice::Foundation::Text::Xml
 
 namespace KONGKONG_NAMESPACE::AppleDevice::Foundation::Threading
 {
-    INTERFACE NSLocking;
+    KONGKONG_INTERFACE NSLocking;
     
     class NSBlockOperation;
     class NSLock;
@@ -489,8 +488,8 @@ namespace KONGKONG_NAMESPACE::AppleDevice::Metal
     enum struct MetalCommandBufferError;
     enum struct MetalLogLevel;
     
-    INTERFACE MetalDevice;
-    INTERFACE MetalLogState;
+    KONGKONG_INTERFACE MetalDevice;
+    KONGKONG_INTERFACE MetalLogState;
 
     class MetalCommandQueueDescriptor;
 }
@@ -527,22 +526,22 @@ namespace KONGKONG_NAMESPACE::Collections
     struct ArrayChangingEventArgs;
 
     template <class T>
-    INTERFACE IArray;
+    KONGKONG_INTERFACE IArray;
 
     template <class T>
-    INTERFACE ICollection;
+    KONGKONG_INTERFACE ICollection;
 
     template <class T>
-    INTERFACE IIterable;
+    KONGKONG_INTERFACE IIterable;
 
     template <class T>
-    INTERFACE IReadOnlyArray;
+    KONGKONG_INTERFACE IReadOnlyArray;
 
     template <class T>
-    INTERFACE IReadOnlyIterable;
+    KONGKONG_INTERFACE IReadOnlyIterable;
 
     template <class T>
-    INTERFACE IReadOnlyCollection;
+    KONGKONG_INTERFACE IReadOnlyCollection;
 
     template <class TKey, class TValue>
     struct KeyValuePair;
@@ -593,22 +592,22 @@ namespace KONGKONG_NAMESPACE::Collections
 namespace KONGKONG_NAMESPACE::Collections::IMPLEMENTATION
 {
     template <class T>
-    INTERFACE IArray;
+    KONGKONG_INTERFACE IArray;
 
     template <class T>
-    INTERFACE ICollection;
+    KONGKONG_INTERFACE ICollection;
 
     template <class T>
-    INTERFACE IIterable;
+    KONGKONG_INTERFACE IIterable;
 
     template <class T>
-    INTERFACE IReadOnlyArray;
+    KONGKONG_INTERFACE IReadOnlyArray;
 
     template <class T>
-    INTERFACE IReadOnlyIterable;
+    KONGKONG_INTERFACE IReadOnlyIterable;
 
     template <class T>
-    INTERFACE IReadOnlyCollection;
+    KONGKONG_INTERFACE IReadOnlyCollection;
 
     //配列のラッパー
     template <class T>
@@ -846,6 +845,23 @@ namespace KONGKONG_NAMESPACE::Events
     //イベントハンドラー
     template <class TSender, class TArgs>
     struct EventHandler;
+}
+
+namespace KONGKONG_NAMESPACE::Graphics
+{
+    template <NumberType TNum>
+    struct t_Color;
+
+    class _winComInitializer;
+}
+
+namespace KONGKONG_NAMESPACE::Graphics::Imaging
+{
+    enum struct ImageFormat;
+
+    struct ImageRenderException;
+
+    class BitmapImage;
 }
 
 namespace KONGKONG_NAMESPACE::IO::Storage
@@ -1438,6 +1454,13 @@ namespace KONGKONG_NAMESPACE::Collections
 namespace KONGKONG_NAMESPACE::Diagnostics
 {
     using LifecycleEventHandler = Events::EventHandler<LifecycleObject, LifecycleEventArgs>;
+}
+
+namespace KONGKONG_NAMESPACE::Graphics
+{
+    using Color = t_Color<uint8_t>;
+    using ColorF = t_Color<float>;
+    using Point2F = Numeric::Vector<float, 2>;
 }
 
 namespace KONGKONG_NAMESPACE::Numeric

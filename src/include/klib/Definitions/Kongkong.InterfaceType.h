@@ -5,7 +5,7 @@
 
 namespace KONGKONG_NAMESPACE
 {
-    INTERFACE InterfaceType : public KongkongTypeBase {
+    KONGKONG_INTERFACE InterfaceType : public KongkongTypeBase {
 
         protected:
         InterfaceType() = default;

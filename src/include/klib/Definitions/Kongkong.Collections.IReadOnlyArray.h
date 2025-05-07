@@ -9,7 +9,7 @@
 namespace KONGKONG_NAMESPACE::Collections::IMPLEMENTATION
 {
     template <class T>
-    INTERFACE IReadOnlyArray : public IReadOnlyCollection<T> {
+    KONGKONG_INTERFACE IReadOnlyArray : public IReadOnlyCollection<T> {
 
         /// @brief 指定した要素の番号を取得
         /// @param value 値
@@ -34,7 +34,7 @@ namespace KONGKONG_NAMESPACE::Collections::IMPLEMENTATION
 namespace KONGKONG_NAMESPACE::Collections
 {
     template <class T>
-    INTERFACE IReadOnlyArray final : public Interface {
+    KONGKONG_INTERFACE IReadOnlyArray final : public Interface {
         public:
         using ImplType = IMPLEMENTATION::IReadOnlyArray<T>;
 

@@ -8,7 +8,7 @@
 namespace KONGKONG_NAMESPACE::Collections::IMPLEMENTATION
 {
     template <class T>
-    INTERFACE IArray : public IReadOnlyArray<T>, virtual public ICollection<T> {
+    KONGKONG_INTERFACE IArray : public IReadOnlyArray<T>, virtual public ICollection<T> {
 
         constexpr ssize_t Length() const noexcept override { return -1; }
 
@@ -30,7 +30,7 @@ namespace KONGKONG_NAMESPACE::Collections
     /// @brief 配列の機能を持つインターフェース
     /// @tparam T 要素の型
     template <class T>
-    INTERFACE IArray final : public Interface {
+    KONGKONG_INTERFACE IArray final : public Interface {
         public:
         using ImplType = IMPLEMENTATION::IArray<T>;
 

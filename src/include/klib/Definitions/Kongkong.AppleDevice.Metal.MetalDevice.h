@@ -6,7 +6,7 @@
 
 namespace KONGKONG_NAMESPACE::AppleDevice::Metal
 {
-    INTERFACE MetalDevice : public NSObject {
+    KONGKONG_INTERFACE MetalDevice : public NSObject {
 
         [[nodiscard]]
         static MetalDevice DefaultDevice() noexcept;

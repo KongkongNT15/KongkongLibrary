@@ -8,7 +8,7 @@
 
 namespace KONGKONG_NAMESPACE::AppleDevice::Metal
 {
-    INTERFACE MetalLogState : public NSObject {
+    KONGKONG_INTERFACE MetalLogState : public NSObject {
 
         /// @brief nullptrとして作成
         constexpr MetalLogState(::std::nullptr_t) noexcept : NSObject(nullptr) {}

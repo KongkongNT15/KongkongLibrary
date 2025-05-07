@@ -7,6 +7,9 @@
     #include <Windows.h>
     #include <VersionHelpers.h>
     #include <Unknwn.h>
+    #include <d2d1.h>
+    #include <wincodec.h>
+    #include <wrl/client.h>
 #endif
 
 #ifdef KONGKONG_ENV_UNIX
@@ -64,6 +67,8 @@
 #include <klib/Kongkong.CStd.h>
 #include <klib/Kongkong.Diagnostics.h>
 #include <klib/Kongkong.Events.h>
+#include <klib/Kongkong.Graphics.h>
+#include <klib/Kongkong.Graphics.Imaging.h>
 #include <klib/Kongkong.IO.Storage.h>
 #include <klib/Kongkong.Memory.h>
 #include <klib/Kongkong.Net.h>

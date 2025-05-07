@@ -6,7 +6,7 @@
 
 namespace KONGKONG_NAMESPACE::AppleDevice::Foundation::Threading
 {
-    INTERFACE NSLocking : public NSObject {
+    KONGKONG_INTERFACE NSLocking : public NSObject {
 
         /// @brief nullptrとして作成
         constexpr NSLocking(std::nullptr_t) noexcept : NSObject(nullptr) {}

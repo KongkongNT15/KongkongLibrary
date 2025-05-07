@@ -95,6 +95,15 @@
 #include "Definitions/Kongkong.Diagnostics.LifecycleEventArgs.cpp"
 #include "Definitions/Kongkong.Diagnostics.StopWatch.cpp"
 
+#ifdef KONGKONG_ENV_WINDOWS
+    #include "Definitions/Kongkong.Graphics._winComInitializer.cpp"
+#endif
+
+#include "Definitions/Kongkong.Graphics.Color.cpp"
+
+#include "Definitions/Kongkong.Graphics.Imaging.BitmapImage.cpp"
+#include "Definitions/Kongkong.Graphics.Imaging.ImageRenderException.cpp"
+
 #include "Definitions/Kongkong.Memory._sharedHandleBase.cpp"
 #include "Definitions/Kongkong.Memory._sharedPointerBase.cpp"
 #include "Definitions/Kongkong.Memory._weakPointerBase.cpp"

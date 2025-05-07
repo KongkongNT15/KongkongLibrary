@@ -2,7 +2,7 @@
 
 namespace KONGKONG_NAMESPACE
 {
-    InitializationException::InitializationException() : Exception(u"オブジェクトの初期化に失敗しました")
+    InitializationException::InitializationException() : Exception(String::FromLiteral(u"オブジェクトの初期化に失敗しました"))
     {
     }
 }

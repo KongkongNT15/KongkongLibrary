@@ -8,7 +8,7 @@
 namespace KONGKONG_NAMESPACE::Collections::IMPLEMENTATION
 {
     template <class T>
-    INTERFACE ICollection : public IReadOnlyCollection<T>, public IIterable<T> {
+    KONGKONG_INTERFACE ICollection : public IReadOnlyCollection<T>, public IIterable<T> {
         
         /// @brief 最後の要素を取得
         /// @throws InvalidOperationException: コンテナが空のとき
@@ -44,7 +44,7 @@ namespace KONGKONG_NAMESPACE::Collections::IMPLEMENTATION
 namespace KONGKONG_NAMESPACE::Collections
 {
     template <class T>
-    INTERFACE ICollection final : public Interface {
+    KONGKONG_INTERFACE ICollection final : public Interface {
         public:
         using ImplType = IMPLEMENTATION::ICollection<T>;
 

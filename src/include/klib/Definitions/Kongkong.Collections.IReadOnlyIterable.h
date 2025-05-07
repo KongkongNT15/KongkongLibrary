@@ -13,7 +13,7 @@
 namespace KONGKONG_NAMESPACE::Collections::IMPLEMENTATION
 {
     template <class T>
-    INTERFACE IReadOnlyIterable : public InterfaceType {
+    KONGKONG_INTERFACE IReadOnlyIterable : public InterfaceType {
         [[nodiscard]] virtual Iterators::ConstIterator<T> begin() const = 0;
         [[nodiscard]] virtual Iterators::ConstIterator<T> end() const = 0;
     };
@@ -22,7 +22,7 @@ namespace KONGKONG_NAMESPACE::Collections::IMPLEMENTATION
 namespace KONGKONG_NAMESPACE::Collections
 {
     template <class T>
-    INTERFACE IReadOnlyIterable final : public Interface {
+    KONGKONG_INTERFACE IReadOnlyIterable final : public Interface {
         public:
         using ImplType = IMPLEMENTATION::IReadOnlyIterable<T>;
 

@@ -69,7 +69,7 @@ namespace KONGKONG_NAMESPACE::Threading
 
             constexpr Iterator() noexcept : _h_coro(nullptr), _done(true) {}
             Iterator(Iterator const&) = delete;
-            Iterator(Iterator&& right) : _h_coro(right._h_coro), _done(right._done) { right._h_coro = nullptr; }
+            constexpr Iterator(Iterator&& right) noexcept : _h_coro(right._h_coro), _done(right._done) { right._h_coro = nullptr; }
 
             ~Iterator()
             {

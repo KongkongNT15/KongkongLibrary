@@ -7,7 +7,7 @@
 
 namespace KONGKONG_NAMESPACE
 {
-    INTERFACE Interface : public Object, public InterfaceType {
+    KONGKONG_INTERFACE Interface : public Object, public InterfaceType {
 
         Object::ImplType* operator->() const = delete;
 
