@@ -8,7 +8,7 @@ namespace KONGKONG_NAMESPACE::Graphics::Imaging
 
     ::D2D1_RENDER_TARGET_PROPERTIES BitmapImage::s_rtProps = D2D1::RenderTargetProperties(
         ::D2D1_RENDER_TARGET_TYPE::D2D1_RENDER_TARGET_TYPE_DEFAULT,
-        D2D1::PixelFormat(::DXGI_FORMAT::DXGI_FORMAT_UNKNOWN,
+        ::D2D1::PixelFormat(::DXGI_FORMAT::DXGI_FORMAT_UNKNOWN,
         ::D2D1_ALPHA_MODE::D2D1_ALPHA_MODE_PREMULTIPLIED),
         0.0f,
         0.0f
@@ -44,6 +44,13 @@ namespace KONGKONG_NAMESPACE::Graphics::Imaging
         m_renderTarget->BeginDraw();
         m_renderTarget->DrawLine({ point1.X(), point1.Y() }, { point2.X(), point2.Y() }, brush.Get(), strokeWidth);
 
+        if (FAILED(m_renderTarget->EndDraw())) [[unlikely]] throw ImageRenderException();
+    }
+
+    void BitmapImage::Fill(ColorF const& color) const
+    {
+        m_renderTarget->BeginDraw();
+        m_renderTarget->Clear(color.ToDirectXColorF());
         if (FAILED(m_renderTarget->EndDraw())) [[unlikely]] throw ImageRenderException();
     }
 

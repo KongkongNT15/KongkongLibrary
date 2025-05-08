@@ -4,52 +4,78 @@
 #include "Base.h"
 #include "Kongkong.ValueType.h"
 
-#ifdef KONGKONG_ENV_WINDOWS
-    #include <d2d1.h>
-#endif
-
 namespace KONGKONG_NAMESPACE::Graphics
 {
-    template <NumberType TNum>
-    struct t_Color : public ValueType {
-
-        constexpr t_Color(TNum a, TNum r, TNum g, TNum b) noexcept : m_a(a), m_r(r), m_g(g), m_b(b) {}
-        //constexpr t_Color(uint8_t r, uint8_t g, uint8_t b) noexcept : Color(0xFF, r, g, b) {}
+    struct Color : public ValueType {
 
         [[nodiscard]]
-        constexpr TNum A() const noexcept { return m_a; }
-
-        constexpr void A(TNum value) noexcept { m_a = value; }
+        static constexpr Color Black() noexcept { return Color(0xFF, 0xFF, 0xFF); }
 
         [[nodiscard]]
-        constexpr TNum R() const noexcept { return m_r; }
-
-        constexpr void R(TNum value) noexcept { m_r = value; }
+        static constexpr Color Blue() noexcept { return Color(0x00, 0x00, 0xFF); }
 
         [[nodiscard]]
-        constexpr TNum G() const noexcept { return m_g; }
-
-        constexpr void G(TNum value) noexcept { m_g = value; }
+        static constexpr Color Cyan() noexcept { return Color(0x00, 0xFF, 0xFF); }
 
         [[nodiscard]]
-        constexpr TNum B() const noexcept { return m_b; }
+        static constexpr Color Green() noexcept { return Color(0x00, 0xFF, 0x00); }
 
-        constexpr void B(TNum value) noexcept { m_b = value; }
-
-        template <NumberType UNum>
-        constexpr t_Color<UNum> As() const noexcept { return t_Color<UNum>((UNum)m_a, (UNum)m_r, (UNum)m_g, (UNum)m_b); }
-
-#ifdef KONGKONG_ENV_WINDOWS
         [[nodiscard]]
-        ::D2D1::ColorF ToDirectXColorF() const noexcept { return ::D2D1::ColorF((float)m_r, (float)m_g, (float)m_b, (float)m_a); }
-#endif
+        static constexpr Color Magenta() noexcept { return Color(0xFF, 0xFF, 0x00); }
+
+        [[nodiscard]]
+        static constexpr Color Orange() noexcept { return Color(0xFF, 0xA5, 0x00); }
+
+        [[nodiscard]]
+        static constexpr Color OrangeRed() noexcept { return Color(0xFF, 0x45, 0x00); }
+
+        [[nodiscard]]
+        static constexpr Color Pink() noexcept { return Color(0xFF, 0xC0, 0xCB); }
+
+        [[nodiscard]]
+        static constexpr Color Red() noexcept { return Color(0xFF, 0x00, 0x00); }
+
+        [[nodiscard]]
+        static constexpr Color Transparent() noexcept { return Color(0x00, 0x00, 0x00, 0x00); }
+
+        [[nodiscard]]
+        static constexpr Color White() noexcept { return Color(0xFF, 0xFF, 0xFF); }
+
+        [[nodiscard]]
+        static constexpr Color Yellow() noexcept { return Color(0xFF, 0xFF, 0x00); }
+
+        constexpr Color(uint8_t a, uint8_t r, uint8_t g, uint8_t b) noexcept : m_a(a), m_r(r), m_g(g), m_b(b) {}
+        constexpr Color(uint8_t r, uint8_t g, uint8_t b) noexcept : Color(0xFF, r, g, b) {}
+
+        [[nodiscard]]
+        constexpr uint8_t A() const noexcept { return m_a; }
+
+        constexpr void A(uint8_t value) noexcept { m_a = value; }
+
+        [[nodiscard]]
+        constexpr uint8_t R() const noexcept { return m_r; }
+
+        constexpr void R(uint8_t value) noexcept { m_r = value; }
+
+        [[nodiscard]]
+        constexpr uint8_t G() const noexcept { return m_g; }
+
+        constexpr void G(uint8_t value) noexcept { m_g = value; }
+
+        [[nodiscard]]
+        constexpr uint8_t B() const noexcept { return m_b; }
+
+        constexpr void B(uint8_t value) noexcept { m_b = value; }
+
+        [[nodiscard]]
+        String ToString() const;
 
         private:
 
-        TNum m_a;
-        TNum m_r;
-        TNum m_g;
-        TNum m_b;
+        uint8_t m_a;
+        uint8_t m_r;
+        uint8_t m_g;
+        uint8_t m_b;
     };
 }
 

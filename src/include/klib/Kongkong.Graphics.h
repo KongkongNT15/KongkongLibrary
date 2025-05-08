@@ -4,6 +4,7 @@
 #include "Definitions/Base.h"
 #include "Definitions/Kongkong.Graphics._winComInitializer.h"
 #include "Definitions/Kongkong.Graphics.Color.h"
+#include "Definitions/Kongkong.Graphics.ColorF.h"
 #include "Definitions/Kongkong.Graphics.Point.h"
 
 #endif //!KONGKONG_GRAPHICS_H

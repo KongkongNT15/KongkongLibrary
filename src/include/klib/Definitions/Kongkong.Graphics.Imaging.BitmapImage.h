@@ -21,6 +21,8 @@ namespace KONGKONG_NAMESPACE::Graphics::Imaging
         void DrawEllipse(Point2F point, float radiusX, float radiusY, float strokeWidth, ColorF const& color) const;
         void DrawLine(Point2F point1, Point2F point2, float strokeWidth, ColorF const& color) const;
 
+        void Fill(ColorF const& color) const;
+
         /// @brief ふぁ！？っく
         void SaveAs(::std::nullptr_t, ImageFormat) const = delete;
 

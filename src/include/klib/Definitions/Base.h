@@ -4,7 +4,7 @@
 #define KONGKONG_VERSION_MAJOR       0
 #define KONGKONG_VERSION_MINOR       1
 #define KONGKONG_VERSION_PATCH       0
-#define KONGKONG_VERSION_BUILDNUMBER 23
+#define KONGKONG_VERSION_BUILDNUMBER 26
 
 #define KONGKONG_NAMESPACE klib::Kongkong
 
@@ -849,8 +849,8 @@ namespace KONGKONG_NAMESPACE::Events
 
 namespace KONGKONG_NAMESPACE::Graphics
 {
-    template <NumberType TNum>
-    struct t_Color;
+    struct Color;
+    struct ColorF;
 
     class _winComInitializer;
 }
@@ -1458,8 +1458,6 @@ namespace KONGKONG_NAMESPACE::Diagnostics
 
 namespace KONGKONG_NAMESPACE::Graphics
 {
-    using Color = t_Color<uint8_t>;
-    using ColorF = t_Color<float>;
     using Point2F = Numeric::Vector<float, 2>;
 }
 

@@ -18,8 +18,8 @@ namespace KONGKONG_NAMESPACE::Numeric::IMPLEMENTATION
 
     Vector2Double RandomCircle::Next() noexcept
     {
-        double theta = _urd(_mt) * (std::numbers::pi * 2.0);
-        double r = std::sqrt(_urd(_mt)) * Radius();
+        double theta = _urd(_mt) * (::std::numbers::pi * 2.0);
+        double r = ::sqrt(_urd(_mt)) * Radius();
 
         return Vector2Double(r * ::cos(theta), r * ::sin(theta));
     }
