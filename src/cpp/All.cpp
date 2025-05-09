@@ -113,14 +113,13 @@
 
 #include "Definitions/Kongkong.Net.IPv4Address.cpp"
 
+#include "Definitions/Kongkong.Numeric._randomCircleMethods.cpp"
 #include "Definitions/Kongkong.Numeric.BigInteger.cpp"
 #include "Definitions/Kongkong.Numeric.Complex.cpp"
 #include "Definitions/Kongkong.Numeric.Math.cpp"
 #include "Definitions/Kongkong.Numeric.PolarComplex.cpp"
 #include "Definitions/Kongkong.Numeric.Random.cpp"
 #include "Definitions/Kongkong.Numeric.RandomBase.cpp"
-#include "Definitions/Kongkong.Numeric.RandomCircle.cpp"
-#include "Definitions/Kongkong.Numeric.RandomCircleBase.cpp"
 
 #include "Definitions/Kongkong.Numeric.Statistics._binBase.cpp"
 #include "Definitions/Kongkong.Numeric.Statistics._histogramIteratorBase.cpp"

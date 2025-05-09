@@ -3,6 +3,7 @@
 
 #include "Definitions/Base.h"
 
+#include "Definitions/Kongkong.Numeric._randomCircleMethods.h"
 #include "Definitions/Kongkong.Numeric.BigInteger.h"
 #include "Definitions/Kongkong.Numeric.Complex.h"
 #include "Definitions/Kongkong.Numeric.Div.h"
@@ -13,7 +14,6 @@
 #include "Definitions/Kongkong.Numeric.PolarComplex.h"
 #include "Definitions/Kongkong.Numeric.Random.h"
 #include "Definitions/Kongkong.Numeric.RandomCircle.h"
-#include "Definitions/Kongkong.Numeric.RandomCircleBase.h"
 #include "Definitions/Kongkong.Numeric.RandomBase.h"
 #include "Definitions/Kongkong.Numeric.Sign.h"
 #include "Definitions/Kongkong.Numeric.Vector.h"

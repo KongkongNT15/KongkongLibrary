@@ -263,6 +263,23 @@ namespace KONGKONG_NAMESPACE
     concept KongkongValueType = std::derived_from<T, ValueType>;
 }
 
+namespace KONGKONG_NAMESPACE::Std
+{
+    template <class TRandomEngine>
+    concept RandomEngine = requires (TRandomEngine rg)
+    {
+        typename TRandomEngine::result_type;
+        { rg.operator()() };
+    };
+
+    template <class TRandomSeedEngine>
+    concept RandomSeedEngine = requires (TRandomSeedEngine rg)
+    {
+        RandomEngine<TRandomSeedEngine>;
+        { rg.seed(::std::declval<typename TRandomSeedEngine::value_type>()) };
+    };
+}
+
 namespace KONGKONG_NAMESPACE
 {
     struct _lazyObjectBase;
@@ -935,22 +952,23 @@ namespace KONGKONG_NAMESPACE::Numeric
     template <std::floating_point TFloat>
     struct PolarComplex;
 
+    template <::std::floating_point TNum, Std::RandomEngine TRandomEngine>
+    struct RandomCircle;
+
     template <NumberType Num, ssize_t N> requires (N > 0)
     struct Vector;
 
     class Math;
     class Random;
     class RandomBase;
-    class RandomCircle;
-    class RandomCircleBase;
+    
+    struct _randomCircleMethods;
 }
 
 namespace KONGKONG_NAMESPACE::Numeric::IMPLEMENTATION
 {
     struct Random;
     struct RandomBase;
-    struct RandomCircle;
-    struct RandomCircleBase;
 }
 
 namespace KONGKONG_NAMESPACE::Numeric::NumberTypes
