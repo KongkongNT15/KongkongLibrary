@@ -1,4 +1,4 @@
-#ifndef KONGKONG_WIN32_DIRECTX_H
+﻿#ifndef KONGKONG_WIN32_DIRECTX_H
 #define KONGKONG_WIN32_DIRECTX_H
 
 #include "Definitions/Base.h"

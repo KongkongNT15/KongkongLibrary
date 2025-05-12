@@ -1,4 +1,4 @@
-#ifndef KONGKONG_COLLECTIONS_H
+﻿#ifndef KONGKONG_COLLECTIONS_H
 #define KONGKONG_COLLECTIONS_H
 
 #include "Definitions/Base.h"

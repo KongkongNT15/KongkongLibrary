@@ -1,4 +1,4 @@
-#ifndef KONGKONG_CSTD_CFILE_H
+﻿#ifndef KONGKONG_CSTD_CFILE_H
 #define KONGKONG_CSTD_CFILE_H
 
 #include "Base.h"

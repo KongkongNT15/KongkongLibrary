@@ -1,4 +1,4 @@
-#ifndef KONGKONG_WIN32_SOUND_H
+﻿#ifndef KONGKONG_WIN32_SOUND_H
 #define KONGKONG_WIN32_SOUND_H
 
 #include "Base.h"

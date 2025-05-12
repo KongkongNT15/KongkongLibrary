@@ -1,4 +1,4 @@
-#ifndef KONGKONG_NUMERIC_SHAPES_H
+﻿#ifndef KONGKONG_NUMERIC_SHAPES_H
 #define KONGKONG_NUMERIC_SHAPES_H
 
 #include "Kongkong.Numeric.h"

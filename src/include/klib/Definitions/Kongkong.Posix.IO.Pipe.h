@@ -1,4 +1,4 @@
-#ifndef KONGKONG_POSIX_IO_PIPE_H
+﻿#ifndef KONGKONG_POSIX_IO_PIPE_H
 #define KONGKONG_POSIX_IO_PIPE_H
 
 #include "Base.h"

@@ -1,4 +1,4 @@
-#ifndef KONGKONG_STRINGVIEW_H
+﻿#ifndef KONGKONG_STRINGVIEW_H
 #define KONGKONG_STRINGVIEW_H
 
 #include "Base.h"

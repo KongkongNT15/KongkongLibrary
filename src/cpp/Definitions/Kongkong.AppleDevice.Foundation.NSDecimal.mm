@@ -1,4 +1,4 @@
-//このObjective-C++ファイルをコンパイルに含めないでください
+﻿//このObjective-C++ファイルをコンパイルに含めないでください
 
 #define CAST(object) (::NSDecimal*)((object)._p)
 #define INSTANCE (::NSDecimal*)_p

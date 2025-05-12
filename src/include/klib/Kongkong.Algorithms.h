@@ -1,4 +1,4 @@
-#ifndef KONGKONG_ALGORITHMS_H
+﻿#ifndef KONGKONG_ALGORITHMS_H
 #define KONGKONG_ALGORITHMS_H
 
 #include "Definitions/Base.h"

@@ -1,4 +1,4 @@
-#ifndef KONGKONG_GRAPHICS_IMAGING_H
+﻿#ifndef KONGKONG_GRAPHICS_IMAGING_H
 #define KONGKONG_GRAPHICS_IMAGING_H
 
 #include "Definitions/Base.h"

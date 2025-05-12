@@ -1,4 +1,4 @@
-//このcppファイルをコンパイルに含めないでください
+﻿//このcppファイルをコンパイルに含めないでください
 
 #define FMOD(value) (::fmod(value, std::numbers::pi_v<TFloat>))
 #define TAU ((TFloat)(std::numbers::pi * 2.0))

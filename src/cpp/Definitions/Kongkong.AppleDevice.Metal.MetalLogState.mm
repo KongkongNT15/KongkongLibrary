@@ -1,4 +1,4 @@
-//このObjective-C++ファイルをコンパイルに含めないでください
+﻿//このObjective-C++ファイルをコンパイルに含めないでください
 
 #define INSTANCE ((id<MTLLogState>)_instance())
 #define INSTANCE_UNSAFE ((id<MTLLogState>)_instanceUnsafe())

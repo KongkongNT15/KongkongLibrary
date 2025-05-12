@@ -1,4 +1,4 @@
-#ifndef KONGKONG_IO_STORAGE_H
+﻿#ifndef KONGKONG_IO_STORAGE_H
 #define KONGKONG_IO_STORAGE_H
 
 #include "Definitions/Base.h"

@@ -1,4 +1,4 @@
-#ifndef KONGKONG_TEXT_H
+﻿#ifndef KONGKONG_TEXT_H
 #define KONGKONG_TEXT_H
 
 #include "Definitions/Kongkong.Text.AsciiEncoding.h"

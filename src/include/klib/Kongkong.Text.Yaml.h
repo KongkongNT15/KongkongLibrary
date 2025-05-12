@@ -1,4 +1,4 @@
-#ifndef KONGKONG_TEXT_YAML_H
+﻿#ifndef KONGKONG_TEXT_YAML_H
 #define KONGKONG_TEXT_YAML_H
 
 #include "Definitions/Base.h"

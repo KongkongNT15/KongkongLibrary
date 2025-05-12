@@ -1,4 +1,4 @@
-#ifndef KONGKONG_TEXT_UNICODE_H
+﻿#ifndef KONGKONG_TEXT_UNICODE_H
 #define KONGKONG_TEXT_UNICODE_H
 
 #include "Definitions/Base.h"

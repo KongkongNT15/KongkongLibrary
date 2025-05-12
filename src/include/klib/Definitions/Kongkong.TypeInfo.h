@@ -1,4 +1,4 @@
-#ifndef KONGKONG_TYPEINFO_H
+﻿#ifndef KONGKONG_TYPEINFO_H
 #define KONGKONG_TYPEINFO_H
 
 #include "Base.h"

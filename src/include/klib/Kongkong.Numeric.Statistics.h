@@ -1,4 +1,4 @@
-#ifndef KONGKONG_NUMERIC_STATISTICS_H
+﻿#ifndef KONGKONG_NUMERIC_STATISTICS_H
 #define KONGKONG_NUMERIC_STATISTICS_H
 
 #include "Definitions/Base.h"

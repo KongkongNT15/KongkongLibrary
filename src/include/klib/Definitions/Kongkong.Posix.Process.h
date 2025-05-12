@@ -1,4 +1,4 @@
-#ifndef KONGKONG_POSIX_PROCESS_H
+﻿#ifndef KONGKONG_POSIX_PROCESS_H
 #define KONGKONG_POSIX_PROCESS_H
 
 #include "Base.h"

@@ -1,4 +1,4 @@
-#ifndef KONGKONG_NUMERIC_COMPLEX_H
+﻿#ifndef KONGKONG_NUMERIC_COMPLEX_H
 #define KONGKONG_NUMERIC_COMPLEX_H
 
 #include "Base.h"

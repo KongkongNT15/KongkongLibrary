@@ -1,4 +1,4 @@
-#ifndef KONGKONG_DIAGNOSTICS_H
+﻿#ifndef KONGKONG_DIAGNOSTICS_H
 #define KONGKONG_DIAGNOSTICS_H
 
 #include "Definitions/Base.h"

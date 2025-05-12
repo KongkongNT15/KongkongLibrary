@@ -1,4 +1,4 @@
-#ifndef KONGKONG_TIME_H
+﻿#ifndef KONGKONG_TIME_H
 #define KONGKONG_TIME_H
 
 #include "Kongkong.h"

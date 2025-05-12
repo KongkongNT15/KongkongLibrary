@@ -1,4 +1,4 @@
-//このcppファイルをコンパイルに含めないでください
+﻿//このcppファイルをコンパイルに含めないでください
 
 #define CO1(type) (::std::numbers::inv_sqrtpi_v<type> / ::std::numbers::sqrt2_v<type>)
 #define CO2(type) ((type)-0.5)

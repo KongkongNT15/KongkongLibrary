@@ -1,4 +1,4 @@
-//このcppファイルをコンパイルに含めないでください
+﻿//このcppファイルをコンパイルに含めないでください
 
 #define GET_DENSITY(value) this->_co1 * ::exp(this->_co2 * value * value)
 

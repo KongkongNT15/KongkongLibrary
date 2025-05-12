@@ -1,4 +1,4 @@
-#ifndef KONGKONG_SYSTEM_H
+﻿#ifndef KONGKONG_SYSTEM_H
 #define KONGKONG_SYSTEM_H
 
 #include "Definitions/Base.h"

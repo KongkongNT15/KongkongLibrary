@@ -1,4 +1,4 @@
-#ifndef KONGKONG_WIN32_UI_WINDOW_H
+﻿#ifndef KONGKONG_WIN32_UI_WINDOW_H
 #define KONGKONG_WIN32_UI_WINDOW_H
 
 #include "Base.h"

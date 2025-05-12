@@ -1,4 +1,4 @@
-#ifndef KONGKONG_HANDLETYPE_H
+﻿#ifndef KONGKONG_HANDLETYPE_H
 #define KONGKONG_HANDLETYPE_H
 
 #include "Base.h"

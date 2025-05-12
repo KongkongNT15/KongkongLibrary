@@ -1,4 +1,4 @@
-//このObjective-C++ファイルをコンパイルに含めないでください
+﻿//このObjective-C++ファイルをコンパイルに含めないでください
 
 #define INSTANCE ((id<NSLocking>)_instance())
 

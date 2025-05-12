@@ -1,4 +1,4 @@
-//このObjective-C++ファイルをコンパイルに含めないでください
+﻿//このObjective-C++ファイルをコンパイルに含めないでください
 
 #define INSTANCE ((::NSNumber*)_instance())
 #define CAST(object) ((::NSNumber*)object._instanceUnsafe())

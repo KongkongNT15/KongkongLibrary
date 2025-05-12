@@ -1,4 +1,4 @@
-#ifndef KONGKONG_WIN32_CLASSTYPE_H
+﻿#ifndef KONGKONG_WIN32_CLASSTYPE_H
 #define KONGKONG_WIN32_CLASSTYPE_H
 
 #include "Base.h"

@@ -1,4 +1,4 @@
-//このcppファイルをコンパイルに含めないでください
+﻿//このcppファイルをコンパイルに含めないでください
 
 #define CHECK_LENGTH_SIGNED(type) \
     void CollectionHelper::CheckLength(type length) \

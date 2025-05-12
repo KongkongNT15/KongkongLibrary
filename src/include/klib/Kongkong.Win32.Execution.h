@@ -1,4 +1,4 @@
-#ifndef KONGKONG_WIN32_EXECUTION_H
+﻿#ifndef KONGKONG_WIN32_EXECUTION_H
 #define KONGKONG_WIN32_EXECUTION_H
 
 #include "Definitions/Base.h"

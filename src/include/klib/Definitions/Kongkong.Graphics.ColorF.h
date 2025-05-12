@@ -1,4 +1,4 @@
-#ifndef KONGKONG_GRAPHICS_COLORF_H
+﻿#ifndef KONGKONG_GRAPHICS_COLORF_H
 #define KONGKONG_GRAPHICS_COLORF_H
 
 #include "Base.h"
@@ -71,6 +71,14 @@ namespace KONGKONG_NAMESPACE::Graphics
 
         constexpr void B(float value) noexcept { m_b = value; }
 
+        constexpr void Clamp() noexcept
+        {
+            s_clamp(m_a);
+            s_clamp(m_r);
+            s_clamp(m_g);
+            s_clamp(m_b);
+        }
+
 #ifdef KONGKONG_ENV_WINDOWS
         [[nodiscard]]
         ::D2D1::ColorF ToDirectXColorF() const noexcept { return ::D2D1::ColorF(m_r, m_g, m_b, m_a); }
@@ -85,6 +93,18 @@ namespace KONGKONG_NAMESPACE::Graphics
         float m_r;
         float m_g;
         float m_b;
+
+        static constexpr void s_clamp(float& v) noexcept
+        {
+            if (v < 0.0F) {
+                v = 0.0F;
+                return;
+            }
+            if (v > 1.0F) {
+                v = 1.0F;
+                return;
+            }
+        }
     };
 }
 

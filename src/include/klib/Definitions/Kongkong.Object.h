@@ -1,4 +1,4 @@
-#ifndef KONGKONG_OBJECT_H
+﻿#ifndef KONGKONG_OBJECT_H
 #define KONGKONG_OBJECT_H
 
 #include "Base.h"
@@ -243,6 +243,9 @@ namespace KONGKONG_NAMESPACE
         [[nodiscard]]
         constexpr void* RawPointer() const noexcept { return _ptr._p; }
 
+        //型安全性を確認せずにキャスト
+        template <class To> requires (std::derived_from<To, Object> || std::derived_from<To, Interface>)
+        bool TryCast(To& to) const noexcept;
 
         //元からスマートポインタなのでnewしてはいけない
         //void* operator new(size_t) = delete;
@@ -402,6 +405,30 @@ namespace KONGKONG_NAMESPACE
         }
         
         return p->_value;
+    }
+
+    template <class To> requires (std::derived_from<To, Object> || std::derived_from<To, Interface>)
+    bool Object::TryCast(To& to) const noexcept
+    {
+        //キャスト可能かを確認
+        //失敗した場合は環境によって例外がスローされたりキャストの結果がnullptrになったりする
+        try {
+            auto myP = _getRealPointer();
+            auto p = dynamic_cast<To::ImplType*>(myP);
+            if (p == nullptr) { return false; }
+
+            if ((void*)p == (void*)myP) to._ptr = GC::__objectPtr(myP);
+            else to._ptr = GC::__objectPtr((void*)p, myP);
+
+            return true;
+        }
+        catch (std::exception) {
+            return false;
+        }
+
+#if KONGKONG_HAS_CPP23
+        ::std::unreachable();
+#endif
     }
 
     template <class TObj, class TImpl> requires (std::derived_from<TObj, Object> || std::derived_from<TObj, Interface>)

@@ -1,4 +1,4 @@
-#ifndef KONGKONG_WIN32_UI_BUTTON_H
+﻿#ifndef KONGKONG_WIN32_UI_BUTTON_H
 #define KONGKONG_WIN32_UI_BUTTON_H
 
 #include "Base.h"

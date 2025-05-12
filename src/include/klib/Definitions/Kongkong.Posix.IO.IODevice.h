@@ -1,4 +1,4 @@
-#ifndef KONGKONG_POSIX_IO_IODEVICE_H
+﻿#ifndef KONGKONG_POSIX_IO_IODEVICE_H
 #define KONGKONG_POSIX_IO_IODEVICE_H
 
 #include "Base.h"

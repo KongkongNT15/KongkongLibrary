@@ -8,8 +8,7 @@ namespace KONGKONG_NAMESPACE::Graphics::Imaging
 
     ::D2D1_RENDER_TARGET_PROPERTIES BitmapImage::s_rtProps = D2D1::RenderTargetProperties(
         ::D2D1_RENDER_TARGET_TYPE::D2D1_RENDER_TARGET_TYPE_DEFAULT,
-        ::D2D1::PixelFormat(::DXGI_FORMAT::DXGI_FORMAT_UNKNOWN,
-        ::D2D1_ALPHA_MODE::D2D1_ALPHA_MODE_PREMULTIPLIED),
+        ::D2D1::PixelFormat(::DXGI_FORMAT::DXGI_FORMAT_UNKNOWN, ::D2D1_ALPHA_MODE::D2D1_ALPHA_MODE_PREMULTIPLIED),
         0.0f,
         0.0f
     );
@@ -19,7 +18,8 @@ namespace KONGKONG_NAMESPACE::Graphics::Imaging
         s_checkFactory();
         if (FAILED(s_factory->CreateBitmap(width, height, ::GUID_WICPixelFormat32bppPBGRA, ::WICBitmapCreateCacheOption::WICBitmapCacheOnLoad, &m_bitmap))) [[unlikely]] throw MemoryAllocationException();
 
-        s_d2dFactory->CreateWicBitmapRenderTarget(m_bitmap.Get(), s_rtProps, &m_renderTarget);
+        if (FAILED(s_d2dFactory->CreateWicBitmapRenderTarget(m_bitmap.Get(), s_rtProps, &m_renderTarget))) [[unlikely]] throw MemoryAllocationException();
+        if (FAILED(m_renderTarget->CreateSolidColorBrush(D2D1::ColorF(0, 0, 0, 0), &m_brush))) [[unlikely]] throw MemoryAllocationException();
     }
 
     void BitmapImage::DrawCircle(Point2F point, float radius, float strokeWidth, ColorF const& color) const
@@ -29,20 +29,20 @@ namespace KONGKONG_NAMESPACE::Graphics::Imaging
 
     void BitmapImage::DrawEllipse(Point2F point, float radiusX, float radiusY, float strokeWidth, ColorF const& color) const
     {
-        ::Microsoft::WRL::ComPtr<::ID2D1SolidColorBrush> brush = m_createBrush(color);
+        m_brush->SetColor(color.ToDirectXColorF());
 
         m_renderTarget->BeginDraw();
-        m_renderTarget->DrawEllipse(::D2D1::Ellipse({ point.X(), point.Y() }, radiusX, radiusY), brush.Get(), strokeWidth);
+        m_renderTarget->DrawEllipse(::D2D1::Ellipse({ point.X(), point.Y() }, radiusX, radiusY), m_brush.Get(), strokeWidth);
 
         if (FAILED(m_renderTarget->EndDraw())) [[unlikely]] throw ImageRenderException();
     }
 
     void BitmapImage::DrawLine(Point2F point1, Point2F point2, float strokeWidth, ColorF const& color) const
     {
-        ::Microsoft::WRL::ComPtr<::ID2D1SolidColorBrush> brush = m_createBrush(color);
+        m_brush->SetColor(color.ToDirectXColorF());
 
         m_renderTarget->BeginDraw();
-        m_renderTarget->DrawLine({ point1.X(), point1.Y() }, { point2.X(), point2.Y() }, brush.Get(), strokeWidth);
+        m_renderTarget->DrawLine({ point1.X(), point1.Y() }, { point2.X(), point2.Y() }, m_brush.Get(), strokeWidth);
 
         if (FAILED(m_renderTarget->EndDraw())) [[unlikely]] throw ImageRenderException();
     }
@@ -110,14 +110,6 @@ namespace KONGKONG_NAMESPACE::Graphics::Imaging
 #if KONGKONG_HAS_CPP23
         ::std::unreachable();
 #endif
-    }
-
-    ::Microsoft::WRL::ComPtr<::ID2D1SolidColorBrush> BitmapImage::m_createBrush(ColorF const& color) const
-    {
-        ::Microsoft::WRL::ComPtr<::ID2D1SolidColorBrush> brush;
-        if (FAILED(m_renderTarget->CreateSolidColorBrush(color.ToDirectXColorF(), &brush))) [[unlikely]] throw MemoryAllocationException();
-
-        return brush;
     }
 
     void BitmapImage::s_destory() noexcept

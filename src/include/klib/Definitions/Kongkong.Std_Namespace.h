@@ -1,4 +1,4 @@
-#ifndef KONGKONG_STD_NAMESPACE_H
+﻿#ifndef KONGKONG_STD_NAMESPACE_H
 #define KONGKONG_STD_NAMESPACE_H
 
 #include "Base.h"

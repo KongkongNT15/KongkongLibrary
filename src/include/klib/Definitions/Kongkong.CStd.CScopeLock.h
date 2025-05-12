@@ -1,4 +1,4 @@
-#ifndef KONGKONG_CSTD_SCOPELOCK_H
+﻿#ifndef KONGKONG_CSTD_SCOPELOCK_H
 #define KONGKONG_CSTD_SCOPELOCK_H
 
 #include "Base.h"

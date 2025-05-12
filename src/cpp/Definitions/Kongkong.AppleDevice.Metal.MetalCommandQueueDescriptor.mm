@@ -1,4 +1,4 @@
-//このObjective-C++ファイルをコンパイルに含めないでください
+﻿//このObjective-C++ファイルをコンパイルに含めないでください
 
 #define INSTANCE ((::MTLCommandQueueDescriptor*)_instance())
 #define INSTANCE_UNSAFE ((::MTLCommandQueueDescriptor*)_instanceUnsafe())

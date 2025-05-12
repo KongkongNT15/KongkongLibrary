@@ -1,4 +1,4 @@
-#ifndef KONGKONG_APPLEDEVICE_METAL_H
+﻿#ifndef KONGKONG_APPLEDEVICE_METAL_H
 #define KONGKONG_APPLEDEVICE_METAL_H
 
 #include "Definitions/Base.h"

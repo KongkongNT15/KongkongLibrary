@@ -1,4 +1,4 @@
-#ifndef KONGKONG_WIN32_GDI_H
+﻿#ifndef KONGKONG_WIN32_GDI_H
 #define KONGKONG_WIN32_GDI_H
 
 #include "Definitions/Base.h"

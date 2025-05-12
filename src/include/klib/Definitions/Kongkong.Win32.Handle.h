@@ -1,4 +1,4 @@
-#ifndef KONGKONG_WIN32_HANDLE_H
+﻿#ifndef KONGKONG_WIN32_HANDLE_H
 #define KONGKONG_WIN32_HANDLE_H
 
 #include "Base.h"

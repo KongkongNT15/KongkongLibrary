@@ -1,4 +1,4 @@
-#ifndef KONGKONG_POSIX_IO_RWDEVICE_H
+﻿#ifndef KONGKONG_POSIX_IO_RWDEVICE_H
 #define KONGKONG_POSIX_IO_RWDEVICE_H
 
 #include "Base.h"

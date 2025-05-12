@@ -1,4 +1,4 @@
-#ifndef KONGKONG_IOEXCEPTION_H
+﻿#ifndef KONGKONG_IOEXCEPTION_H
 #define KONGKONG_IOEXCEPTION_H
 
 #include "Base.h"

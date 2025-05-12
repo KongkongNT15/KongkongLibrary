@@ -3,4 +3,11 @@
 .vscode
 
 Snippet.txt
+
+# CMake
 build
+
+# MSVC
+.vs
+x64
+x86

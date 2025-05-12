@@ -1,4 +1,4 @@
-#ifndef KONGKONG_COLLECTIONS_TURBO_H
+﻿#ifndef KONGKONG_COLLECTIONS_TURBO_H
 #define KONGKONG_COLLECTIONS_TURBO_H
 
 #include "Definitions/Base.h"

@@ -1,4 +1,4 @@
-#ifndef KONGKONG_BITS_H
+﻿#ifndef KONGKONG_BITS_H
 #define KONGKONG_BITS_H
 
 #include "Definitions/Base.h"

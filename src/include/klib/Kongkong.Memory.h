@@ -1,4 +1,4 @@
-#ifndef KONGKONG_MEMORY_H
+﻿#ifndef KONGKONG_MEMORY_H
 #define KONGKONG_MEMORY_H
 
 #include "Definitions/Base.h"

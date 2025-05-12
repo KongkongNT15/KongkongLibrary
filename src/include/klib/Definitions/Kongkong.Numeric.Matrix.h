@@ -1,4 +1,4 @@
-#ifndef KONGKONG_NUMERIC_MATRIX_H
+﻿#ifndef KONGKONG_NUMERIC_MATRIX_H
 #define KONGKONG_NUMERIC_MATRIX_H
 
 #include "Base.h"

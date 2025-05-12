@@ -1,4 +1,4 @@
-#ifndef KONGKONG_WIN32_PRIMITIVES_H
+﻿#ifndef KONGKONG_WIN32_PRIMITIVES_H
 #define KONGKONG_WIN32_PRIMITIVES_H
 
 #include "Definitions/Base.h"

@@ -1,4 +1,4 @@
-#ifndef KONGKONG_TIME_DAYOFWEEK_H
+﻿#ifndef KONGKONG_TIME_DAYOFWEEK_H
 #define KONGKONG_TIME_DAYOFWEEK_H
 
 #include "Base.h"

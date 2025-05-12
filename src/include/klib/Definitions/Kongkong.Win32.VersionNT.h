@@ -1,4 +1,4 @@
-#ifndef KONGKONG_WIN32_VERSIONNT_H
+﻿#ifndef KONGKONG_WIN32_VERSIONNT_H
 #define KONGKONG_WIN32_VERSIONNT_H
 
 #include "Base.h"

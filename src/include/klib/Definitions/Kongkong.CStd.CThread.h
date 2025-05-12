@@ -1,4 +1,4 @@
-#ifndef KONGKONG_CSTD_CTHREAD_H
+﻿#ifndef KONGKONG_CSTD_CTHREAD_H
 #define KONGKONG_CSTD_CTHREAD_H
 
 #include "Base.h"

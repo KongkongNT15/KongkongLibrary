@@ -1,10 +1,10 @@
-#ifndef KONGKONG_BASE_H
+﻿#ifndef KONGKONG_BASE_H
 #define KONGKONG_BASE_H
 
 #define KONGKONG_VERSION_MAJOR       0
 #define KONGKONG_VERSION_MINOR       1
 #define KONGKONG_VERSION_PATCH       0
-#define KONGKONG_VERSION_BUILDNUMBER 26
+#define KONGKONG_VERSION_BUILDNUMBER 28
 
 #define KONGKONG_NAMESPACE klib::Kongkong
 
@@ -52,6 +52,7 @@
     #undef CopyFile
     #undef CreateDirectory
     #undef CreateProcess
+    #undef DrawText
     #undef GetClassName
     #undef GetCurrentDirectory
     #undef GetDriveType
@@ -868,8 +869,11 @@ namespace KONGKONG_NAMESPACE::Graphics
 {
     struct Color;
     struct ColorF;
+    struct FontWeight;
 
     class _winComInitializer;
+    class Brush;
+    class SolidColorBrush;
 }
 
 namespace KONGKONG_NAMESPACE::Graphics::Imaging

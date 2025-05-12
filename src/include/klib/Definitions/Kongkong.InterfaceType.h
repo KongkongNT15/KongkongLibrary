@@ -1,4 +1,4 @@
-#ifndef KONGKONG_INTERFACETYPE_H
+﻿#ifndef KONGKONG_INTERFACETYPE_H
 #define KONGKONG_INTERFACETYPE_H
 
 #include "Base.h"

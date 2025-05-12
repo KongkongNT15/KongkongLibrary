@@ -1,4 +1,4 @@
-#ifndef KONGKONG_TEXT_JSON_H
+﻿#ifndef KONGKONG_TEXT_JSON_H
 #define KONGKONG_TEXT_JSON_H
 
 #include "Definitions/Base.h"

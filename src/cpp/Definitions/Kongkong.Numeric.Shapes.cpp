@@ -1,4 +1,4 @@
-//このcppファイルをコンパイルに含めないでください
+﻿//このcppファイルをコンパイルに含めないでください
 
 namespace KONGKONG_NAMESPACE::Numeric::Shapes::IMPLEMENTATION
 {

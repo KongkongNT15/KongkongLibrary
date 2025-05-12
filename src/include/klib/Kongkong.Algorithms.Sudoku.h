@@ -1,4 +1,4 @@
-#ifndef KONGKONG_ALGORITHMS_SUDOKU_H
+﻿#ifndef KONGKONG_ALGORITHMS_SUDOKU_H
 #define KONGKONG_ALGORITHMS_SUDOKU_H
 
 #include "Definitions/Base.h"

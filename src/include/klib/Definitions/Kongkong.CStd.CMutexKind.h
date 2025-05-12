@@ -1,4 +1,4 @@
-#ifndef KONGKONG_CSTD_CMUTEXKIND_H
+﻿#ifndef KONGKONG_CSTD_CMUTEXKIND_H
 #define KONGKONG_CSTD_CMUTEXKIND_H
 
 #include "Base.h"

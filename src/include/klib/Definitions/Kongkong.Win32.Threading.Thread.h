@@ -1,4 +1,4 @@
-#ifndef KONGKONG_WIN32_THREAD_H
+﻿#ifndef KONGKONG_WIN32_THREAD_H
 #define KONGKONG_WIN32_THREAD_H
 
 #include "Base.h"

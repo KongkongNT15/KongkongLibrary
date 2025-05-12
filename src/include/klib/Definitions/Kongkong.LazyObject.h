@@ -1,4 +1,4 @@
-#ifndef KONGKONG_LAZYOBJECT_H
+﻿#ifndef KONGKONG_LAZYOBJECT_H
 #define KONGKONG_LAZYOBJECT_H
 
 #include "Base.h"

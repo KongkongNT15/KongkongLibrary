@@ -1,4 +1,4 @@
-#ifndef KONGKONG_ALL_H
+﻿#ifndef KONGKONG_ALL_H
 #define KONGKONG_ALL_H
 
 #include <klib/Definitions/Base.h>

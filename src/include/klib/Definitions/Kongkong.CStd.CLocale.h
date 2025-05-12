@@ -1,4 +1,4 @@
-#ifndef KONGKONG_CSTD_CLOCALE_H
+﻿#ifndef KONGKONG_CSTD_CLOCALE_H
 #define KONGKONG_CSTD_CLOCALE_H
 
 #include "Base.h"

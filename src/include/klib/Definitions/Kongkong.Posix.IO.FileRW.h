@@ -1,4 +1,4 @@
-#ifndef KONGKONG_POSIX_IO_FILERW_H
+﻿#ifndef KONGKONG_POSIX_IO_FILERW_H
 #define KONGKONG_POSIX_IO_FILERW_H
 
 #include "Base.h"

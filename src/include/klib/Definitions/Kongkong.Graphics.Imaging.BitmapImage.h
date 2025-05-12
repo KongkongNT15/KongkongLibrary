@@ -20,6 +20,7 @@ namespace KONGKONG_NAMESPACE::Graphics::Imaging
         void DrawCircle(Point2F point, float radius, float strokeWidth, ColorF const& color) const;
         void DrawEllipse(Point2F point, float radiusX, float radiusY, float strokeWidth, ColorF const& color) const;
         void DrawLine(Point2F point1, Point2F point2, float strokeWidth, ColorF const& color) const;
+        void DrawText(const char16_t* text) const;
 
         void Fill(ColorF const& color) const;
 
@@ -36,11 +37,10 @@ namespace KONGKONG_NAMESPACE::Graphics::Imaging
 
         ::Microsoft::WRL::ComPtr<::IWICBitmap> m_bitmap;
         ::Microsoft::WRL::ComPtr<::ID2D1RenderTarget> m_renderTarget;
+        ::Microsoft::WRL::ComPtr<::ID2D1SolidColorBrush> m_brush;
 
         static thread_local ::Microsoft::WRL::ComPtr<::IWICImagingFactory> s_factory;
         static thread_local ::Microsoft::WRL::ComPtr<::ID2D1Factory> s_d2dFactory;
-
-        ::Microsoft::WRL::ComPtr<::ID2D1SolidColorBrush> m_createBrush(ColorF const& color) const;
 
         static ::D2D1_RENDER_TARGET_PROPERTIES s_rtProps;
 

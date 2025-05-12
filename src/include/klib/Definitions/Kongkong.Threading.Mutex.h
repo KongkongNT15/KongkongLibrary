@@ -1,4 +1,4 @@
-#ifndef KONGKONG_THREADING_MUTEX_H
+﻿#ifndef KONGKONG_THREADING_MUTEX_H
 #define KONGKONG_THREADING_MUTEX_H
 
 #include "Base.h"

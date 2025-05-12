@@ -1,4 +1,4 @@
-#define KONGKONG_OBJECTIVE_C_METAL_DISABLED
+﻿#define KONGKONG_OBJECTIVE_C_METAL_DISABLED
 #include "All.h"
 
 #import <AppKit/AppKit.h>
@@ -54,7 +54,7 @@
         }                                                                       \
     }
 
-namespace Kongkong::AppleDevice
+namespace KONGKONG_NAMESPACE::AppleDevice
 {
     class NSObjectHelper final {
         public:
@@ -86,7 +86,7 @@ namespace Kongkong::AppleDevice
     };
 }
 
-namespace Kongkong::AppleDevice::Foundation
+namespace KONGKONG_NAMESPACE::AppleDevice::Foundation
 {
     class NSStringHelper final {
         public:

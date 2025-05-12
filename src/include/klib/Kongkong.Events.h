@@ -1,4 +1,4 @@
-#ifndef KONGKONG_EVENTS_H
+﻿#ifndef KONGKONG_EVENTS_H
 #define KONGKONG_EVENTS_H
 
 #include "Definitions/Base.h"

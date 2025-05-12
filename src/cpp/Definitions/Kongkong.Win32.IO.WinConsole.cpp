@@ -1,4 +1,4 @@
-//このcppファイルをコンパイルに含めないでください
+﻿//このcppファイルをコンパイルに含めないでください
 
 #define CON_ERROR (::GetStdHandle(STD_ERROR_HANDLE))
 #define CON_IN (::GetStdHandle(STD_INPUT_HANDLE))

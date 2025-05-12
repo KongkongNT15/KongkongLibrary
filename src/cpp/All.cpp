@@ -1,4 +1,4 @@
-#define KONGKONG_LIBRARY 1
+﻿#define KONGKONG_LIBRARY 1
 
 #include <klib/Definitions/Base.h>
 
@@ -100,6 +100,7 @@
 #endif
 
 #include "Definitions/Kongkong.Graphics.Color.cpp"
+#include "Definitions/Kongkong.Graphics.FontWeight.cpp"
 
 #include "Definitions/Kongkong.Graphics.Imaging.BitmapImage.cpp"
 #include "Definitions/Kongkong.Graphics.Imaging.ImageRenderException.cpp"

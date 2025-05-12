@@ -1,4 +1,4 @@
-//このObjective-C++ファイルをコンパイルに含めないでください
+﻿//このObjective-C++ファイルをコンパイルに含めないでください
 
 #define INSTANCE ((::NSOperation*)_instance())
 #define INSTANCE_UNSAFE ((::NSOperation*)_instanceUnsafe())

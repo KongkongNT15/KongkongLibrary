@@ -1,4 +1,4 @@
-#ifndef KONGKONG_POINTERTYPE_H
+﻿#ifndef KONGKONG_POINTERTYPE_H
 #define KONGKONG_POINTERTYPE_H
 
 #include "Base.h"

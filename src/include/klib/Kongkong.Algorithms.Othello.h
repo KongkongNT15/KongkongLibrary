@@ -1,4 +1,4 @@
-#ifndef KONGKONG_ALGORITHMS_OTHELLO_H
+﻿#ifndef KONGKONG_ALGORITHMS_OTHELLO_H
 #define KONGKONG_ALGORITHMS_OTHELLO_H
 
 #include "Definitions/Base.h"

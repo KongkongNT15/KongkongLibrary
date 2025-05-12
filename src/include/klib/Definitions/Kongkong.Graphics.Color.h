@@ -1,4 +1,4 @@
-#ifndef KONGKONG_GRAPHICS_COLOR_H
+﻿#ifndef KONGKONG_GRAPHICS_COLOR_H
 #define KONGKONG_GRAPHICS_COLOR_H
 
 #include "Base.h"

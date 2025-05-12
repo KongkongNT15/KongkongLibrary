@@ -1,4 +1,4 @@
-#ifndef KONGKONG_THREADING_H
+﻿#ifndef KONGKONG_THREADING_H
 #define KONGKONG_THREADING_H
 
 #include "Definitions/Base.h"

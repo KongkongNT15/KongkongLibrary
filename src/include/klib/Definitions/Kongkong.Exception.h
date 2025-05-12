@@ -1,4 +1,4 @@
-#ifndef KONGKONG_EXCEPTION_H
+﻿#ifndef KONGKONG_EXCEPTION_H
 #define KONGKONG_EXCEPTION_H
 
 #include "Base.h"

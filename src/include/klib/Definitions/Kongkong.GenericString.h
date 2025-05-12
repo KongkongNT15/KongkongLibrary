@@ -1,4 +1,4 @@
-#ifndef KONGKONG_STRING_H
+﻿#ifndef KONGKONG_STRING_H
 #define KONGKONG_STRING_H
 
 #include "Base.h"

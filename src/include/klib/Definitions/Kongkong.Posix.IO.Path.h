@@ -1,4 +1,4 @@
-#ifndef KONGKONG_POSIX_IO_PATH_H
+﻿#ifndef KONGKONG_POSIX_IO_PATH_H
 #define KONGKONG_POSIX_IO_PATH_H
 
 #include "Base.h"

@@ -1,4 +1,4 @@
-#ifndef KONGKONG_TEXT_STRINGGC_H
+﻿#ifndef KONGKONG_TEXT_STRINGGC_H
 #define KONGKONG_TEXT_STRINGGC_H
 
 #include "Base.h"

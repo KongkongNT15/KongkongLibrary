@@ -1,4 +1,4 @@
-#ifndef KONGKONG_TEXT_XML_XMLNAME_H
+﻿#ifndef KONGKONG_TEXT_XML_XMLNAME_H
 #define KONGKONG_TEXT_XML_XMLNAME_H
 
 #include "Base.h"

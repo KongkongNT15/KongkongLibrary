@@ -1,4 +1,4 @@
-#ifndef KONGKONG_NET_IPV4ADDRESS_H
+﻿#ifndef KONGKONG_NET_IPV4ADDRESS_H
 #define KONGKONG_NET_IPV4ADDRESS_H
 
 #include "Base.h"

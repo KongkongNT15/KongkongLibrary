@@ -1,4 +1,4 @@
-#ifndef KONGKONG_NUMERIC_DIV_H
+﻿#ifndef KONGKONG_NUMERIC_DIV_H
 #define KONGKONG_NUMERIC_DIV_H
 
 #include "Base.h"

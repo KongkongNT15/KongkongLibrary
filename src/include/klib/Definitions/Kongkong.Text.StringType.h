@@ -1,4 +1,4 @@
-#ifndef KONGKONG_TEXT_STRINGTYPE_H
+﻿#ifndef KONGKONG_TEXT_STRINGTYPE_H
 #define KONGKONG_TEXT_STRINGTYPE_H
 
 #include "Base.h"
