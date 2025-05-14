@@ -2,7 +2,12 @@
 
 namespace KONGKONG_NAMESPACE::Graphics::Imaging
 {
-#ifdef KONGKONG_ENV_WINDOWS
+    String BitmapImage::ToString() const
+    {
+        return String::FromLiteral(u"Kongkong::Graphics::Imaging::BitmapImage");
+    }
+
+#if KONGKONG_COMPILER_MSVC
     thread_local ::Microsoft::WRL::ComPtr<::IWICImagingFactory> BitmapImage::s_factory;
     thread_local ::Microsoft::WRL::ComPtr<::ID2D1Factory> BitmapImage::s_d2dFactory;
 

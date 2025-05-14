@@ -1,7 +1,5 @@
 ﻿//このObjective-C++ファイルをコンパイルに含めないでください
 
-#import <Foundation/Foundation.h>
-
 namespace KONGKONG_NAMESPACE
 {
     String::String(std::string_view const& right) : String(0)

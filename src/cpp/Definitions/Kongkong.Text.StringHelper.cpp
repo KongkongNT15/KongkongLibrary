@@ -454,7 +454,7 @@ namespace KONGKONG_NAMESPACE::Text
     {
         if (length == 0) [[unlikely]] return CharString(true);
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         int capacity = ::WideCharToMultiByte(CP_ACP, 0, str, (int)length, nullptr, 0, nullptr, nullptr);
 
         char* p = CharString::AllocMemoryUnsafe(capacity);
@@ -491,7 +491,7 @@ namespace KONGKONG_NAMESPACE::Text
 
     CharString StringHelper::ToCharStringUnsafe(ssize_t length, const char16_t* str)
     {
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         return ToCharStringUnsafe(length, (const wchar_t*)str);
 #else
         if (length == 0) [[unlikely]] return CharString(true);
@@ -518,7 +518,7 @@ namespace KONGKONG_NAMESPACE::Text
     String StringHelper::ToStringUnsafe(ssize_t length, const char* str)
     {
         if (length == 0) [[unlikely]] return String(true); 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         int capacity = ::MultiByteToWideChar(CP_ACP, 0, str, (int)length, nullptr, 0) + 1;
 
         char16_t* p = String::AllocMemoryUnsafe(capacity);
@@ -539,7 +539,7 @@ namespace KONGKONG_NAMESPACE::Text
     String StringHelper::ToStringUnsafe(ssize_t length, const wchar_t* str)
     {
         if (length == 0) [[unlikely]] return String(true); 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         
         return String::FromPointerUnsafe(length, (const char16_t*)str, true);
         
@@ -555,7 +555,7 @@ namespace KONGKONG_NAMESPACE::Text
     String StringHelper::ToStringUnsafe(ssize_t length, const char8_t* str)
     {
         if (length == 0) [[unlikely]] return String(true); 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         int capacity = ::MultiByteToWideChar(CP_UTF8, 0, (const char*)str, (int)length, nullptr, 0) + 1;
 
         char16_t* p = String::AllocMemoryUnsafe(capacity);

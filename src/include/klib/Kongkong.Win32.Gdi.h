@@ -3,7 +3,7 @@
 
 #include "Definitions/Base.h"
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
 
 #include "Definitions/Kongkong.Win32.Gdi.DeviceContext.h"
 

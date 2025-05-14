@@ -4,11 +4,11 @@ namespace KONGKONG_NAMESPACE::Threading
 {
     Thread Thread::Current() noexcept
     {
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         return Win32::Threading::Thread::Current();
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
         return AppleDevice::Foundation::Threading::NSThread::CurrentThread();
-#elif defined(KONGKONG_ENV_UNIX)
+#elif KONGKONG_ENV_UNIX
         return Posix::Threading::Thread::Current();
 #else
         static_assert(false, "つくろうね？？？");
@@ -17,11 +17,11 @@ namespace KONGKONG_NAMESPACE::Threading
 
     void Thread::Sleep(uint32_t milliseconds) noexcept
     {
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         Win32::Threading::Thread::Sleep(milliseconds);
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
         AppleDevice::Foundation::Threading::NSThread::SleepForTimeInterval(milliseconds / 1000.0);
-#elif defined(KONGKONG_ENV_UNIX)
+#elif KONGKONG_ENV_UNIX
         uint64_t microSeconds = milliseconds * 1000L;
         
         if (microSeconds > ::std::numeric_limits<unsigned>::max()) [[unlikely]] {
@@ -66,15 +66,15 @@ namespace KONGKONG_NAMESPACE::Threading
     void Thread::Join()
     {
         if (!_isStarted) [[unlikely]] throw ThreadStateException(u"開始していないスレッドを待機しようとしました");
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         
         _thread.WaitUnsafe();
 
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
         while (!_thread.GetIsCancelledUnsafe() && !_thread.GetIsFinishedUnsafe()) {
             ::usleep(1000);
         }
-#elif defined(KONGKONG_ENV_UNIX)
+#elif KONGKONG_ENV_UNIX
         _thread.JoinUnsafe();
 #else
         _thread.join();
@@ -84,13 +84,13 @@ namespace KONGKONG_NAMESPACE::Threading
     void Thread::Start()
     {
         if (_isStarted) [[unlikely]] throw ThreadStateException(u"スレッドは既に開始されています");
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         
         _thread.ResumeUnsafe();
         
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
         _thread.StartUnsafe();
-#elif defined(KONGKONG_ENV_UNIX)
+#elif KONGKONG_ENV_UNIX
         if (_stackSize == _invalidStackSize) {
             _thread = Posix::Threading::Thread(_func, _fArgs);
         }
@@ -111,7 +111,7 @@ namespace KONGKONG_NAMESPACE::Threading
         return String::FromLiteral(u"KONGKONG_NAMESPACE::Threading::Thread");
     }
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
     template <class TFunc>
     DWORD Thread::_entryPoint(void* args)
     {
@@ -123,7 +123,7 @@ namespace KONGKONG_NAMESPACE::Threading
 
         return 0;
     }
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
     template <class TFunc>
     void Thread::_entryPoint(void* args)
     {
@@ -133,7 +133,7 @@ namespace KONGKONG_NAMESPACE::Threading
 
         delete p;
     }
-#elif defined(KONGKONG_ENV_UNIX)
+#elif KONGKONG_ENV_UNIX
     template <class TFunc>
     void* Thread::_entryPoint(void* args)
     {
@@ -160,12 +160,12 @@ namespace KONGKONG_NAMESPACE::Threading
     template <class TFunc>
     Thread::Thread(_args<TFunc>* args) :
         _isStarted(false),
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         _thread(_entryPoint<TFunc>, args, Win32::Threading::ThreadStart::Suspended)
         
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
         _thread(_entryPoint<TFunc>, args)
-#elif defined(KONGKONG_ENV_UNIX)
+#elif KONGKONG_ENV_UNIX
         _thread(nullptr),
         _func(_entryPoint<TFunc>),
         _fArgs(args),
@@ -179,11 +179,11 @@ namespace KONGKONG_NAMESPACE::Threading
     template <class TFunc>
     Thread::Thread(_args<TFunc>* args, size_t stackSize) :
         _isStarted(false),
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         _thread(_entryPoint<TFunc>, args, stackSize, Win32::Threading::ThreadStart::Suspended)
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
         _thread(_entryPoint<TFunc>, args)
-#elif defined(KONGKONG_ENV_UNIX)
+#elif KONGKONG_ENV_UNIX
         _thread(nullptr),
         _func(_entryPoint<TFunc>),
         _fArgs(args),
@@ -192,7 +192,7 @@ namespace KONGKONG_NAMESPACE::Threading
         static_assert(false, "つくろうね？？？");
 #endif
     {
-#ifdef KONGKONG_OBJECTIVE_C_ENABLED
+#if KONGKONG_OBJECTIVE_C_ENABLED
         _thread.SetStackSizeUnsafe(stackSize);
 #endif
     }

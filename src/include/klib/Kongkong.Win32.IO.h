@@ -4,7 +4,7 @@
 #include "Definitions/Base.h"
 
 //Windowsのみ
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
 
 #include "Definitions/Kongkong.Win32.IO.Directory.h"
 #include "Definitions/Kongkong.Win32.IO.DriveKind.h"

@@ -17,7 +17,7 @@ namespace KONGKONG_NAMESPACE::IMPLEMENTATION
         return typeid(*this);
     }
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
 
     String Object::TypeName() const
     {

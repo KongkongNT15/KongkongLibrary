@@ -14,9 +14,9 @@ namespace KONGKONG_NAMESPACE::IO::Storage
         //OS固有のパスの区切り文字
         static constexpr char16_t DirectorySeparatorChar() noexcept
         {
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
             return u'\\';
-#elif defined(KONGKONG_ENV_UNIX)
+#elif KONGKONG_ENV_UNIX
             return u'/';
 #endif
         }
@@ -25,7 +25,7 @@ namespace KONGKONG_NAMESPACE::IO::Storage
         static bool Exists(const char16_t* path);
         static bool Exists(String const& path);
         static bool Exists(const char* path);
-#ifdef KONGKONG_OBJECTIVE_C_ENABLED
+#if KONGKONG_OBJECTIVE_C_ENABLED
         static bool Exists(AppleDevice::Foundation::NSString const& path);
 #endif
     };

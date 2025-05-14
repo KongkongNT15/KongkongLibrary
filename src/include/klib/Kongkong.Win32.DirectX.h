@@ -4,12 +4,7 @@
 #include "Definitions/Base.h"
 
 //Windowsのみ
-#ifdef KONGKONG_ENV_WINDOWS
-
-namespace KONGKONG_NAMESPACE::Win32::DirectX
-{
-    
-}
+#if KONGKONG_ENV_WINDOWS
 
 #endif //KONGKONG_ENV_WINDOWS
 #endif //!KONGKONG_WIN32_DIRECTX_H

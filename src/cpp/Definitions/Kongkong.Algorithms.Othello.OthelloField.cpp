@@ -13,7 +13,7 @@ namespace KONGKONG_NAMESPACE::Algorithms::Othello
     String OthelloField::ToString() const
     {
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         constexpr ssize_t length = 33 * 17 + 16 * 2;
 #else
         constexpr ssize_t length = 33 * 17 + 16;
@@ -23,7 +23,7 @@ namespace KONGKONG_NAMESPACE::Algorithms::Othello
 
         constexpr char16_t line[] = u"+---+---+---+---+---+---+---+---+"
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
             u"\r\n";
 #else
             u"\n";
@@ -54,7 +54,7 @@ namespace KONGKONG_NAMESPACE::Algorithms::Othello
                 str.AppendUnsafe(u" |");
             }
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
             str.AppendUnsafe(u"\r\n");
 #else
             str.Append(u'\n');

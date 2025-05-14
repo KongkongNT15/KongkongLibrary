@@ -29,7 +29,7 @@ namespace KONGKONG_NAMESPACE::IMPLEMENTATION
 
         TypeInfo TypeInfo() const noexcept;
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
 
         String TypeName() const;
 

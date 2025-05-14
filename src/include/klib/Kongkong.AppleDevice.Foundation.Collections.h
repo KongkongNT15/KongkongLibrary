@@ -1,9 +1,10 @@
 ﻿#ifndef KONGKONG_APPLEDEVICE_FOUNDATION_COLLECTIONS_H
 #define KONGKONG_APPLEDEVICE_FOUNDATION_COLLECTIONS_H
 
-#ifdef KONGKONG_OBJECTIVE_C_ENABLED
-
 #include "Definitions/Base.h"
+
+#if KONGKONG_OBJECTIVE_C_ENABLED
+
 #include "Definitions/Kongkong.AppleDevice.Foundation.Collections.ArrayWrapper.h"
 #include "Definitions/Kongkong.AppleDevice.Foundation.Collections.ArrayWrapperBase.h"
 #include "Definitions/Kongkong.AppleDevice.Foundation.Collections.BlockArrayWrapper.h"

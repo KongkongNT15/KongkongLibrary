@@ -7,11 +7,11 @@
 #include <functional>
 #include <coroutine>
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
 // なにもしない
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
     #include "Kongkong.AppleDevice.Foundation.Threading.NSOperationQueue.h"
-#elif defined(KONGKONG_ENV_UNIX)
+#elif KONGKONG_ENV_UNIX
     #include "Kongkong.Posix.Threading.ThreadPool.h"
     #include "Kongkong.LazyObject.h"
 #else
@@ -112,7 +112,7 @@ namespace KONGKONG_NAMESPACE::Threading
 
         
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         static void _callback0(::PTP_CALLBACK_INSTANCE instance, ::PVOID context, ::PTP_WORK work);
         static void _callback1(::PTP_CALLBACK_INSTANCE instance, ::PVOID context, ::PTP_WORK work);
 
@@ -146,13 +146,13 @@ namespace KONGKONG_NAMESPACE::Threading
             ::std::coroutine_handle<> h;
         };
 
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
 
         static AppleDevice::Foundation::Threading::NSOperationQueue _queue;
 
 #else
 
-#ifdef KONGKONG_ENV_UNIX
+#if KONGKONG_ENV_UNIX
         static LazyObject<Posix::Threading::ThreadPool> s_pool;
 #else
         static LazyObject<Std::StlThreadPool> s_pool;
@@ -202,14 +202,14 @@ template <class TFArg, class TValue>
         struct tmpAwaiter {
             constexpr bool await_ready() noexcept { return false; } // すぐには完了しない
             void await_suspend(::std::coroutine_handle<> h) {
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
                 _s.h = h;
                 ::PTP_WORK work = ::CreateThreadpoolWork(ThreadPool::_callback2<TFArg, TValue>, &_s, nullptr);
 
                 ::SubmitThreadpoolWork(work);
 
                 ::CloseThreadpoolWork(work);
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
                 //この時点で_queueはnullptrでない
 
                 ThreadPool::_queue.AddOperationWithBlockUnsafe(^() { _callback(_value); h.resume(); });
@@ -222,18 +222,18 @@ template <class TFArg, class TValue>
 #endif
             }
             constexpr void await_resume() noexcept {}
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
             ThreadPool::_tmpS2<TFArg, TValue> _s;
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
             void(*_callback)(TFArg);
             TValue _value;
 #else
             ThreadPool::_tmpS2<TFArg, TValue> m_s;
 #endif
         };
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         co_await tmpAwaiter{ callback, ::std::move(value) };
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
         if (_queue == nullptr) _queue = AppleDevice::Foundation::Threading::NSOperationQueue();
 
         co_await tmpAwaiter{ callback, ::std::move(value) };
@@ -250,14 +250,14 @@ template <class TFArg, class TValue>
         struct tmpAwaiter {
             constexpr bool await_ready() noexcept { return false; } // すぐには完了しない
             void await_suspend(::std::coroutine_handle<> h) {
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
                 _s.h = h;
                 ::PTP_WORK work = ::CreateThreadpoolWork(ThreadPool::_callback3<TFArg, TValue>, &_s, nullptr);
 
                 ::SubmitThreadpoolWork(work);
 
                 ::CloseThreadpoolWork(work);
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
                 //この時点で_queueはnullptrでない
 
                 auto* fp = &_callback;
@@ -272,9 +272,9 @@ template <class TFArg, class TValue>
 #endif
             }
             constexpr void await_resume() noexcept {}
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
             ThreadPool::_tmpS3<TFArg, TValue> _s;
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
             const ::std::function<void(TFArg)> _callback;
             TValue _value;
 #else
@@ -282,9 +282,9 @@ template <class TFArg, class TValue>
 #endif
         };
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         co_await tmpAwaiter{ callback, ::std::move(value) };
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
         if (_queue == nullptr) _queue = AppleDevice::Foundation::Threading::NSOperationQueue();
 
         co_await tmpAwaiter{ callback, ::std::move(value) };
@@ -301,14 +301,14 @@ template <class TFArg, class TValue>
         struct tmpAwaiter {
             constexpr bool await_ready() noexcept { return false; } // すぐには完了しない
             void await_suspend(::std::coroutine_handle<> h) {
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
                 _s.h = h;
                 ::PTP_WORK work = ::CreateThreadpoolWork(ThreadPool::_callback3<TFArg, TValue>, &_s, nullptr);
 
                 ::SubmitThreadpoolWork(work);
 
                 ::CloseThreadpoolWork(work);
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
                 //この時点で_queueはnullptrでない
 
                 auto* fp = &_callback;
@@ -323,9 +323,9 @@ template <class TFArg, class TValue>
 #endif
             }
             constexpr void await_resume() noexcept {}
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
             ThreadPool::_tmpS3<TFArg, TValue> _s;
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
             const ::std::function<void(TFArg)> _callback;
             TValue _value;
 #else
@@ -333,9 +333,9 @@ template <class TFArg, class TValue>
 #endif
         };
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         co_await tmpAwaiter{ ::std::move(callback), ::std::move(value) };
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
         if (_queue == nullptr) _queue = AppleDevice::Foundation::Threading::NSOperationQueue();
 
         co_await tmpAwaiter{ ::std::move(callback), ::std::move(value) };
@@ -346,7 +346,7 @@ template <class TFArg, class TValue>
 #endif
     }
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
 
     template <class TFArg, class TValue>
     void ThreadPool::_callback2(::PTP_CALLBACK_INSTANCE instance, ::PVOID context, ::PTP_WORK work)
@@ -366,7 +366,7 @@ template <class TFArg, class TValue>
         p->h.resume();
     }
 
-#elif !defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif !KONGKONG_OBJECTIVE_C_ENABLED
 
     void ThreadPool::_callback0(void* args)
     {

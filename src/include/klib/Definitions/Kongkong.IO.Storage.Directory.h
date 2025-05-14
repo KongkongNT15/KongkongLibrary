@@ -26,7 +26,7 @@ namespace KONGKONG_NAMESPACE::IO::Storage
         static bool Exists(String const& path);
         static bool Exists(const char* path);
 
-#ifdef KONGKONG_OBJECTIVE_C_ENABLED
+#if KONGKONG_OBJECTIVE_C_ENABLED
         static bool Exists(AppleDevice::Foundation::NSString const& path);
 #endif //KONGKONG_OBJECTIVE_C_ENABLED
         //指定したパスのサブディレクトリを取得

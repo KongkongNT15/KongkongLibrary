@@ -23,7 +23,7 @@
 #include "Definitions/Kongkong.CStd.CString.h"
 
 // Apple Clangは<threads.h>を実装していない
-#ifdef KONGKONG_CTHREAD_ENABLED
+#if KONGKONG_CTHREAD_ENABLED
     #include "Definitions/Kongkong.CStd.CConditionVariable.h"
     #include "Definitions/Kongkong.CStd.CMutex.h"
     #include "Definitions/Kongkong.CStd.CMutexKind.h"

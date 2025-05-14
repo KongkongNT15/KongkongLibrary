@@ -3,7 +3,7 @@
 
 #include "Definitions/Base.h"
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
 
 #endif //KONGKONG_ENV_WINDOWS
 #endif //!KONGKONG_WIN32_NET_HTTP_H

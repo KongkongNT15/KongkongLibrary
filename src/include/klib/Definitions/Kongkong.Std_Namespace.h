@@ -32,7 +32,7 @@ namespace std
         return out << value.ToString();
     }
 
-#ifdef KONGKONG_OBJECTIVE_C_ENABLED
+#if KONGKONG_OBJECTIVE_C_ENABLED
     ostream& operator<<(ostream& out, ::KONGKONG_NAMESPACE::AppleDevice::NSObject const& nsObject);
     ostream& operator<<(ostream& out, ::KONGKONG_NAMESPACE::AppleDevice::Foundation::NSString const& nsString);
 #endif

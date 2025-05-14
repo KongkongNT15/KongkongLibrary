@@ -2,7 +2,7 @@
 
 #include <klib/Definitions/Base.h>
 
-#ifdef KONGKONG_COMPILER_MSVC
+#if KONGKONG_COMPILER_MSVC
     #pragma warning(disable:4996)
 #endif
 
@@ -83,19 +83,19 @@
 #include "Definitions/Kongkong.CStd.CStdException.cpp"
 #include "Definitions/Kongkong.CStd.CString.cpp"
 
-#if __has_include(<threads.h>)
+#if KONGKONG_CTHREAD_ENABLED
     #include "Definitions/Kongkong.CStd.CConditionVariable.cpp"
     #include "Definitions/Kongkong.CStd.CMutex.cpp"
     #include "Definitions/Kongkong.CStd.CThread.cpp"
     #include "Definitions/Kongkong.CStd.CThreadException.cpp"
     #include "Definitions/Kongkong.CStd.CThreadPool.cpp"
     #include "Definitions/Kongkong.CStd.CThreadResult.cpp"
-#endif //__has_include(<threads.h>)
+#endif //KONGKONG_CTHREAD_ENABLED
 
 #include "Definitions/Kongkong.Diagnostics.LifecycleEventArgs.cpp"
 #include "Definitions/Kongkong.Diagnostics.StopWatch.cpp"
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
     #include "Definitions/Kongkong.Graphics._winComInitializer.cpp"
 #endif
 
@@ -104,6 +104,12 @@
 
 #include "Definitions/Kongkong.Graphics.Imaging.BitmapImage.cpp"
 #include "Definitions/Kongkong.Graphics.Imaging.ImageRenderException.cpp"
+
+#include "Definitions/Kongkong.IO.Stream.cpp"
+
+#include "Definitions/Kongkong.IO.Storage.Directory.cpp"
+#include "Definitions/Kongkong.IO.Storage.File.cpp"
+#include "Definitions/Kongkong.IO.Storage.Path.cpp"
 
 #include "Definitions/Kongkong.Memory._sharedHandleBase.cpp"
 #include "Definitions/Kongkong.Memory._sharedPointerBase.cpp"
@@ -132,17 +138,13 @@
 #include "Definitions/Kongkong.Numeric.Statistics.UniformDistribution.cpp"
 #include "Definitions/Kongkong.Numeric.Statistics.ZeroMeanNormalDistribution.cpp"
 
-#include "Definitions/Kongkong.IO.Storage.Directory.cpp"
-#include "Definitions/Kongkong.IO.Storage.File.cpp"
-#include "Definitions/Kongkong.IO.Storage.Path.cpp"
-
 #include "Definitions/Kongkong.System.Environment.cpp"
 
 #include "Definitions/Kongkong.Std.GenericStringBuffer.cpp"
 #include "Definitions/Kongkong.Std.StdString.cpp"
 #include "Definitions/Kongkong.Std.StlThreadPool.cpp"
 
-#ifdef KONGKONG_ENV_UNIX
+#if KONGKONG_ENV_UNIX
     #include "Definitions/Kongkong.Std.PosixFileIOBuffer.cpp"
     #include "Definitions/Kongkong.Std.PosixIOBuffer.cpp"
 
@@ -194,7 +196,7 @@
 #include "Definitions/Kongkong.Threading.Thread.cpp"
 #include "Definitions/Kongkong.Threading.ThreadPool.cpp"
 
-#ifdef KONGKONG_ENV_UNIX
+#if KONGKONG_ENV_UNIX
 
 #include "Definitions/Kongkong.Posix.Environment.cpp"
 #include "Definitions/Kongkong.Posix.Process.cpp"
@@ -222,7 +224,7 @@
 
 #endif //KONGKONG_ENV_UNIX
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
 
 #include "Definitions/Kongkong.Win32.CharHelper.cpp"
 #include "Definitions/Kongkong.Win32.ComputerName.cpp"

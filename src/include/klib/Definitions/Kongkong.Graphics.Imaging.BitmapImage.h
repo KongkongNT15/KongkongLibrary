@@ -4,7 +4,7 @@
 #include "Base.h"
 #include "Kongkong.PointerType.h"
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
     #include <wincodec.h>
     #include <d2d1.h>
     #include <wrl/client.h>
@@ -12,10 +12,19 @@
 
 namespace KONGKONG_NAMESPACE::Graphics::Imaging
 {
-    class BitmapImage : public PointerType {
+    class BitmapImage final : public PointerType {
         public:
 
         BitmapImage(uint32_t width, uint32_t height);
+
+#if KONGKONG_OBJECTIVE_C_ENABLED
+        BitmapImage(BitmapImage const& right) noexcept;
+        constexpr BitmapImage(BitmapImage&& right) noexcept : m_MTLCommandQueue(right.m_MTLCommandQueue) { right.m_MTLCommandQueue = nullptr; }
+        ~BitmapImage();
+
+        BitmapImage& operator=(BitmapImage const& right) noexcept;
+        BitmapImage& operator=(BitmapImage&& right) noexcept;
+#endif
 
         void DrawCircle(Point2F point, float radius, float strokeWidth, ColorF const& color) const;
         void DrawEllipse(Point2F point, float radiusX, float radiusY, float strokeWidth, ColorF const& color) const;
@@ -31,9 +40,12 @@ namespace KONGKONG_NAMESPACE::Graphics::Imaging
 
         void SaveAs(String const& filePath, ImageFormat format) const;
 
+        [[nodiscard]]
+        String ToString() const;
+
         private:
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
 
         ::Microsoft::WRL::ComPtr<::IWICBitmap> m_bitmap;
         ::Microsoft::WRL::ComPtr<::ID2D1RenderTarget> m_renderTarget;
@@ -51,8 +63,11 @@ namespace KONGKONG_NAMESPACE::Graphics::Imaging
         static ::GUID s_convertFormat(ImageFormat format);
 
         friend _winComInitializer;
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
-
+#elif KONGKONG_OBJECTIVE_C_ENABLED
+        void* m_MTLCommandQueue;
+        void* m_MTLRenderPassDescriptor;
+        void* m_MTLTexture;
+        void* m_MTLTextureDescriptor;
 #endif
     };
 }

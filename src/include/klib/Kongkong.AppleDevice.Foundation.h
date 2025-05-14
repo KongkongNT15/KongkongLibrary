@@ -1,9 +1,10 @@
 ﻿#ifndef KONGKONG_APPLEDEVICE_FOUNDATION_H
 #define KONGKONG_APPLEDEVICE_FOUNDATION_H
 
-#ifdef KONGKONG_OBJECTIVE_C_ENABLED
-
 #include "Definitions/Base.h"
+
+#if KONGKONG_OBJECTIVE_C_ENABLED
+
 #include "Definitions/Kongkong.AppleDevice.Foundation.NSCalculationError.h"
 #include "Definitions/Kongkong.AppleDevice.Foundation.NSData.h"
 #include "Definitions/Kongkong.AppleDevice.Foundation.NSDebug.h"

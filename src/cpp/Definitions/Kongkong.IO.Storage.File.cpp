@@ -5,21 +5,21 @@ namespace KONGKONG_NAMESPACE::IO::Storage
     void File::Delete(const char16_t* path)
     {
         if (!File::Exists(path)) [[unlikely]] throw FileNotFoundException(u"指定されたファイルが見つかりませんでした");
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         Win32::IO::File::Delete(path);
 #endif
     }
 
     void File::Delete(String const& path)
     {
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         Delete(path.c_str());
 #endif
     }
 
     void File::Delete(const char* path)
     {
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         Delete(String(path));
 #else
         if (!File::Exists(path)) [[unlikely]] throw FileNotFoundException(u"The specified file does not exist.");
@@ -35,10 +35,10 @@ namespace KONGKONG_NAMESPACE::IO::Storage
 
     bool File::Exists(const char16_t* path)
     {
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         return Win32::IO::File::Exists(path);
 
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
 
         try {
             AppleDevice::Foundation::NSString str = path;
@@ -60,10 +60,10 @@ namespace KONGKONG_NAMESPACE::IO::Storage
 
     bool File::Exists(String const& path)
     {
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         return Win32::IO::File::Exists(path);
 
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
         AppleDevice::Foundation::NSString str = path;
 
         return Exists(path);
@@ -80,10 +80,10 @@ namespace KONGKONG_NAMESPACE::IO::Storage
 
     bool File::Exists(const char* path)
     {
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         return Win32::IO::File::Exists(String(path));
 
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
 
         try {
             AppleDevice::Foundation::NSString str = path;
@@ -103,7 +103,7 @@ namespace KONGKONG_NAMESPACE::IO::Storage
 #endif
     }
 
-#ifdef KONGKONG_OBJECTIVE_C_ENABLED
+#if KONGKONG_OBJECTIVE_C_ENABLED
 
     bool File::Exists(AppleDevice::Foundation::NSString const& path)
     {

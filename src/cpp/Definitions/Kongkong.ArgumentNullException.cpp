@@ -17,7 +17,7 @@ namespace KONGKONG_NAMESPACE
     }
 
 
-#ifdef KONGKONG_OBJECTIVE_C_ENABLED
+#if KONGKONG_OBJECTIVE_C_ENABLED
     void ArgumentNullException::CheckNull(AppleDevice::NSObject const& object, const char16_t* pName)
     {
         if (object == nullptr) [[unlikely]] {

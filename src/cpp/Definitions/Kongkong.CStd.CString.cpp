@@ -569,7 +569,7 @@ namespace KONGKONG_NAMESPACE::CStd
         return end - str;
     }
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
 
     std::u8string CString::ToUtf8(char16_t c)
     {
@@ -700,7 +700,7 @@ namespace KONGKONG_NAMESPACE::CStd
         return std::partial_ordering::equivalent;
     }
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
     void CString::_c16rToMultiByte(std::u8string& u8str, char16_t c)
     {
         ::mbstate_t state;

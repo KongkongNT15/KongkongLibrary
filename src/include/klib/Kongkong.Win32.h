@@ -4,7 +4,7 @@
 #include "Definitions/Base.h"
 
 //Windowsのみ
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
 
 #include "Definitions/Kongkong.Win32.CharHelper.h"
 #include "Definitions/Kongkong.Win32.ClassType.h"

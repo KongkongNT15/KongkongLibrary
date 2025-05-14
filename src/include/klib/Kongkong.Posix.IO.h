@@ -3,7 +3,7 @@
 
 #include "Definitions/Base.h"
 
-#ifdef KONGKONG_ENV_UNIX
+#if KONGKONG_ENV_UNIX
 
 #include "Definitions/Kongkong.Posix.IO.Directory.h"
 #include "Definitions/Kongkong.Posix.IO.DirectoryEntry.h"

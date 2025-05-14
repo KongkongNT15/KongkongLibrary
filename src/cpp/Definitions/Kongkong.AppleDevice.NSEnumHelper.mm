@@ -34,7 +34,6 @@ namespace KONGKONG_NAMESPACE::AppleDevice
         }
     }
 
-#ifdef KONGKONG_OBJECTIVE_C_METAL_ENABLED
     constexpr ::MTLLogLevel NSEnumHelper::Convert(Metal::MetalLogLevel value) noexcept
     {
         switch (value) {
@@ -60,5 +59,4 @@ namespace KONGKONG_NAMESPACE::AppleDevice
             default: [[unlikely]] return (Metal::MetalLogLevel)-1;
         }
     }
-#endif //!KONGKONG_OBJECTIVE_C_METAL_ENABLED
 }

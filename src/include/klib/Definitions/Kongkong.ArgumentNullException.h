@@ -19,7 +19,7 @@ namespace KONGKONG_NAMESPACE
         /// @brief ふぁ！？っく
         static void CheckNull(std::nullptr_t, std::nullptr_t) = delete;
 
-#ifdef KONGKONG_OBJECTIVE_C_ENABLED
+#if KONGKONG_OBJECTIVE_C_ENABLED
         /// @brief ふぁ！？っく
         static void CheckNull(AppleDevice::NSObject const&, std::nullptr_t) = delete;
 #endif
@@ -36,7 +36,7 @@ namespace KONGKONG_NAMESPACE
         /// @throws ArgumentNullException: objectがnullptrのとき
         static void CheckNull(Object const& object, const char16_t* pName);
 
-#ifdef KONGKONG_OBJECTIVE_C_ENABLED
+#if KONGKONG_OBJECTIVE_C_ENABLED
         /// @brief オブジェクトがnullptrでないかを確認する
         /// @param p 対象のオブジェクト
         /// @param pName 変数名

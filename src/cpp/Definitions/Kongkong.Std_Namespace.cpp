@@ -5,11 +5,11 @@ namespace std
 
     string to_string(::KONGKONG_NAMESPACE::String const& value)
     {
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
 
         return to_string(::KONGKONG_NAMESPACE::StringView(value));
 
-#elif defined(KONGKONG_ENV_UNIX)
+#elif KONGKONG_ENV_UNIX
 
         std::filesystem::path p(value.begin(), value.end());
 
@@ -22,7 +22,7 @@ namespace std
     {
         if (value.Length() == 0) [[unlikely]] return string();
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
 
         ssize_t size = (value.Length() + 1) * sizeof(char16_t);
         char* mbs = NEW char[size];
@@ -55,7 +55,7 @@ namespace std
 
     string to_string(const char16_t* value)
     {
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
 
         try {
             return to_string(::KONGKONG_NAMESPACE::StringView(value));
@@ -64,7 +64,7 @@ namespace std
             ::KONGKONG_NAMESPACE::ArgumentNullException::ThrowWithName(u"value");
         }
 
-#elif defined(KONGKONG_ENV_UNIX)
+#elif KONGKONG_ENV_UNIX
 
         std::filesystem::path p = value;
 
@@ -84,7 +84,7 @@ namespace std
 
     u8string to_u8string(::KONGKONG_NAMESPACE::String const& value)
     {
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
 
         uint32_t length = (uint32_t)((value.Length() + 1) * 3);
 
@@ -98,7 +98,7 @@ namespace std
 
         return str;
 
-#elif defined(KONGKONG_ENV_UNIX)
+#elif KONGKONG_ENV_UNIX
 
         std::filesystem::path p = value.c_str();
 
@@ -119,7 +119,7 @@ namespace std
 
         tmp[value.Length()] = u'\0';
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
 
         char8_t* mbs = new char8_t[size];
 
@@ -132,7 +132,7 @@ namespace std
 
         return str;
 
-#elif defined(KONGKONG_ENV_UNIX)
+#elif KONGKONG_ENV_UNIX
 
         std::filesystem::path p = tmp;
 
@@ -145,7 +145,7 @@ namespace std
 
     u8string to_u8string(const char16_t* value)
     {
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
 
         ssize_t size = (ssize_t)((::KONGKONG_NAMESPACE::Text::StringHelper::GetLength(value) + 1) * 3);
 
@@ -161,7 +161,7 @@ namespace std
 
         return str;
 
-#elif defined(KONGKONG_ENV_UNIX)
+#elif KONGKONG_ENV_UNIX
 
         std::filesystem::path p = value;
 
@@ -209,7 +209,7 @@ namespace std
         return out.write(str.c_str(), str.Length());
     }
 
-#ifdef KONGKONG_OBJECTIVE_C_ENABLED
+#if KONGKONG_OBJECTIVE_C_ENABLED
     ostream& operator<<(ostream& out, ::KONGKONG_NAMESPACE::AppleDevice::NSObject const& nsObject)
     {
         if (nsObject == nullptr) [[unlikely]] return out << "Null";

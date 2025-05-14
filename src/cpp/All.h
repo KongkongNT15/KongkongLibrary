@@ -3,7 +3,7 @@
 
 #include <klib/Definitions/Base.h>
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
     #include <Windows.h>
     #include <VersionHelpers.h>
     #include <Unknwn.h>
@@ -12,13 +12,13 @@
     #include <wrl/client.h>
 #endif
 
-#ifdef KONGKONG_ENV_UNIX
+#if KONGKONG_ENV_UNIX
     #include <iconv.h>
 #endif
 
-#ifdef KONGKONG_CTHREAD_ENABLED
+#if KONGKONG_CTHREAD_ENABLED
     #include <threads.h>
-#endif //#ifdef KONGKONG_CTHREAD_ENABLED
+#endif //KONGKONG_CTHREAD_ENABLED
 
 #include <array>
 #include <cctype>
@@ -69,6 +69,7 @@
 #include <klib/Kongkong.Events.h>
 #include <klib/Kongkong.Graphics.h>
 #include <klib/Kongkong.Graphics.Imaging.h>
+#include <klib/Kongkong.IO.h>
 #include <klib/Kongkong.IO.Storage.h>
 #include <klib/Kongkong.Memory.h>
 #include <klib/Kongkong.Net.h>
@@ -84,7 +85,7 @@
 //#include <klib/Kongkong.Text.Xml.h>
 #include <klib/Kongkong.Threading.h>
 
-#ifdef KONGKONG_OBJECTIVE_C_ENABLED
+#if KONGKONG_OBJECTIVE_C_ENABLED
 
 #include <klib/Kongkong.AppleDevice.h>
 #include <klib/Kongkong.AppleDevice.AppKit.h>
@@ -99,7 +100,7 @@
 
 #endif //KONGKONG_OBJECTIVE_C_ENABLED
 
-#ifdef KONGKONG_ENV_UNIX
+#if KONGKONG_ENV_UNIX
 
 #include <klib/Kongkong.Posix.h>
 #include <klib/Kongkong.Posix.IO.h>
@@ -107,7 +108,7 @@
 
 #endif
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
 
 #include <klib/Kongkong.Win32.h>
 #include <klib/Kongkong.Win32.Execution.h>

@@ -3,7 +3,7 @@
 
 #include "Definitions/Base.h"
 
-#ifdef KONGKONG_OBJECTIVE_C_METAL_ENABLED
+#if KONGKONG_OBJECTIVE_C_ENABLED
 
 #include "Definitions/Kongkong.AppleDevice.Metal.MetalCommandBufferError.h"
 #include "Definitions/Kongkong.AppleDevice.Metal.MetalCommandQueueDescriptor.h"

@@ -103,14 +103,14 @@ namespace KONGKONG_NAMESPACE::Algorithms::Sudoku
     String SudokuField::ToString() const
     {
         constexpr char16_t yokobou1[] = 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
             u"+++---+---+---+++---+---+---+++---+---+---+++\r\n";
 #else
             u"+++---+---+---+++---+---+---+++---+---+---+++\n";
 #endif
 
         constexpr char16_t yokobou2[] = 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
             u"+++ - + - + - +++ - + - + - +++ - + - + - +++\r\n";
 #else
             u"+++ - + - + - +++ - + - + - +++ - + - + - +++\n";
@@ -140,7 +140,7 @@ namespace KONGKONG_NAMESPACE::Algorithms::Sudoku
                     result.push_back(u' ');
                 }
             }
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
             result.append(u"|||\r\n");
 #else
             result.append(u"|||\n");

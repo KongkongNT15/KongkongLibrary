@@ -4,7 +4,7 @@
 #include "Definitions/Base.h"
 
 //Windowsのみ
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
 
 #include "Definitions/Kongkong.Win32.UI.Button.h"
 #include "Definitions/Kongkong.Win32.UI.ButtonBase.h"

@@ -1,14 +1,11 @@
-﻿#define KONGKONG_OBJECTIVE_C_METAL_DISABLED
+﻿//#define KONGKONG_OBJECTIVE_C_METAL_DISABLED
 #include "All.h"
 
 #import <AppKit/AppKit.h>
 #import <Foundation/Foundation.h>
 #import <Foundation/NSDebug.h>
-
-#ifdef KONGKONG_OBJECTIVE_C_METAL_ENABLED
-    #import <Metal/Metal.h>
-    #import <QuartzCore/CAMetalLayer.h>
-#endif //KONGKONG_OBJECTIVE_C_METAL_ENABLED
+#import <Metal/Metal.h>
+#import <QuartzCore/CAMetalLayer.h>
 
 #define DEFINE_CAST_APPLEOBJECT(TKongkong, TPointer)                            \
     namespace Kongkong::AppleDevice                                             \
@@ -79,10 +76,8 @@ namespace KONGKONG_NAMESPACE::AppleDevice
         static constexpr Foundation::NSCalculationError Convert(::NSCalculationError const& value) noexcept;
         static constexpr Foundation::Text::Xml::NSXmlNodeKind Convert(::NSXMLNodeKind const& value) noexcept;
 
-#ifdef KONGKONG_OBJECTIVE_C_METAL_ENABLED
         static constexpr ::MTLLogLevel Convert(Metal::MetalLogLevel value) noexcept;
         static constexpr Metal::MetalLogLevel Convert(::MTLLogLevel value) noexcept;
-#endif //!KONGKONG_OBJECTIVE_C_METAL_ENABLED
     };
 }
 
@@ -145,8 +140,8 @@ namespace KONGKONG_NAMESPACE::AppleDevice::Foundation
 #include "Definitions/Kongkong.AppleDevice.Foundation.Threading.NSOperationQueue.mm"
 #include "Definitions/Kongkong.AppleDevice.Foundation.Threading.NSThread.mm"
 
-#ifdef KONGKONG_OBJECTIVE_C_METAL_ENABLED
-    #include "Definitions/Kongkong.AppleDevice.Metal.MetalDevice.mm"
-    #include "Definitions/Kongkong.AppleDevice.Metal.MetalCommandQueueDescriptor.mm"
-    #include "Definitions/Kongkong.AppleDevice.Metal.MetalLogState.mm"
-#endif //KONGKONG_OBJECTIVE_C_METAL_ENABLED
+#include "Definitions/Kongkong.AppleDevice.Metal.MetalDevice.mm"
+#include "Definitions/Kongkong.AppleDevice.Metal.MetalCommandQueueDescriptor.mm"
+#include "Definitions/Kongkong.AppleDevice.Metal.MetalLogState.mm"
+
+#include "Definitions/Kongkong.Graphics.Imaging.BitmapImage.mm"

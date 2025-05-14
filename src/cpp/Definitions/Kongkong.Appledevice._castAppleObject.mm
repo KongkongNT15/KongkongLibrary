@@ -23,11 +23,9 @@ DEFINE_CAST_APPLEOBJECT(Foundation::Threading::NSOperation, NSOperation)
 DEFINE_CAST_APPLEOBJECT(Foundation::Threading::NSOperationQueue, NSOperationQueue)
 DEFINE_CAST_APPLEOBJECT(Foundation::Threading::NSThread, NSThread)
 
-#ifdef KONGKONG_OBJECTIVE_C_METAL_ENABLED
 DEFINE_CAST_APPLEOBJECT(Metal::MetalCommandQueueDescriptor, MTLCommandQueueDescriptor)
 DEFINE_PROTOCOL_CAST_APPLEOBJECT(Metal::MetalDevice, MTLDevice)
 DEFINE_PROTOCOL_CAST_APPLEOBJECT(Metal::MetalLogState, MTLLogState)
-#endif //KONGKONG_OBJECTIVE_C_METAL_ENABLED
 
 namespace KONGKONG_NAMESPACE::AppleDevice
 {

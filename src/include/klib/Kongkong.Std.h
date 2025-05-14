@@ -8,7 +8,7 @@
 #include "Definitions/Kongkong.Std.StdString.h"
 #include "Definitions/Kongkong.Std.StlThreadPool.h"
 
-#ifdef KONGKONG_ENV_UNIX
+#if KONGKONG_ENV_UNIX
     #include "Definitions/Kongkong.Std.PosixFileIOBuffer.h"
     #include "Definitions/Kongkong.Std.PosixIOBuffer.h"
 

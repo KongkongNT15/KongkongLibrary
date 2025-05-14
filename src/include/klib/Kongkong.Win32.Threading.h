@@ -4,7 +4,8 @@
 #include "Definitions/Base.h"
 
 //Windowsのみ
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
+
 #include "Definitions/Kongkong.Win32.Threading._cleanupGroupBase.h"
 #include "Definitions/Kongkong.Win32.Threading._threadPoolBase.h"
 #include "Definitions/Kongkong.Win32.Threading.CallbackEnvironment.h"

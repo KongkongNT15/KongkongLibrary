@@ -17,8 +17,9 @@
 
 #if __has_include(<threads.h>)
     #define KONGKONG_CTHREAD_ENABLED 1
+#else
+    #define KONGKONG_CTHREAD_ENABLED 0
 #endif
-
 //環境判定
 
 #if __has_include(<Windows.h>)
@@ -26,8 +27,10 @@
 
     #if __cplusplus == 199711L
         #define KONGKONG_COMPILER_MSVC 1
+        #define KONGKONG_COMPILER_MINGW 0
         #define KONGKONG_CPP_LANG_VERSION _MSVC_LANG
     #else
+        #define KONGKONG_COMPILER_MSVC 0
         #define KONGKONG_COMPILER_MINGW 1
         #define KONGKONG_COMPILER_GCC 1
         #define KONGKONG_CPP_LANG_VERSION __cplusplus
@@ -67,7 +70,7 @@
     #undef SetFileAttributes
     #undef WaitNamedPipe
     
-    #ifdef KONGKONG_COMPILER_MSVC
+    #if KONGKONG_COMPILER_MSVC
         #if defined(_AMD64_) || defined(_ARM64_)
             typedef long long ssize_t;
         #elif defined(_X86_) || defined(_ARM_)
@@ -95,18 +98,12 @@
 #endif
 
 #ifdef __APPLE__
-    #define KONGKONG_ENV_APPLE
+    #define KONGKONG_ENV_APPLE 1
 
     #ifdef KONGKONG_OBJECTIVE_C_DISABLED
-    #ifndef KONGKONG_OBJECTIVE_C_METAL_DISABLED
-        #define KONGKONG_OBJECTIVE_C_METAL_DISABLED 1
-    #endif
+        #define KONGKONG_OBJECTIVE_C_ENABLED 0
     #else
         #define KONGKONG_OBJECTIVE_C_ENABLED 1
-
-        #ifndef KONGKONG_OBJECTIVE_C_METAL_DISABLED
-            #define KONGKONG_OBJECTIVE_C_METAL_ENABLED 1
-        #endif
     #endif
 #endif
 
@@ -155,6 +152,34 @@
     #define KONGKONG_HAS_CPP23 1
 #else
     #define KONGKONG_HAS_CPP23 0
+#endif
+
+#ifndef KONGKONG_ENV_WINDOWS
+    #define KONGKONG_ENV_WINDOWS 0
+#endif
+
+#ifndef KONGKONG_ENV_UNIX
+    #define KONGKONG_ENV_UNIX 0
+#endif
+
+#ifndef KONGKONG_COMPILER_MSVC
+    #define KONGKONG_COMPILER_MSVC 0
+#endif
+
+#ifndef KONGKONG_COMPILER_MINGW
+    #define KONGKONG_COMPILER_MINGW 0
+#endif
+
+#ifndef KONGKONG_COMPILER_GCC
+    #define KONGKONG_COMPILER_GCC 0
+#endif
+
+#ifndef KONGKONG_ENV_APPLE
+    #define KONGKONG_ENV_APPLE 0
+#endif
+
+#ifndef KONGKONG_OBJECTIVE_C_ENABLED
+    #define KONGKONG_OBJECTIVE_C_ENABLED 0
 #endif
 
 #define NEW new(::std::nothrow)
@@ -397,7 +422,7 @@ namespace KONGKONG_NAMESPACE::Algorithms::Sudoku
 
 }
 
-#ifdef KONGKONG_OBJECTIVE_C_ENABLED
+#if KONGKONG_OBJECTIVE_C_ENABLED
 
 namespace KONGKONG_NAMESPACE::AppleDevice
 {
@@ -499,8 +524,6 @@ namespace KONGKONG_NAMESPACE::AppleDevice::Foundation::Threading
 
 }
 
-#ifdef KONGKONG_OBJECTIVE_C_METAL_ENABLED
-
 namespace KONGKONG_NAMESPACE::AppleDevice::Metal
 {
     enum struct MetalCommandBufferError;
@@ -511,8 +534,6 @@ namespace KONGKONG_NAMESPACE::AppleDevice::Metal
 
     class MetalCommandQueueDescriptor;
 }
-
-#endif //KONGKONG_OBJECTIVE_C_METAL_ENABLED
 
 #endif //KONGKONG_OBJECTIVE_C_ENABLED
 
@@ -885,6 +906,24 @@ namespace KONGKONG_NAMESPACE::Graphics::Imaging
     class BitmapImage;
 }
 
+namespace KONGKONG_NAMESPACE::IO
+{
+    class Stream;
+    class StreamReader;
+    class StreamWriter;
+    class TextReader;
+    class TextWriter;
+}
+
+namespace KONGKONG_NAMESPACE::IO::IMPLEMENTATION
+{
+    struct Stream;
+    struct StreamReader;
+    struct StreamWriter;
+    struct TextReader;
+    struct TextWriter;
+}
+
 namespace KONGKONG_NAMESPACE::IO::Storage
 {
     class Directory;
@@ -1038,7 +1077,7 @@ namespace KONGKONG_NAMESPACE::Numeric::Statistics
 }
 
 //Posixのみ
-#ifdef KONGKONG_ENV_UNIX
+#if KONGKONG_ENV_UNIX
 
 namespace KONGKONG_NAMESPACE::Posix
 {
@@ -1111,7 +1150,7 @@ namespace KONGKONG_NAMESPACE::Std
 
     struct StlThreadPool;
 
-#ifdef KONGKONG_ENV_UNIX
+#if KONGKONG_ENV_UNIX
 
     template <CharType TChar>
     class GenericPosixFileIOBuffer;
@@ -1265,7 +1304,7 @@ namespace KONGKONG_NAMESPACE::Time
     struct DateTime;
 }
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
 
 namespace KONGKONG_NAMESPACE::Win32
 {
@@ -1548,7 +1587,7 @@ namespace KONGKONG_NAMESPACE::Std
     using Utf8OutStringStream = GenericOutStringStream<char8_t>;
     using Utf32OutStringStream = GenericOutStringStream<char32_t>;
 
-#ifdef KONGKONG_ENV_UNIX
+#if KONGKONG_ENV_UNIX
 
     using PosixIOBuffer = GenericPosixIOBuffer<char16_t>;
 
@@ -1569,16 +1608,16 @@ namespace KONGKONG_NAMESPACE::Std
 
 namespace KONGKONG_NAMESPACE::System
 {
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
     using Environment = ::KONGKONG_NAMESPACE::Win32::Environment;
-#elif defined(KONGKONG_ENV_UNIX)
+#elif KONGKONG_ENV_UNIX
     using Environment = ::KONGKONG_NAMESPACE::Posix::Environment;
 #else
     class Environment;
 #endif
 }
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
 
 namespace KONGKONG_NAMESPACE::Win32::UI
 {

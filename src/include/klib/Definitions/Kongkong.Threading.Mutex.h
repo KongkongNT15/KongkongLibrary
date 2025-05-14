@@ -10,18 +10,18 @@ namespace KONGKONG_NAMESPACE::Threading
 
         Mutex() noexcept;
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         Mutex(Mutex const& mutex) noexcept;
-#elif defined(KONGKONG_ENV_UNIX)
+#elif KONGKONG_ENV_UNIX
         Mutex(Mutex const& mutex) = delete;
 #endif
         Mutex(Mutex&& mutex) noexcept;
 
         ~Mutex() noexcept;
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         Mutex& operator=(Mutex const& mutex) noexcept;
-#elif defined(KONGKONG_ENV_UNIX)
+#elif KONGKONG_ENV_UNIX
         Mutex& operator=(Mutex const& mutex) = delete;
 #endif
         Mutex& operator=(Mutex&& mutex) noexcept;
@@ -40,9 +40,9 @@ namespace KONGKONG_NAMESPACE::Threading
         void Unlock();
 
         private:
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         ::HANDLE _hMutex;
-#elif defined(KONGKONG_ENV_UNIX)
+#elif KONGKONG_ENV_UNIX
         ::pthread_mutex_t _mutex;
         bool _isActive;
 #endif

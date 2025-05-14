@@ -3,9 +3,9 @@
 
 #include "Base.h"
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
     #include "Kongkong.Win32.Environment.h"
-#elif defined(KONGKONG_ENV_UNIX)
+#elif KONGKONG_ENV_UNIX
     #include "Kongkong.Posix.Environment.h"
 #else
 namespace KONGKONG_NAMESPACE::System
@@ -39,7 +39,7 @@ namespace KONGKONG_NAMESPACE::System
         /// @throws IOException: それ例外のエラー
         static void CurrentDirectory(String const& path);
 
-#ifdef KONGKONG_OBJECTIVE_C_ENABLED
+#if KONGKONG_OBJECTIVE_C_ENABLED
         static void CurrentDirectory(AppleDevice::Foundation::NSString const& path);
 #endif
 

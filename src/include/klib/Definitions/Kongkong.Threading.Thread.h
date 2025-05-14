@@ -4,11 +4,11 @@
 #include "Base.h"
 #include "Kongkong.HandleType.h"
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
     #include "Kongkong.Win32.Threading.Thread.h"
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
     #include "Kongkong.AppleDevice.Foundation.Threading.NSThread.h"
-#elif defined(KONGKONG_ENV_UNIX)
+#elif KONGKONG_ENV_UNIX
     #include "Kongkong.Posix.Threading.Thread.h"
 #else
     #include <thread>
@@ -56,15 +56,15 @@ namespace KONGKONG_NAMESPACE::Threading
 
         private:
         bool _isStarted;
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         Win32::Threading::Thread _thread;
 
         constexpr Thread(Win32::Threading::Thread&& thread) noexcept : _thread(::std::move(thread)), _isStarted(true) {}
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
 
         AppleDevice::Foundation::Threading::NSThread _thread;
         constexpr Thread(AppleDevice::Foundation::Threading::NSThread&& thread) noexcept : _thread(::std::move(thread)), _isStarted(true) {}
-#elif defined(KONGKONG_ENV_UNIX)
+#elif KONGKONG_ENV_UNIX
         Posix::Threading::Thread _thread;
         Posix::Threading::Thread::EntryPoint _func;
         void* _fArgs;
@@ -82,13 +82,13 @@ namespace KONGKONG_NAMESPACE::Threading
             void* args;
         };
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         template <class TFunc>
         static DWORD WINAPI _entryPoint(void* args);
-#elif defined(KONGKONG_OBJECTIVE_C_ENABLED)
+#elif KONGKONG_OBJECTIVE_C_ENABLED
         template <class TFunc>
         static void _entryPoint(void* args);
-#elif defined(KONGKONG_ENV_UNIX)
+#elif KONGKONG_ENV_UNIX
         template <class TFunc>
         static void* _entryPoint(void* args);
 #else

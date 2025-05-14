@@ -869,7 +869,7 @@ namespace KONGKONG_NAMESPACE::CStd
         /// @param str 変更対象の文字列
         static void ToUpper(WideString& str) noexcept;
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
 
         /// @brief UTF-16からUTF-8に変換
         /// @param c UTF-16文字
@@ -943,7 +943,7 @@ namespace KONGKONG_NAMESPACE::CStd
         template <class TC>
         static std::partial_ordering _compare(size_t count, const TC* left, const TC* right);
         
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         static void _c16rToMultiByte(std::u8string& u8str, char16_t c);
 #endif
 

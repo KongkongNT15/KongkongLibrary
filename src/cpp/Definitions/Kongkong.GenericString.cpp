@@ -453,7 +453,7 @@ namespace KONGKONG_NAMESPACE
     template <class TChar> requires CharType<TChar>
     GenericString<TChar>::GenericString(std::string_view const& right) requires std::same_as<TChar, char16_t> : _p(nullptr), _length(0), _capacity(0)
     {
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
 
         size_t length = right.length() + 1;
 
@@ -632,10 +632,10 @@ namespace KONGKONG_NAMESPACE
     template <class TChar> requires CharType<TChar>
     void GenericString<TChar>::AppendNewLine()
     {
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         constexpr TChar newLine[]{ (TChar)'\r', (TChar)'\n' };
         AppendUnsafe(2, newLine);
-#elif defined(KONGKONG_ENV_UNIX)
+#elif KONGKONG_ENV_UNIX
         Append((TChar)'\n');
 #else
         Append((TChar)'\n');
@@ -1151,7 +1151,7 @@ namespace KONGKONG_NAMESPACE
     template <>
     String String::ToLower() const
     {
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         return Win32::StringHelper::ToLower(*this);
 #else
         constexpr char16_t zenkaku = u'ａ' - u'Ａ';
@@ -1231,7 +1231,7 @@ namespace KONGKONG_NAMESPACE
     template <>
     String String::ToUpper() const
     {
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         return Win32::StringHelper::ToUpper(*this);
 #else
         constexpr char16_t zenkaku = u'ａ' - u'Ａ';

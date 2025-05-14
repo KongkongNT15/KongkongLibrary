@@ -4,7 +4,7 @@
 #include "Base.h"
 #include "Kongkong.ValueType.h"
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
     #include <d2d1.h>
 #endif
 
@@ -79,7 +79,7 @@ namespace KONGKONG_NAMESPACE::Graphics
             s_clamp(m_b);
         }
 
-#ifdef KONGKONG_ENV_WINDOWS
+#if KONGKONG_ENV_WINDOWS
         [[nodiscard]]
         ::D2D1::ColorF ToDirectXColorF() const noexcept { return ::D2D1::ColorF(m_r, m_g, m_b, m_a); }
 #endif
