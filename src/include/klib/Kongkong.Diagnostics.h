@@ -6,7 +6,7 @@
 #include "Definitions/Kongkong.Diagnostics.LifecycleEventType.h"
 #include "Definitions/Kongkong.Diagnostics.StopWatch.h"
 
-#ifndef KONGKONG_LIBRARY
+#if !KONGKONG_LIBRARY
     #include "Definitions/Kongkong.Diagnostics.Debug.h"
     
     #include "Definitions/Kongkong.Diagnostics.LifecycleObject.h"

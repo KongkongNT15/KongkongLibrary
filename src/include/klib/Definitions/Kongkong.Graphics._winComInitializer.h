@@ -16,7 +16,7 @@ namespace KONGKONG_NAMESPACE::Graphics
             s_initializer();
             ~s_initializer();
         };
-#ifndef KONGKONG_LIBRARY
+#if !KONGKONG_LIBRARY
         [[maybe_unused]] static inline thread_local s_initializer s_init;
 #endif //!KONGKONG_LIBRARY
     };

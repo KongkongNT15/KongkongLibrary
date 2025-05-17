@@ -58,7 +58,6 @@
 
 #include <klib/Kongkong.h>
 #include <klib/Kongkong.Algorithms.h>
-#include <klib/Kongkong.Algorithms.Othello.h>
 #include <klib/Kongkong.Algorithms.Sudoku.h>
 #include <klib/Kongkong.Bits.h>
 #include <klib/Kongkong.Collections.h>

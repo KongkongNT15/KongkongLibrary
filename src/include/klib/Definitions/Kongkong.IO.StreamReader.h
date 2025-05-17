@@ -1,5 +1,6 @@
 ﻿#ifndef KONGKONG_IO_STREAMREADER_H
 #define KONGKONG_IO_STREAMREADER_H
 
+#include "Base.h"
 
 #endif //!KONGKONG_IO_STREAMREADER_H

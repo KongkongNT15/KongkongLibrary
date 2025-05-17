@@ -4,7 +4,7 @@
 #define KONGKONG_VERSION_MAJOR       0
 #define KONGKONG_VERSION_MINOR       1
 #define KONGKONG_VERSION_PATCH       0
-#define KONGKONG_VERSION_BUILDNUMBER 28
+#define KONGKONG_VERSION_BUILDNUMBER 31
 
 #define KONGKONG_NAMESPACE klib::Kongkong
 
@@ -23,6 +23,7 @@
 //環境判定
 
 #if __has_include(<Windows.h>)
+    #define KONGKONG_COMPILER 1
     #define KONGKONG_ENV_WINDOWS 1
 
     #if __cplusplus == 199711L
@@ -88,6 +89,7 @@
 #endif
 
 #if __has_include(<unistd.h>) && !defined(KONGKONG_ENV_WINDOWS)
+    #define KONGKONG_COMPILER 1
     #define KONGKONG_ENV_UNIX 1
     #include <dirent.h>
     #include <fcntl.h>
@@ -98,6 +100,7 @@
 #endif
 
 #ifdef __APPLE__
+    #define KONGKONG_COMPILER 1
     #define KONGKONG_ENV_APPLE 1
 
     #ifdef KONGKONG_OBJECTIVE_C_DISABLED
@@ -154,6 +157,10 @@
     #define KONGKONG_HAS_CPP23 0
 #endif
 
+#ifndef KONGKONG_LIBRARY
+    #define KONGKONG_LIBRARY 0
+#endif
+
 #ifndef KONGKONG_ENV_WINDOWS
     #define KONGKONG_ENV_WINDOWS 0
 #endif
@@ -179,6 +186,33 @@
 #endif
 
 #ifndef KONGKONG_OBJECTIVE_C_ENABLED
+    #define KONGKONG_OBJECTIVE_C_ENABLED 0
+#endif
+
+#ifndef KONGKONG_NO_PLATFORM_SPECIFICS
+    #define KONGKONG_NO_PLATFORM_SPECIFICS 0
+#endif
+
+#if KONGKONG_NO_PLATFORM_SPECIFICS
+    #undef KONGKONG_ENV_WINDOWS
+    #define KONGKONG_ENV_WINDOWS 0
+
+    #undef KONGKONG_ENV_UNIX
+    #define KONGKONG_ENV_UNIX 0
+
+    #undef KONGKONG_COMPILER_MSVC
+    #define KONGKONG_COMPILER_MSVC 0
+
+    #undef KONGKONG_COMPILER_MINGW
+    #define KONGKONG_COMPILER_MINGW 0
+
+    #undef KONGKONG_COMPILER_GCC
+    #define KONGKONG_COMPILER_GCC 0
+
+    #undef KONGKONG_ENV_APPLE
+    #define KONGKONG_ENV_APPLE 0
+
+    #undef KONGKONG_OBJECTIVE_C_ENABLED
     #define KONGKONG_OBJECTIVE_C_ENABLED 0
 #endif
 
@@ -404,14 +438,6 @@ namespace KONGKONG_NAMESPACE::Algorithms
     
     class Range;
     class Sorter;
-}
-
-namespace KONGKONG_NAMESPACE::Algorithms::Othello
-{
-    enum struct OthelloValue : uint8_t;
-
-    struct OthelloElement;
-    struct OthelloField;
 }
 
 namespace KONGKONG_NAMESPACE::Algorithms::Sudoku
@@ -906,22 +932,51 @@ namespace KONGKONG_NAMESPACE::Graphics::Imaging
     class BitmapImage;
 }
 
+#define KONGKONG_IO_PIPE_SUPPORTED (KONGKONG_ENV_WINDOWS || KONGKONG_ENV_UNIX)
+
 namespace KONGKONG_NAMESPACE::IO
 {
+    enum struct SeekOrigin;
+
+    struct StreamBuffer;
+
+    class c_ioHelper;
+    
+    class BinaryReader;
+    class BinaryWriter;
+    class BufferedStream;
+    class DeviceStream;
+    class FileStream;
     class Stream;
     class StreamReader;
     class StreamWriter;
     class TextReader;
     class TextWriter;
+
+#if KONGKONG_IO_PIPE_SUPPORTED
+    enum struct PipeDirection;
+
+    class PipeStream;
+#endif // KONGKONG_IO_PIPE_SUPPORTED
 }
 
 namespace KONGKONG_NAMESPACE::IO::IMPLEMENTATION
 {
+    struct BinaryReader;
+    struct BinaryWriter;
+    struct BufferedStream;
+    struct DeviceStream;
+    struct FileStream;
+    struct PipeStream;
     struct Stream;
     struct StreamReader;
     struct StreamWriter;
     struct TextReader;
     struct TextWriter;
+
+#if KONGKONG_IO_PIPE_SUPPORTED
+    struct PipeStream;
+#endif // KONGKONG_IO_PIPE_SUPPORTED
 }
 
 namespace KONGKONG_NAMESPACE::IO::Storage

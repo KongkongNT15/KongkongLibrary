@@ -11,6 +11,14 @@ namespace KONGKONG_NAMESPACE::Collections
 
         static void CheckCapacity(ssize_t capacity);
 
+        /// @brief 要素数が適切な値かを確認
+        /// @attention ここではlengthの整合性は確認しないよ！
+        /// @param length 長さ
+        /// @param count 使用する要素数
+        /// @throws InvalidArgumentException: countが負の値の時
+        /// @throws ArgumentOutOfRangeException: count > length の時
+        static void CheckCount(ssize_t length, ssize_t count);
+
         /// @brief 要素番号が範囲内かを判定
         /// @attention lengthにゼロ以下を指定しないでね！
         /// @param index 要素番号
@@ -73,6 +81,25 @@ namespace KONGKONG_NAMESPACE::Collections
         /// @param length 長さ
         /// @throws InvalidArgumentException: lengthが負の値の時
         static void CheckMinusLength(ssize_t length);
+
+        /// @brief オフセットが適切な値かを確認
+        /// @attention ここではlengthの整合性は確認しないよ！
+        /// @param length 長さ
+        /// @param offset 開始位置
+        /// @throws InvalidArgumentException: offsetが負の値の時
+        /// @throws ArgumentOutOfRangeException: offsetが範囲外の時
+        static void CheckOffset(ssize_t length, ssize_t offset);
+
+        /// @brief オフセットが適切な値かを確認
+        /// @attention ここではlengthの整合性は確認しないよ！
+        /// @param length 長さ
+        /// @param offset 開始位置
+        /// @param count 使用する要素数
+        /// @throws InvalidArgumentException: offsetが負の値の時
+        /// @throws InvalidArgumentException: countが負の値の時
+        /// @throws ArgumentOutOfRangeException: offsetが範囲外の時
+        /// @throws ArgumentOutOfRangeException: offset + countが範囲外の時
+        static void CheckOffset(ssize_t length, ssize_t offset, ssize_t count);
 
         static constexpr ssize_t CreateCapacity(ssize_t length) noexcept { return ((length / _defaultCapacity) + 1) * _defaultCapacity; }
         static constexpr ssize_t CreateCapacity(ssize_t length, ssize_t defaultCapacity) noexcept { return ((length / defaultCapacity) + 1) * defaultCapacity; }

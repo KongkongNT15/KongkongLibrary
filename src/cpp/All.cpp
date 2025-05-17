@@ -30,9 +30,6 @@
 #include "Definitions/Kongkong.Algorithms.RadixConverter.cpp"
 #include "Definitions/Kongkong.Algorithms.Range.cpp"
 
-#include "Definitions/Kongkong.Algorithms.Othello.OthelloElement.cpp"
-#include "Definitions/Kongkong.Algorithms.Othello.OthelloField.cpp"
-
 #include "Definitions/Kongkong.Algorithms.Sudoku.Std.cpp"
 #include "Definitions/Kongkong.Algorithms.Sudoku.SudokuField.cpp"
 #include "Definitions/Kongkong.Algorithms.Sudoku.SudokuElement.cpp"
@@ -105,7 +102,15 @@
 #include "Definitions/Kongkong.Graphics.Imaging.BitmapImage.cpp"
 #include "Definitions/Kongkong.Graphics.Imaging.ImageRenderException.cpp"
 
+#include "Definitions/Kongkong.IO.c_ioHelper.cpp"
+#include "Definitions/Kongkong.IO.BufferedStream.cpp"
+#include "Definitions/Kongkong.IO.DeviceStream.cpp"
 #include "Definitions/Kongkong.IO.Stream.cpp"
+#include "Definitions/Kongkong.IO.StreamBuffer.cpp"
+
+#if KONGKONG_IO_PIPE_SUPPORTED
+    #include "Definitions/Kongkong.IO.PipeStream.cpp"
+#endif //KONGKONG_IO_PIPE_SUPPORTED
 
 #include "Definitions/Kongkong.IO.Storage.Directory.cpp"
 #include "Definitions/Kongkong.IO.Storage.File.cpp"

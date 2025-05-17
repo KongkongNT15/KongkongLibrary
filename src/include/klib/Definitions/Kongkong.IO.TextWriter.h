@@ -1,5 +1,6 @@
 ﻿#ifndef KONGKONG_IO_TEXTWRITER_H
 #define KONGKONG_IO_TEXTWRITER_H
 
+#include "Base.h"
 
 #endif //!KONGKONG_IO_TEXTWRITER_H
