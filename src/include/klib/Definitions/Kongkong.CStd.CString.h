@@ -5,6 +5,7 @@
 #include "Kongkong.ArgumentNullException.h"
 
 #include <stdio.h>
+#include <limits.h>
 
 namespace KONGKONG_NAMESPACE::CStd
 {

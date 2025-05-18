@@ -4,8 +4,8 @@
     #define PIPESTREAM_IN  m_in
     #define PIPESTREAM_OUT m_out
 #elif KONGKONG_ENV_UNIX
-    #define PIPESTREAM_IN  
-    #define PIPESTREAM_OUT 
+    #define PIPESTREAM_IN  m_in
+    #define PIPESTREAM_OUT m_out
 #endif
 
 namespace KONGKONG_NAMESPACE::IO::IMPLEMENTATION

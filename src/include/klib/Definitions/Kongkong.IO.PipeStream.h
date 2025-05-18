@@ -42,7 +42,8 @@ namespace KONGKONG_NAMESPACE::IO::IMPLEMENTATION
         ::HANDLE m_out;
 
 #elif KONGKONG_ENV_UNIX
-
+        int m_in;
+        int m_out;
 #endif
     };
 }

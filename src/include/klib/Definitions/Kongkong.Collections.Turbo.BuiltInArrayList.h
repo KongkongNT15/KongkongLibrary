@@ -24,13 +24,13 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
 
         ~BuiltInArrayList()
         {
-            Algorithms::Range::DestoryUnsafe(this->Data(), end());
+            s_finalize();
         }
 
         template <ssize_t N1 = N>
         BuiltInArrayList& operator=(BuiltInArrayList<T, N1> const& right) noexcept(::std::is_nothrow_copy_constructible_v<T>)
         {
-            BuiltInArrayList::~BuiltInArrayList();
+            s_finalize();
             ssize_t minLength = N < right.Length() ? N : right.Length();
 
             auto p = this->Data();
@@ -65,7 +65,7 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
         template <ssize_t N1 = N>
         BuiltInArrayList& operator=(BuiltInArrayList<T, N1>&& right) noexcept
         {
-            BuiltInArrayList::~BuiltInArrayList();
+            s_finalize();;
             ssize_t minLength = N < right.Length() ? N : right.Length();
 
             auto p = this->Data();
@@ -133,7 +133,7 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
 
         void Clear() noexcept
         {
-            BuiltInArrayList::~BuiltInArrayList();
+            s_finalize();
             this->_length = 0;
         }
 
@@ -373,6 +373,11 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
                 ++itr;
                 ++pThis;
             }
+        }
+
+        void s_finalize() noexcept
+        {
+            Algorithms::Range::DestoryUnsafe(this->Data(), end());
         }
     };
 }

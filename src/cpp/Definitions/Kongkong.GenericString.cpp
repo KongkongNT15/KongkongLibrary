@@ -485,7 +485,7 @@ namespace KONGKONG_NAMESPACE
     template <class TChar> requires CharType<TChar>
     GenericString<TChar>::~GenericString()
     {
-        if (_p != nullptr) ::free(_p);
+        if (_p != nullptr) _finalize();
     }
 
     template <class TChar> requires CharType<TChar>
@@ -497,7 +497,7 @@ namespace KONGKONG_NAMESPACE
     template <class TChar> requires CharType<TChar>
     GenericString<TChar>& GenericString<TChar>::operator=(GenericString<TChar>&& right) noexcept
     {
-        GenericString<TChar>::~GenericString();
+        _finalize();
 
         _p = right._p;
         _capacity = right._capacity;
@@ -516,7 +516,7 @@ namespace KONGKONG_NAMESPACE
 
             TChar* tmp = AllocMemoryUnsafe(newCapacity);
 
-            GenericString<TChar>::~GenericString();
+            _finalize();
 
             _p = tmp;
         }
@@ -1344,6 +1344,12 @@ namespace KONGKONG_NAMESPACE
         }
 
         return result;
+    }
+
+    template <class TChar> requires CharType<TChar>
+    void GenericString<TChar>::_finalize() noexcept
+    {
+        ::free(_p);
     }
 
     template <class TChar> requires CharType<TChar>

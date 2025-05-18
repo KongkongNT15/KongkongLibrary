@@ -22,7 +22,7 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
                 _copyFrom(right);
             }
             catch (...) {
-                FastLinkedQueue::~FastLinkedQueue();
+                _finalize();
 
                 ::std::rethrow_exception(::std::current_exception());
             }
@@ -38,21 +38,12 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
         {
             if (_current == nullptr) return;
 
-            StackElement<T>* e = _current;
-            StackElement<T>* tmp;
-
-            while (e != nullptr) {
-                tmp = e->Next();
-
-                delete e;
-
-                e = tmp;
-            }
+            _finalize();
         }
 
         FastLinkedQueue& operator=(FastLinkedQueue const& right)
         {
-            FastLinkedQueue::~FastLinkedQueue();
+            _finalize();
 
             _copyFrom(right);
 
@@ -61,7 +52,7 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
 
         FastLinkedQueue& operator=(FastLinkedQueue&& right) noexcept
         {
-            FastLinkedQueue::~FastLinkedQueue();
+            _finalize();
 
             _current = right._current;
             _last = right._last;
@@ -177,6 +168,20 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
                 tmp = e->Next();
 
                 Push(e->Value());
+
+                e = tmp;
+            }
+        }
+
+        void _finalize() noexcept
+        {
+            StackElement<T>* e = _current;
+            StackElement<T>* tmp;
+
+            while (e != nullptr) {
+                tmp = e->Next();
+
+                delete e;
 
                 e = tmp;
             }

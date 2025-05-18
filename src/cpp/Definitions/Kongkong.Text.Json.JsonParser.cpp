@@ -289,7 +289,13 @@ namespace KONGKONG_NAMESPACE::Text::Json
 
                 return nullptr;
             }
+
+            default: [[unlikely]] throw FormatException(u"ふぁ！？っく");
         }
+
+#if KONGKONG_HAS_CPP23
+        ::std::unreachable();
+#endif
     }
 
     bool JsonParser::_isLastArrayValue(::FILE* fp, Utf8String& str, syntax synt)

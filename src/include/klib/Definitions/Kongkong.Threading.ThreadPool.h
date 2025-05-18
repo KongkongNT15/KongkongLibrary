@@ -111,11 +111,11 @@ namespace KONGKONG_NAMESPACE::Threading
 
 #else
 
-#if KONGKONG_ENV_UNIX
+    #if KONGKONG_ENV_UNIX
         static LazyObject<Posix::Threading::ThreadPool> s_pool;
-#else
+    #else
         static LazyObject<Std::StlThreadPool> s_pool;
-#endif
+    #endif
         static void _callback0(void* args);
         static void _callback1(void* args);
 
@@ -326,24 +326,6 @@ template <class TFArg, class TValue>
     }
 
 #elif !KONGKONG_OBJECTIVE_C_ENABLED
-
-    void ThreadPool::_callback0(void* args)
-    {
-        _tmpS0& s = *static_cast<_tmpS0*>(args);
-
-        s.cb();
-
-        s.h.resume();
-    }
-
-    void ThreadPool::_callback1(void* args)
-    {
-        _tmpS1& s = *static_cast<_tmpS1*>(args);
-
-        s.cb();
-
-        s.h.resume();
-    }
 
     template <class TFArg, class TValue>
     void ThreadPool::_callback2(void* args)

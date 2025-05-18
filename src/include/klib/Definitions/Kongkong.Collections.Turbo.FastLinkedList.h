@@ -37,24 +37,12 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
 
         ~FastLinkedList()
         {
-            LinkElement<T>* p = _firstElement;
-
-            if (p == nullptr) return;
-
-            LinkElement<T>* tmp;
-
-            while (p != nullptr) {
-                tmp = p->Next();
-
-                delete p;
-
-                p = tmp;
-            }
+            _finalize();
         }
 
         FastLinkedList& operator=(FastLinkedList const& right)
         {
-            FastLinkedList<T>::~FastLinkedList();
+            _finalize();
             this->_length = 0;
             _lastElement = nullptr;
 
@@ -67,7 +55,7 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
 
         FastLinkedList& operator=(FastLinkedList&& right) noexcept
         {
-            FastLinkedList<T>::~FastLinkedList();
+            _finalize();
 
             this->_length = right._length;
             _firstElement = right._firstElement;
@@ -367,6 +355,21 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
         }
 
         private:
+
+        void _finalize() noexcept
+        {
+            LinkElement<T>* p = _firstElement;
+
+            LinkElement<T>* tmp;
+
+            while (p != nullptr) {
+                tmp = p->Next();
+
+                delete p;
+
+                p = tmp;
+            }
+        }
 
         void _insert(LinkElement<T>* element, T const& value)
         {

@@ -66,7 +66,7 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
                 _deleteChild(_root);
                 this->_length = right._length;
                 _root = nullptr;
-                return;
+                return *this;
             }
 
             TreeNode<T>* root = NEW TreeNode<T>(right._root->Value(), nullptr);

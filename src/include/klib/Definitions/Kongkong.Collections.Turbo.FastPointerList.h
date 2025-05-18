@@ -181,17 +181,7 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
 
         ~FastPointerList()
         {
-            if (_p == nullptr) return;
-
-            auto p = _p;
-            auto end = p + this->_length;
-
-            while (p != end) {
-                delete *p;
-                p++;
-            }
-
-            ::free(_p);
+            if (this->_p != nullptr) _finalize();
         }
 
         /// @brief 
@@ -204,7 +194,7 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
 
         FastPointerList& operator=(FastPointerList&& right) noexcept
         {
-            FastPointerList::~FastPointerList();
+            _finalize();
 
             _p = right._p;
             this->_length = right._length;
@@ -649,6 +639,19 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
         T** _p;
 
         constexpr FastPointerList(::std::nullptr_t) noexcept {}
+
+        void _finalize() noexcept
+        {
+            auto p = _p;
+            auto end = p + this->_length;
+
+            while (p != end) {
+                delete *p;
+                p++;
+            }
+
+            ::free(_p);
+        }
 
         void _increaseLength(ssize_t append = 1)
         {

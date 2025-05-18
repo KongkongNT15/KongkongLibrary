@@ -4,7 +4,7 @@
 #define KONGKONG_VERSION_MAJOR       0
 #define KONGKONG_VERSION_MINOR       1
 #define KONGKONG_VERSION_PATCH       0
-#define KONGKONG_VERSION_BUILDNUMBER 31
+#define KONGKONG_VERSION_BUILDNUMBER 38
 
 #define KONGKONG_NAMESPACE klib::Kongkong
 
@@ -327,18 +327,16 @@ namespace KONGKONG_NAMESPACE
 
 namespace KONGKONG_NAMESPACE::Std
 {
-    template <class TRandomEngine>
-    concept RandomEngine = requires (TRandomEngine rg)
-    {
-        typename TRandomEngine::result_type;
-        { rg.operator()() };
+    template <class TRandomGenerator>
+    concept RandomEngine = ::std::invocable<TRandomGenerator&> && ::std::unsigned_integral<::std::invoke_result_t<TRandomGenerator&>> && requires {
+    { TRandomGenerator::min() } -> ::std::same_as<::std::invoke_result_t<TRandomGenerator&>>;
+    { TRandomGenerator::max() } -> ::std::same_as<::std::invoke_result_t<TRandomGenerator&>>;
+    requires ::std::bool_constant<(TRandomGenerator::min() < TRandomGenerator::max())>::value;
     };
 
-    template <class TRandomSeedEngine>
-    concept RandomSeedEngine = requires (TRandomSeedEngine rg)
-    {
-        RandomEngine<TRandomSeedEngine>;
-        { rg.seed(::std::declval<typename TRandomSeedEngine::value_type>()) };
+    template <class TRandomGenerator>
+    concept RandomSeedEngine = RandomEngine<TRandomGenerator> && requires {
+        { TRandomGenerator::seed() };
     };
 }
 
@@ -924,6 +922,8 @@ namespace KONGKONG_NAMESPACE::Graphics
     class Brush;
     class SolidColorBrush;
 }
+
+#define KONGKONG_IMAGING_SUPPORTED (KONGKONG_COMPILER_MSVC || KONGKONG_OBJECTIVE_C_ENABLED)
 
 namespace KONGKONG_NAMESPACE::Graphics::Imaging
 {

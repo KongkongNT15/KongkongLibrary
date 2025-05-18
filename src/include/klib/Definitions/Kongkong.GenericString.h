@@ -910,6 +910,8 @@ namespace KONGKONG_NAMESPACE
 
         GenericString(std::string_view const& right) requires std::same_as<TChar, char16_t>;
 
+        void _finalize() noexcept;
+
         /// @brief Capacity()が足りないときにCapacity() += _defaultCapacity
         /// @param size 増やす要素数
         /// @throws MemoryAllocationException: メモリの確保に失敗したとき

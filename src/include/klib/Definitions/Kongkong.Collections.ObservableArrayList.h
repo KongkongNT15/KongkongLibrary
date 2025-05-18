@@ -110,6 +110,8 @@ namespace KONGKONG_NAMESPACE::Collections
         /// @brief nullptrとして作成
         constexpr ObservableArrayList(std::nullptr_t) noexcept : ArrayList<T>(nullptr) {}
 
+        OBJECT_GET_INSTANCE_TEMPLATE(ImplType)
+
         [[nodiscard]]
         operator IArray<T>() const { return Object::As<IArray<T>>(); }
 
@@ -129,7 +131,7 @@ namespace KONGKONG_NAMESPACE::Collections
         operator IReadOnlyIterable<T>() const { return Object::As<IReadOnlyIterable<T>>(); }
 
         [[nodiscard]]
-        auto& ArrayChanging() const { return _getPtr<ImplType>()->ArrayChanging(); }
+        auto& ArrayChanging() const { return this->template _getPtr<ImplType>()->ArrayChanging(); }
     };
 }
 

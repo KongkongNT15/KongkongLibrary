@@ -227,6 +227,8 @@ namespace KONGKONG_NAMESPACE::Memory
         private:
         T* _p;
         ssize_t _length;
+
+        void _finalize() noexcept;
     };
 
     template <class T>
@@ -310,13 +312,13 @@ namespace KONGKONG_NAMESPACE::Memory
     template <class T>
     Buffer<T>::~Buffer()
     {
-        if (_p != nullptr) ::free(_p);
+        if (_p != nullptr) _finalize();
     }
 
     template <class T>
     Buffer<T>& Buffer<T>::operator=(Buffer<T>&& right) noexcept
     {
-        Buffer<T>::~Buffer();
+        _finalize();
 
         _length = right._length;
         _p = right._p;
@@ -581,6 +583,12 @@ namespace KONGKONG_NAMESPACE::Memory
         new(p) T(std::move(value));
 
         return *p;
+    }
+
+    template <class T>
+    void Buffer<T>::_finalize() noexcept
+    {
+        ::free(_p);
     }
 }
 

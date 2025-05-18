@@ -20,7 +20,7 @@ namespace KONGKONG_NAMESPACE
 
         private:
 
-        _lazyObjectBase() = default;
+        constexpr _lazyObjectBase() noexcept : _isInitialized(false) {}
         constexpr _lazyObjectBase(bool isInitialized) noexcept : _isInitialized(isInitialized) {}
         _lazyObjectBase(_lazyObjectBase const&) = default;
         _lazyObjectBase(_lazyObjectBase&&) = default;

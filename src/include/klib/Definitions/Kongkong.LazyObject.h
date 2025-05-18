@@ -29,7 +29,7 @@ namespace KONGKONG_NAMESPACE
         constexpr LazyObject() noexcept : _lazyObjectBase(false) {}
 
         /// @brief 値を格納していない状態で作成
-        constexpr LazyObject(::std::nullptr_t) noexcept : _lazyObjectBase(false) {}
+        constexpr LazyObject(::std::nullptr_t) noexcept : _lazyObjectBase(false), _placeHolder{} {}
 
         LazyObject(LazyObject const& right)
         {

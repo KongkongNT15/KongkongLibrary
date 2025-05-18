@@ -9,9 +9,6 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
     template <class T>
     struct _fastArrayBase : public _fastCollection {
 
-        friend bool operator==(_fastArrayBase const& left, _fastArrayBase const& right) noexcept;
-        friend bool operator!=(_fastArrayBase const& left, _fastArrayBase const& right) noexcept;
-
         /// @brief 指定した番号の要素を取得
         /// @attention 範囲外の要素を指定した場合の動作は未定義だよ
         /// @param index 要素番号
@@ -120,11 +117,16 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
         friend FastArray<T>;
         friend FastArrayList<T>;
         friend ArrayHelper;
+
+        template <class U>
+        friend bool operator==(_fastArrayBase<U> const&, _fastArrayBase<U> const&) noexcept;
+
+        template <class U>
+        friend bool operator!=(_fastArrayBase<U> const&, _fastArrayBase<U> const&) noexcept;
     };
 
     template <class T>
-    [[nodiscard]]
-    bool operator==(_fastArrayBase<T> const& left, _fastArrayBase<T> const& right) noexcept
+    [[nodiscard]] bool operator==(_fastArrayBase<T> const& left, _fastArrayBase<T> const& right) noexcept
     {
         if (left._length != right._length) return false;
 
@@ -136,8 +138,7 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
     }
 
     template <class T>
-    [[nodiscard]]
-    bool operator!=(_fastArrayBase<T> const& left, _fastArrayBase<T> const& right) noexcept
+    [[nodiscard]] bool operator!=(_fastArrayBase<T> const& left, _fastArrayBase<T> const& right) noexcept
     {
         return !(left == right);
     }

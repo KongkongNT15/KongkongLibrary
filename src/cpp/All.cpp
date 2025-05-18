@@ -99,8 +99,11 @@
 #include "Definitions/Kongkong.Graphics.Color.cpp"
 #include "Definitions/Kongkong.Graphics.FontWeight.cpp"
 
-#include "Definitions/Kongkong.Graphics.Imaging.BitmapImage.cpp"
 #include "Definitions/Kongkong.Graphics.Imaging.ImageRenderException.cpp"
+
+#if KONGKONG_IMAGING_SUPPORTED
+    #include "Definitions/Kongkong.Graphics.Imaging.BitmapImage.cpp"
+#endif
 
 #include "Definitions/Kongkong.IO.c_ioHelper.cpp"
 #include "Definitions/Kongkong.IO.DeviceStream.cpp"

@@ -2,13 +2,13 @@
 #define KONGKONG_GRAPHICS_IMAGING_H
 
 #include "Definitions/Base.h"
+#include "Definitions/Kongkong.Graphics.Imaging.ImageRenderException.h"
 
-#if KONGKONG_COMPILER_MSVC || KONGKONG_OBJECTIVE_C_ENABLED
+#if KONGKONG_IMAGING_SUPPORTED
 
 #include "Definitions/Kongkong.Graphics.Imaging.BitmapImage.h"
 #include "Definitions/Kongkong.Graphics.Imaging.ImageFormat.h"
-#include "Definitions/Kongkong.Graphics.Imaging.ImageRenderException.h"
 
-#endif // KONGKONG_ENV_WINDOWS || KONGKONG_OBJECTIVE_C_ENABLED
+#endif // KONGKONG_IMAGING_SUPPORTED
 
 #endif //!KONGKONG_GRAPHICS_IMAGING_H

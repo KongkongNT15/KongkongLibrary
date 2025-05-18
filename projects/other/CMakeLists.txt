@@ -29,5 +29,6 @@ target_include_directories(KongkongLibrary PRIVATE
 
 # プラットフォーム固有の機能を使用しない
 target_compile_definitions(KongkongLibrary PRIVATE
+    KONGKONG_OBJECTIVE_C_DISABLED = 1
     KONGKONG_NO_PLATFORM_SPECIFICS = 1
 )

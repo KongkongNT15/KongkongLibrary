@@ -49,13 +49,7 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
 
         ~FastArrayQueue()
         {
-            if (_p == nullptr) return;
-
-            for (T& element : *this) {
-                element.~T();
-            }
-
-            ::free(_p);
+            if (_p != nullptr) _finalize();
         }
 
         /// @brief 値をコピー
@@ -67,7 +61,7 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
             ssize_t rLength = right.Length();
 
             if (this->_capacity < rLength) {
-                FastArrayQueue::~FastArrayQueue();
+                _finalize();
 
                 this->_capacity = Collections::CollectionHelper::CreateCapacity(rLength);
 
@@ -104,7 +98,7 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
 
         FastArrayQueue& operator=(FastArrayQueue&& right) noexcept
         {
-            FastArrayQueue::~FastArrayQueue();
+            _finalize();
 
             _fastArrayQueueBase::operator=(right);
 
@@ -227,6 +221,15 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
                     this->_capacity = newCapacity;
                 }
             }
+        }
+
+        void _finalize() noexcept
+        {
+            for (T& element : *this) {
+                element.~T();
+            }
+
+            ::free(_p);
         }
     };
 }

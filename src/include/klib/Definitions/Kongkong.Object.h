@@ -12,6 +12,7 @@
 #include "Kongkong.NullPointerException.h"
 
 #define OBJECT_GET_INSTANCE(implType) [[nodiscard]] implType* operator->() const { return Object::_getPtr<implType>(); }
+#define OBJECT_GET_INSTANCE_TEMPLATE(implType) [[nodiscard]] implType* operator->() const { return Object::template _getPtr<implType>(); }
 
 namespace KONGKONG_NAMESPACE::IMPLEMENTATION
 {
@@ -27,7 +28,7 @@ namespace KONGKONG_NAMESPACE::IMPLEMENTATION
 
         size_t TypeHashCode() const noexcept;
 
-        TypeInfo TypeInfo() const noexcept;
+        ::KONGKONG_NAMESPACE::TypeInfo TypeInfo() const noexcept;
 
 #if KONGKONG_ENV_WINDOWS
 

@@ -8,9 +8,9 @@ namespace KONGKONG_NAMESPACE::Threading
 #elif KONGKONG_OBJECTIVE_C_ENABLED
     constinit AppleDevice::Foundation::Threading::NSOperationQueue ThreadPool::_queue = nullptr;
 #elif KONGKONG_ENV_UNIX
-    constinit LazyObject<Posix::Threading::ThreadPool> ThreadPool::s_pool;
+    constinit LazyObject<Posix::Threading::ThreadPool> ThreadPool::s_pool = nullptr;
 #else
-    constinit LazyObject<Std::StlThreadPool> ThreadPool::s_pool;
+    constinit LazyObject<Std::StlThreadPool> ThreadPool::s_pool = nullptr;
 #endif
 
     void ThreadPool::ParallelFor(ssize_t begin, ssize_t end, void(*f)(ssize_t))
@@ -270,8 +270,8 @@ namespace KONGKONG_NAMESPACE::Threading
                     }
                 );
 #else
-                list.Emplace(i, next, func, pFinishedCount);
-                s_pool.GetValueUnsafe().AppendTask(func, &list.back());
+                list.Emplace(i, next, f, pFinishedCount);
+                s_pool.GetValueUnsafe().AppendTask(func, &list.GetBackUnsafe());
 #endif
 
 #if KONGKONG_ENV_WINDOWS
@@ -305,8 +305,8 @@ namespace KONGKONG_NAMESPACE::Threading
                     }
                 );
 #else
-                list.Emplace(i, next, func, pFinishedCount);
-                s_pool.GetValueUnsafe().AppendTask(func, &list.back());
+                list.Emplace(i, next, f, pFinishedCount);
+                s_pool.GetValueUnsafe().AppendTask(func, &list.GetBackUnsafe());
 #endif
 
 #if KONGKONG_ENV_WINDOWS
@@ -338,8 +338,8 @@ namespace KONGKONG_NAMESPACE::Threading
                     }
                 );
 #else
-                list.Emplace(i, next, func, pFinishedCount);
-                s_pool.GetValueUnsafe().AppendTask(func, &list.back());
+                list.Emplace(i, next, f, pFinishedCount);
+                s_pool.GetValueUnsafe().AppendTask(func, &list.GetBackUnsafe());
 #endif
 #if KONGKONG_ENV_WINDOWS
                 ::SubmitThreadpoolWork(list.GetBackUnsafe().work);
