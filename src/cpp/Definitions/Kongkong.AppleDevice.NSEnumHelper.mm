@@ -1,4 +1,4 @@
-﻿//このObjective-C++ファイルをコンパイルに含めないでください
+//このObjective-C++ファイルをコンパイルに含めないでください
 
 namespace KONGKONG_NAMESPACE::AppleDevice
 {
@@ -34,6 +34,7 @@ namespace KONGKONG_NAMESPACE::AppleDevice
         }
     }
 
+#if 0
     constexpr ::MTLLogLevel NSEnumHelper::Convert(Metal::MetalLogLevel value) noexcept
     {
         switch (value) {
@@ -59,4 +60,5 @@ namespace KONGKONG_NAMESPACE::AppleDevice
             default: [[unlikely]] return (Metal::MetalLogLevel)-1;
         }
     }
+#endif
 }

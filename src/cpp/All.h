@@ -1,4 +1,4 @@
-﻿#ifndef KONGKONG_ALL_H
+#ifndef KONGKONG_ALL_H
 #define KONGKONG_ALL_H
 
 #include <klib/Definitions/Base.h>
@@ -95,7 +95,7 @@
 #include <klib/Kongkong.AppleDevice.Foundation.Text.h>
 #include <klib/Kongkong.AppleDevice.Foundation.Text.Xml.h>
 #include <klib/Kongkong.AppleDevice.Foundation.Threading.h>
-#include <klib/Kongkong.AppleDevice.Metal.h>
+//#include <klib/Kongkong.AppleDevice.Metal.h>
 
 #endif //KONGKONG_OBJECTIVE_C_ENABLED
 

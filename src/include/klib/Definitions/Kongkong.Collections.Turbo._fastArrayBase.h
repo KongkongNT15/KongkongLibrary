@@ -1,7 +1,8 @@
-﻿#ifndef KONGKONG_COLLECTIONS_TURBO_FASTARRAYBASE_H
+#ifndef KONGKONG_COLLECTIONS_TURBO_FASTARRAYBASE_H
 #define KONGKONG_COLLECTIONS_TURBO_FASTARRAYBASE_H
 
 #include "Base.h"
+#include "Kongkong.Collections.CollectionHelper.h"
 #include "Kongkong.Collections.Turbo._fastCollection.h"
 
 namespace KONGKONG_NAMESPACE::Collections::Turbo

@@ -1,4 +1,4 @@
-﻿//このObjective-C++ファイルをコンパイルに含めないでください
+//このObjective-C++ファイルをコンパイルに含めないでください
 
 namespace KONGKONG_NAMESPACE::AppleDevice::Foundation::FileSystem
 {
@@ -15,7 +15,7 @@ namespace KONGKONG_NAMESPACE::AppleDevice::Foundation::FileSystem
 
     NSString NSFileManager::FullUserName()
     {
-        auto p = ::FullUserName();
+        auto p = ::NSFullUserName();
         [p retain];
 
         return NSStringHelper::FromHandle(p);
@@ -23,7 +23,7 @@ namespace KONGKONG_NAMESPACE::AppleDevice::Foundation::FileSystem
 
     NSString NSFileManager::UserName()
     {
-        auto p = ::UserName();
+        auto p = ::NSUserName();
         [p retain];
 
         return NSStringHelper::FromHandle(p);
@@ -31,10 +31,11 @@ namespace KONGKONG_NAMESPACE::AppleDevice::Foundation::FileSystem
 
     NSString NSFileManager::CurrentDirectory() const
     {
-        auto p = p.currentDirectoryPath;
-        [p retain];
+        auto p = (::NSFileManager*)_instance();
+        auto sp = p.currentDirectoryPath;
+        [sp retain];
 
-        return NSStringHelper::FromHandle(p);
+        return NSStringHelper::FromHandle(sp);
     }
 
     bool NSFileManager::CurrentDirectory(NSString const& path) const
@@ -50,7 +51,7 @@ namespace KONGKONG_NAMESPACE::AppleDevice::Foundation::FileSystem
         return (bool)result;
     }
 
-    bool DirectoryExistsAtPath(NSString const& path) const
+    bool NSFileManager::DirectoryExistsAtPath(NSString const& path) const
     {
         bool isDirectory;
         bool result = PathExists(path, isDirectory);
@@ -58,7 +59,7 @@ namespace KONGKONG_NAMESPACE::AppleDevice::Foundation::FileSystem
         return result && isDirectory;
     }
 
-    bool FileExistsAtPath(NSString const& path) const
+    bool NSFileManager::FileExistsAtPath(NSString const& path) const
     {
         bool isDirectory;
         bool result = PathExists(path, isDirectory);

@@ -4,7 +4,7 @@
 #define KONGKONG_VERSION_MAJOR       0
 #define KONGKONG_VERSION_MINOR       1
 #define KONGKONG_VERSION_PATCH       0
-#define KONGKONG_VERSION_BUILDNUMBER 38
+#define KONGKONG_VERSION_BUILDNUMBER 60
 
 #define KONGKONG_NAMESPACE klib::Kongkong
 
@@ -194,28 +194,17 @@
 #endif
 
 #if KONGKONG_NO_PLATFORM_SPECIFICS
-    #if 0
-        #undef KONGKONG_ENV_WINDOWS
-        #define KONGKONG_ENV_WINDOWS 0
+    #undef KONGKONG_COMPILER_MSVC
+    #define KONGKONG_COMPILER_MSVC 0
 
-        #undef KONGKONG_ENV_UNIX
-        #define KONGKONG_ENV_UNIX 0
+    #undef KONGKONG_COMPILER_MINGW
+    #define KONGKONG_COMPILER_MINGW 0
 
-        #undef KONGKONG_COMPILER_MSVC
-        #define KONGKONG_COMPILER_MSVC 0
+    #undef KONGKONG_COMPILER_GCC
+    #define KONGKONG_COMPILER_GCC 0
 
-        #undef KONGKONG_COMPILER_MINGW
-        #define KONGKONG_COMPILER_MINGW 0
-
-        #undef KONGKONG_COMPILER_GCC
-        #define KONGKONG_COMPILER_GCC 0
-
-        #undef KONGKONG_ENV_APPLE
-        #define KONGKONG_ENV_APPLE 0
-
-        #undef KONGKONG_OBJECTIVE_C_ENABLED
-        #define KONGKONG_OBJECTIVE_C_ENABLED 0
-    #endif // 0
+    #undef KONGKONG_OBJECTIVE_C_ENABLED
+    #define KONGKONG_OBJECTIVE_C_ENABLED 0
 #endif
 
 #define NEW new(::std::nothrow)

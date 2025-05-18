@@ -1,4 +1,4 @@
-﻿#ifndef KONGKONG_COLLECTIONS_LINKEDLIST_H
+#ifndef KONGKONG_COLLECTIONS_LINKEDLIST_H
 #define KONGKONG_COLLECTIONS_LINKEDLIST_H
 
 #include "Base.h"
@@ -48,7 +48,7 @@ namespace KONGKONG_NAMESPACE::Collections::IMPLEMENTATION
         {
             Iterators::LinkedListIterator<T> lIter = iter.template Cast<Iterators::LinkedListIterator<T>>();
 
-            auto& instance = Object::template GetInstanceUnsafe(lIter);
+            auto& instance = Object::template GetInstanceUnsafe<Iterators::LinkedListIterator<T>>(lIter);
 
             _list.Insert(instance._iter, value);
         }
@@ -62,7 +62,7 @@ namespace KONGKONG_NAMESPACE::Collections::IMPLEMENTATION
         {
             Iterators::LinkedListIterator<T> lIter = iter.template Cast<Iterators::LinkedListIterator<T>>();
 
-            auto& instance = Object::template GetInstanceUnsafe(lIter);
+            auto& instance = Object::template GetInstanceUnsafe<Iterators::LinkedListIterator<T>>(lIter);
 
             _list.Insert(instance._iter, std::move(value));
         }

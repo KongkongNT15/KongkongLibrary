@@ -1,4 +1,4 @@
-﻿#ifndef KONGKONG_TEXT_ASCIIENCODING_H
+#ifndef KONGKONG_TEXT_ASCIIENCODING_H
 #define KONGKONG_TEXT_ASCIIENCODING_H
 
 #include "Base.h"
@@ -11,10 +11,10 @@ namespace KONGKONG_NAMESPACE::Text::IMPLEMENTATION
         using ProjType = ::KONGKONG_NAMESPACE::Text::AsciiEncoding;
 
         [[nodiscard]]
-        constexpr int32_t CodePage() const noexcept { return s_codePage; }
+        constexpr int32_t CodePage() const noexcept override { return s_codePage; }
 
         [[nodiscard]]
-        constexpr StringView EncodingName() const noexcept { return s_encodingName; }
+        constexpr StringView EncodingName() const noexcept override { return s_encodingName; }
 
         [[nodiscard]]
         constexpr ssize_t GetByteCountUnsafe(ssize_t length, const char16_t*) const noexcept override { return length; }

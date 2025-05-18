@@ -1,4 +1,4 @@
-﻿#ifndef KONGKONG_THREADING_GENERATOR_H
+#ifndef KONGKONG_THREADING_GENERATOR_H
 #define KONGKONG_THREADING_GENERATOR_H
 
 #include "Base.h"
@@ -116,7 +116,7 @@ namespace KONGKONG_NAMESPACE::Threading
         };
 
         Generator(Generator const&) = delete;
-        constexpr Generator(Generator&& right) noexcept : _h(right._h), _begun(right.begun) { right._h = nullptr; }
+        constexpr Generator(Generator&& right) noexcept : _h(right._h), _begun(right._begun) { right._h = nullptr; }
 
         ~Generator()
         {

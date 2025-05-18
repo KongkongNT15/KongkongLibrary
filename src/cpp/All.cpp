@@ -1,4 +1,6 @@
-﻿#define KONGKONG_LIBRARY 1
+﻿#ifndef KONGKONG_LIBRARY
+    #define KONGKONG_LIBRARY 1
+#endif
 
 #include <klib/Definitions/Base.h>
 
@@ -206,7 +208,6 @@
 #if KONGKONG_ENV_UNIX
 
 #include "Definitions/Kongkong.Posix.Environment.cpp"
-#include "Definitions/Kongkong.Posix.Process.cpp"
 
 #include "Definitions/Kongkong.Posix.IO.Directory.cpp"
 #include "Definitions/Kongkong.Posix.IO.DirectoryEntry.cpp"

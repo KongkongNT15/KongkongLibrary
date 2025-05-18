@@ -1,4 +1,4 @@
-﻿DEFINE_CAST_APPLEOBJECT(AppKit::NSColor, NSColor)
+DEFINE_CAST_APPLEOBJECT(AppKit::NSColor, NSColor)
 DEFINE_CAST_APPLEOBJECT(Foundation::NSData, NSData)
 DEFINE_CAST_APPLEOBJECT(Foundation::NSError, NSError)
 DEFINE_CAST_APPLEOBJECT(Foundation::NSNumber, NSNumber)
@@ -23,9 +23,11 @@ DEFINE_CAST_APPLEOBJECT(Foundation::Threading::NSOperation, NSOperation)
 DEFINE_CAST_APPLEOBJECT(Foundation::Threading::NSOperationQueue, NSOperationQueue)
 DEFINE_CAST_APPLEOBJECT(Foundation::Threading::NSThread, NSThread)
 
+#if 0
 DEFINE_CAST_APPLEOBJECT(Metal::MetalCommandQueueDescriptor, MTLCommandQueueDescriptor)
 DEFINE_PROTOCOL_CAST_APPLEOBJECT(Metal::MetalDevice, MTLDevice)
 DEFINE_PROTOCOL_CAST_APPLEOBJECT(Metal::MetalLogState, MTLLogState)
+#endif
 
 namespace KONGKONG_NAMESPACE::AppleDevice
 {

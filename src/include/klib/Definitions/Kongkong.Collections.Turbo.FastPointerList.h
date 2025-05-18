@@ -1,4 +1,4 @@
-﻿#ifndef KONGKONG_COLLECTIONS_TURBO_FASTPOINTERLIST_H
+#ifndef KONGKONG_COLLECTIONS_TURBO_FASTPOINTERLIST_H
 #define KONGKONG_COLLECTIONS_TURBO_FASTPOINTERLIST_H
 
 #include "Base.h"
@@ -150,7 +150,7 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
             }
         }
 
-        FastPointerList(FastPointerList const& right) requires ::std::copy_constructible<T> : _fastCollection(right._length), _p((T**)::malloc(right._capaicty * sizeof(T*))), _capacity(right._capacity)
+        FastPointerList(FastPointerList const& right) requires ::std::copy_constructible<T> : _fastCollection(right._length), _p((T**)::malloc(right._capacity * sizeof(T*))), _capacity(right._capacity)
         {
             MemoryAllocationException::CheckNull(_p);
 

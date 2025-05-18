@@ -8,6 +8,12 @@ namespace KONGKONG_NAMESPACE::Std
     }
 
     template <CharType TChar>
+    ::std::streamsize GenericPosixIOBuffer<TChar>::xsgetn(TChar* s, ::std::streamsize n) noexcept
+    {
+        return Base::xsgetn(s, n);
+    }
+
+    template <CharType TChar>
     ::std::streamsize GenericPosixIOBuffer<TChar>::xsputn(const TChar* str, ::std::streamsize n) noexcept
     {
         if constexpr (sizeof(TChar) == 1) return Posix::IO::IOHelper::WriteUnsafe(_ioDevice, n, str);

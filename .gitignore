@@ -12,6 +12,9 @@ build
 x64
 x86
 
+#xcode
+xcuserdata
+
 # 生成物を除外
 *.a
 *.o

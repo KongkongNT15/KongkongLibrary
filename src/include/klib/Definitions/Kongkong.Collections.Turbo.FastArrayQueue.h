@@ -1,4 +1,4 @@
-﻿#ifndef KONGKONG_COLLECTIONS_TURBO_FASTARRAYQUEUE_H
+#ifndef KONGKONG_COLLECTIONS_TURBO_FASTARRAYQUEUE_H
 #define KONGKONG_COLLECTIONS_TURBO_FASTARRAYQUEUE_H
 
 #include "Base.h"
@@ -19,7 +19,7 @@ namespace KONGKONG_NAMESPACE::Collections::Turbo
             MemoryAllocationException::CheckNull(_p);
         }
 
-        FastArrayQueue(FastArrayQueue const& right) : _fastArrayQueueBase(Collections::CollectionHelper::CreateCapacity(right._Length()), 0, right.Length()), _p((T*)::malloc(this->_capacity * sizeof(T)))
+        FastArrayQueue(FastArrayQueue const& right) : _fastArrayQueueBase(Collections::CollectionHelper::CreateCapacity(right.Length()), 0, right.Length()), _p((T*)::malloc(this->_capacity * sizeof(T)))
         {
             MemoryAllocationException::CheckNull(_p);
 

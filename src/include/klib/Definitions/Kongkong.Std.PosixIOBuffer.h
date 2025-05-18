@@ -11,6 +11,7 @@ namespace KONGKONG_NAMESPACE::Std
     template <CharType TChar>
     class GenericPosixIOBuffer : public StdType, public ::std::basic_streambuf<TChar, ::std::char_traits<TChar>> {
         public:
+        using Base = ::std::basic_streambuf<TChar, ::std::char_traits<TChar>>;
 
         GenericPosixIOBuffer(GenericPosixIOBuffer const&) = delete;
 

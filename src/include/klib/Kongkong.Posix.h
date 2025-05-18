@@ -7,7 +7,6 @@
 
 #include "Definitions/Kongkong.Posix.Environment.h"
 #include "Definitions/Kongkong.Posix.PosixException.h"
-#include "Definitions/Kongkong.Posix.Process.h"
 
 #endif //KONGKONG_ENV_UNIX
 

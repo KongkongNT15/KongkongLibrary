@@ -1,1 +1,4 @@
-﻿*.sh  text eol=lf
+﻿*.pbxproj text eol=lf
+*.sh text eol=lf
+*.xcworkspacedata text eol=lf
+*.xcscheme text eol=lf

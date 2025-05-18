@@ -1,4 +1,5 @@
-﻿//#define KONGKONG_OBJECTIVE_C_METAL_DISABLED
+#define KONGKONG_LIBRARY 1
+
 #include "All.h"
 
 #import <AppKit/AppKit.h>
@@ -8,7 +9,7 @@
 #import <QuartzCore/CAMetalLayer.h>
 
 #define DEFINE_CAST_APPLEOBJECT(TKongkong, TPointer)                            \
-    namespace Kongkong::AppleDevice                                             \
+    namespace KONGKONG_NAMESPACE::AppleDevice                                             \
     {                                                                           \
         template <>                                                             \
         TKongkong NSObject::Cast() const                                        \
@@ -30,7 +31,7 @@
     }
 
 #define DEFINE_PROTOCOL_CAST_APPLEOBJECT(TKongkong, TPointer)                   \
-    namespace Kongkong::AppleDevice                                             \
+    namespace KONGKONG_NAMESPACE::AppleDevice                                             \
     {                                                                           \
         template <>                                                             \
         TKongkong NSObject::Cast() const                                        \
@@ -123,6 +124,8 @@ namespace KONGKONG_NAMESPACE::AppleDevice::Foundation
 #include "Definitions/Kongkong.AppleDevice.Foundation.Collections.NSMutableArray.mm"
 #include "Definitions/Kongkong.AppleDevice.Foundation.Collections.NSNull.mm"
 
+#include "Definitions/Kongkong.AppleDevice.Foundation.FileSystem.NSFileManager.mm"
+
 #include "Definitions/Kongkong.AppleDevice.Foundation.Streams.NSStream.mm"
 
 #include "Definitions/Kongkong.AppleDevice.Foundation.Text.NSScanner.mm"
@@ -140,8 +143,10 @@ namespace KONGKONG_NAMESPACE::AppleDevice::Foundation
 #include "Definitions/Kongkong.AppleDevice.Foundation.Threading.NSOperationQueue.mm"
 #include "Definitions/Kongkong.AppleDevice.Foundation.Threading.NSThread.mm"
 
+#if 0
 #include "Definitions/Kongkong.AppleDevice.Metal.MetalDevice.mm"
 #include "Definitions/Kongkong.AppleDevice.Metal.MetalCommandQueueDescriptor.mm"
 #include "Definitions/Kongkong.AppleDevice.Metal.MetalLogState.mm"
+#endif
 
 #include "Definitions/Kongkong.Graphics.Imaging.BitmapImage.mm"
