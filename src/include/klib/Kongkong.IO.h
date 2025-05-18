@@ -7,11 +7,11 @@
     #include "Definitions/Kongkong.IO.c_ioHelper.h"
 #endif
 
-#include "Definitions/Kongkong.IO.BufferedStream.h"
 #include "Definitions/Kongkong.IO.DeviceStream.h"
+#include "Definitions/Kongkong.IO.InputStreamBuffer.h"
 #include "Definitions/Kongkong.IO.SeekOrigin.h"
 #include "Definitions/Kongkong.IO.Stream.h"
-#include "Definitions/Kongkong.IO.StreamBuffer.h"
+#include "Definitions/Kongkong.IO.OutputStreamBuffer.h"
 
 #if KONGKONG_IO_PIPE_SUPPORTED
     #include "Definitions/Kongkong.IO.PipeDirection.h"

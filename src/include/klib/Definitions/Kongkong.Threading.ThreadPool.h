@@ -27,61 +27,19 @@ namespace KONGKONG_NAMESPACE::Threading
         STATIC_CLASS(ThreadPool)
 
         /// @brief ふぁ！？っく
-        static AsyncAction RunAsync(::std::nullptr_t) = delete;
+        static void ParallelFor(ssize_t, ssize_t, ::std::nullptr_t) = delete;
 
         /// @brief ふぁ！？っく
-        static AsyncAction RunAsync(::std::nullptr_t, ::std::nullptr_t) = delete;
+        static void ParallelFor(uint32_t, ssize_t, ssize_t, ::std::nullptr_t) = delete;
+
+        static void ParallelFor(ssize_t begin, ssize_t end, void(*f)(ssize_t));
+        static void ParallelFor(ssize_t begin, ssize_t end, ::std::function<void(ssize_t)> const& f);
+        static void ParallelFor(uint32_t threadCount, ssize_t begin, ssize_t end, void(*f)(ssize_t));
+        static void ParallelFor(uint32_t threadCount, ssize_t begin, ssize_t end, ::std::function<void(ssize_t)> const& f);
 
         /// @brief ふぁ！？っく
-        static AsyncAction RunAsync(::std::nullptr_t, char) = delete;
-
-        /// @brief ふぁ！？っく
-        static AsyncAction RunAsync(::std::nullptr_t, signed char) = delete;
-
-        /// @brief ふぁ！？っく
-        static AsyncAction RunAsync(::std::nullptr_t, unsigned char) = delete;
-
-        /// @brief ふぁ！？っく
-        static AsyncAction RunAsync(::std::nullptr_t, short) = delete;
-
-        /// @brief ふぁ！？っく
-        static AsyncAction RunAsync(::std::nullptr_t, unsigned short) = delete;
-
-        /// @brief ふぁ！？っく
-        static AsyncAction RunAsync(::std::nullptr_t, int) = delete;
-
-        /// @brief ふぁ！？っく
-        static AsyncAction RunAsync(::std::nullptr_t, unsigned int) = delete;
-
-        /// @brief ふぁ！？っく
-        static AsyncAction RunAsync(::std::nullptr_t, long) = delete;
-
-        /// @brief ふぁ！？っく
-        static AsyncAction RunAsync(::std::nullptr_t, unsigned long) = delete;
-
-        /// @brief ふぁ！？っく
-        static AsyncAction RunAsync(::std::nullptr_t, long long) = delete;
-
-        /// @brief ふぁ！？っく
-        static AsyncAction RunAsync(::std::nullptr_t, unsigned long long) = delete;
-
-        /// @brief ふぁ！？っく
-        static AsyncAction RunAsync(::std::nullptr_t, float) = delete;
-
-        /// @brief ふぁ！？っく
-        static AsyncAction RunAsync(::std::nullptr_t, double) = delete;
-
-        /// @brief ふぁ！？っく
-        static AsyncAction RunAsync(::std::nullptr_t, long double) = delete;
-
-        /// @brief ふぁ！？っく
-        static AsyncAction RunAsync(::std::nullptr_t, void*) = delete;
-
-        /// @brief ふぁ！？っく
-        static AsyncAction RunAsync(::std::nullptr_t, const void*) = delete;
-
-        /// @brief ふぁ！？っく
-        static AsyncAction RunAsync(::std::nullptr_t, Object const&) = delete;
+        template <class T>
+        static AsyncAction RunAsync(::std::nullptr_t, T) = delete;
 
         /// @brief 別スレッドで関数を実行
         /// @attention callbackにnullptrを入れないでね！！！
@@ -110,7 +68,8 @@ namespace KONGKONG_NAMESPACE::Threading
     
         private:
 
-        
+        template <class TFunc>
+        static void s_parallelFor(uint32_t threadCount, ssize_t begin, ssize_t end, TFunc f);
 
 #if KONGKONG_ENV_WINDOWS
         static void _callback0(::PTP_CALLBACK_INSTANCE instance, ::PVOID context, ::PTP_WORK work);

@@ -194,26 +194,28 @@
 #endif
 
 #if KONGKONG_NO_PLATFORM_SPECIFICS
-    #undef KONGKONG_ENV_WINDOWS
-    #define KONGKONG_ENV_WINDOWS 0
+    #if 0
+        #undef KONGKONG_ENV_WINDOWS
+        #define KONGKONG_ENV_WINDOWS 0
 
-    #undef KONGKONG_ENV_UNIX
-    #define KONGKONG_ENV_UNIX 0
+        #undef KONGKONG_ENV_UNIX
+        #define KONGKONG_ENV_UNIX 0
 
-    #undef KONGKONG_COMPILER_MSVC
-    #define KONGKONG_COMPILER_MSVC 0
+        #undef KONGKONG_COMPILER_MSVC
+        #define KONGKONG_COMPILER_MSVC 0
 
-    #undef KONGKONG_COMPILER_MINGW
-    #define KONGKONG_COMPILER_MINGW 0
+        #undef KONGKONG_COMPILER_MINGW
+        #define KONGKONG_COMPILER_MINGW 0
 
-    #undef KONGKONG_COMPILER_GCC
-    #define KONGKONG_COMPILER_GCC 0
+        #undef KONGKONG_COMPILER_GCC
+        #define KONGKONG_COMPILER_GCC 0
 
-    #undef KONGKONG_ENV_APPLE
-    #define KONGKONG_ENV_APPLE 0
+        #undef KONGKONG_ENV_APPLE
+        #define KONGKONG_ENV_APPLE 0
 
-    #undef KONGKONG_OBJECTIVE_C_ENABLED
-    #define KONGKONG_OBJECTIVE_C_ENABLED 0
+        #undef KONGKONG_OBJECTIVE_C_ENABLED
+        #define KONGKONG_OBJECTIVE_C_ENABLED 0
+    #endif // 0
 #endif
 
 #define NEW new(::std::nothrow)
@@ -938,13 +940,13 @@ namespace KONGKONG_NAMESPACE::IO
 {
     enum struct SeekOrigin;
 
-    struct StreamBuffer;
+    struct InputStreamBuffer;
+    struct OutputStreamBuffer;
 
     class c_ioHelper;
     
     class BinaryReader;
     class BinaryWriter;
-    class BufferedStream;
     class DeviceStream;
     class FileStream;
     class Stream;
@@ -964,7 +966,6 @@ namespace KONGKONG_NAMESPACE::IO::IMPLEMENTATION
 {
     struct BinaryReader;
     struct BinaryWriter;
-    struct BufferedStream;
     struct DeviceStream;
     struct FileStream;
     struct PipeStream;

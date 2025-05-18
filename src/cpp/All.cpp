@@ -103,10 +103,10 @@
 #include "Definitions/Kongkong.Graphics.Imaging.ImageRenderException.cpp"
 
 #include "Definitions/Kongkong.IO.c_ioHelper.cpp"
-#include "Definitions/Kongkong.IO.BufferedStream.cpp"
 #include "Definitions/Kongkong.IO.DeviceStream.cpp"
+#include "Definitions/Kongkong.IO.InputStreamBuffer.cpp"
+#include "Definitions/Kongkong.IO.OutputStreamBuffer.cpp"
 #include "Definitions/Kongkong.IO.Stream.cpp"
-#include "Definitions/Kongkong.IO.StreamBuffer.cpp"
 
 #if KONGKONG_IO_PIPE_SUPPORTED
     #include "Definitions/Kongkong.IO.PipeStream.cpp"
@@ -196,7 +196,6 @@
 #include "Definitions/Kongkong.Threading._awaiterBase.cpp"
 #include "Definitions/Kongkong.Threading.AsyncAction.cpp"
 #include "Definitions/Kongkong.Threading.Mutex.cpp"
-#include "Definitions/Kongkong.Threading.ParallelFor.cpp"
 #include "Definitions/Kongkong.Threading.ScopeLock.cpp"
 #include "Definitions/Kongkong.Threading.Thread.cpp"
 #include "Definitions/Kongkong.Threading.ThreadPool.cpp"

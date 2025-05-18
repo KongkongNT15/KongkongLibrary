@@ -10,7 +10,6 @@
 #include "Definitions/Kongkong.Threading.AsyncOperation.h"
 #include "Definitions/Kongkong.Threading.Generator.h"
 #include "Definitions/Kongkong.Threading.Mutex.h"
-#include "Definitions/Kongkong.Threading.ParallelFor.h"
 #include "Definitions/Kongkong.Threading.ScopeLock.h"
 #include "Definitions/Kongkong.Threading.TaskStatus.h"
 #include "Definitions/Kongkong.Threading.Thread.h"

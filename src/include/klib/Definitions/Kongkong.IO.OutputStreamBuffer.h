@@ -1,5 +1,5 @@
-﻿#ifndef KONGKONG_IO_STREAMBUFFER_H
-#define KONGKONG_IO_STREAMBUFFER_H
+﻿#ifndef KONGKONG_IO_OUTPUTSTREAMBUFFER_H
+#define KONGKONG_IO_OUTPUTSTREAMBUFFER_H
 
 #include "Base.h"
 #include "Kongkong.ValueType.h"
@@ -7,27 +7,27 @@
 namespace KONGKONG_NAMESPACE::IO
 {
     /// @brief ストリームバッファ
-    struct StreamBuffer : public ValueType {
+    struct OutputStreamBuffer : public ValueType {
 
         /// @brief サイズが4096バイトのインスタンスを作成
         [[nodiscard]]
-        static StreamBuffer Create4096();
+        static OutputStreamBuffer Create4096();
 
         /// @brief サイズが8192バイトのインスタンスを作成
         [[nodiscard]]
-        static StreamBuffer Create8192();
+        static OutputStreamBuffer Create8192();
 
         /// @brief サイズを指定して作成
         /// @param capacity サイズ
         /// @throws MemoryAllocationException: インスタンスの作成に失敗したとき
-        explicit StreamBuffer(uint32_t capacity);
-        StreamBuffer(StreamBuffer const& right);
-        constexpr StreamBuffer(StreamBuffer&& right) noexcept : m_capacity(right.m_capacity), m_length(right.m_length), m_p(right.m_p) { right.m_p = nullptr; }
+        explicit OutputStreamBuffer(uint32_t capacity);
+        OutputStreamBuffer(OutputStreamBuffer const& right);
+        constexpr OutputStreamBuffer(OutputStreamBuffer&& right) noexcept : m_capacity(right.m_capacity), m_length(right.m_length), m_p(right.m_p) { right.m_p = nullptr; }
 
-        ~StreamBuffer();
+        ~OutputStreamBuffer();
 
-        StreamBuffer& operator=(StreamBuffer const& right);
-        StreamBuffer& operator=(StreamBuffer&& right) noexcept;
+        OutputStreamBuffer& operator=(OutputStreamBuffer const& right);
+        OutputStreamBuffer& operator=(OutputStreamBuffer&& right) noexcept;
 
         [[nodiscard]]
         constexpr uint8_t operator[](uint32_t index) const noexcept { return m_p[index]; }
@@ -66,18 +66,6 @@ namespace KONGKONG_NAMESPACE::IO
         [[nodiscard]]
         constexpr uint32_t Length() const noexcept { return m_length; }
 
-        uint32_t Load(IMPLEMENTATION::BufferedStream& stream);
-        uint32_t LoadSafe(IMPLEMENTATION::BufferedStream& stream);
-
-        /// @brief ふぁ！？っく
-        uint32_t Read(ssize_t, ::std::nullptr_t) = delete;
-
-        [[nodiscard]]
-        bool Read(uint8_t& data);
-
-        [[nodiscard]]
-        uint32_t Read(ssize_t length, void* buffer);
-
         /// @brief 型名を取得
         /// @throws MemoryAllocationException: インスタンスの作成に失敗したとき
         [[nodiscard]]
@@ -86,13 +74,12 @@ namespace KONGKONG_NAMESPACE::IO
         private:
         uint32_t m_capacity;
         uint32_t m_length;
-        uint32_t m_current;
         uint8_t* m_p;
         
-        void m_copy(StreamBuffer const& right);
+        void m_copy(OutputStreamBuffer const& right);
     };
 
-    [[nodiscard]] constexpr bool operator==(StreamBuffer const& left, StreamBuffer const& right) noexcept
+    [[nodiscard]] constexpr bool operator==(OutputStreamBuffer const& left, OutputStreamBuffer const& right) noexcept
     {
         if (left.Length() != right.Length()) return false;
 
@@ -110,7 +97,7 @@ namespace KONGKONG_NAMESPACE::IO
         return true;
     }
 
-    [[nodiscard]] constexpr bool operator!=(StreamBuffer const& left, StreamBuffer const& right) noexcept { return !(left == right); }
+    [[nodiscard]] constexpr bool operator!=(OutputStreamBuffer const& left, OutputStreamBuffer const& right) noexcept { return !(left == right); }
 }
 
-#endif // !KONGKONG_IO_STREAMBUFFER_H
+#endif // !KONGKONG_IO_OUTPUTSTREAMBUFFER_H

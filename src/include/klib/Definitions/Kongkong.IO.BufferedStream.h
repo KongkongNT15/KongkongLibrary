@@ -3,7 +3,6 @@
 
 #include "Base.h"
 #include "Kongkong.IO.DeviceStream.h"
-#include "Kongkong.IO.StreamBuffer.h"
 
 namespace KONGKONG_NAMESPACE::IO::IMPLEMENTATION
 {
@@ -30,7 +29,7 @@ namespace KONGKONG_NAMESPACE::IO::IMPLEMENTATION
 
         private:
 
-        StreamBuffer m_buffer;
+        OutputStreamBuffer m_buffer;
     };
 }
 
