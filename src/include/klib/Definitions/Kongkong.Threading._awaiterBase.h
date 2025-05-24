@@ -14,6 +14,8 @@ namespace KONGKONG_NAMESPACE::Threading
         constexpr bool await_ready() const noexcept { return false; }
         void await_suspend(std::coroutine_handle<> h);
 
+        void GetResult() const noexcept;
+
         [[nodiscard]]
         constexpr TaskStatus Status() const noexcept { return _status; }
 

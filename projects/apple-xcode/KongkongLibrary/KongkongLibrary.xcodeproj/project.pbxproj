@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		564F22BF2DE2753C003B01ED /* All.metal in Sources */ = {isa = PBXBuildFile; fileRef = 564F22BE2DE2753C003B01ED /* All.metal */; };
 		56ACFC762DD9DEBC00993338 /* All.mm in Sources */ = {isa = PBXBuildFile; fileRef = 56ACFC752DD9DEBC00993338 /* All.mm */; };
 		56ACFC792DD9E2BF00993338 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56ACFC782DD9E2BF00993338 /* Metal.framework */; };
 		56ACFC7B2DD9E2D600993338 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56ACFC7A2DD9E2D600993338 /* Foundation.framework */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		564F22BE2DE2753C003B01ED /* All.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = All.metal; path = "/Users/tomotaka/Library/CloudStorage/OneDrive-個人用/VSCode/KongkongLibrary/src/metal/All.metal"; sourceTree = "<absolute>"; };
 		56ACFC6A2DD9DE8700993338 /* KongkongLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KongkongLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56ACFC752DD9DEBC00993338 /* All.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = All.mm; path = "/Users/tomotaka/Library/CloudStorage/OneDrive-個人用/VSCode/KongkongLibrary/src/cpp/All.mm"; sourceTree = "<absolute>"; };
 		56ACFC782DD9E2BF00993338 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
@@ -38,6 +40,7 @@
 		56ACFC602DD9DE8700993338 = {
 			isa = PBXGroup;
 			children = (
+				564F22BE2DE2753C003B01ED /* All.metal */,
 				56ACFC752DD9DEBC00993338 /* All.mm */,
 				56ACFC772DD9E2BF00993338 /* Frameworks */,
 				56ACFC6B2DD9DE8700993338 /* Products */,
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56ACFC762DD9DEBC00993338 /* All.mm in Sources */,
+				564F22BF2DE2753C003B01ED /* All.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

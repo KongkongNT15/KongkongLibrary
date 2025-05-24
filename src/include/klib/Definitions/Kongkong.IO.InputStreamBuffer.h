@@ -56,6 +56,8 @@ namespace KONGKONG_NAMESPACE::IO
         uint32_t m_length;
         uint32_t m_current;
         uint8_t* m_p;
+
+        void m_copyFrom(InputStreamBuffer const& right) noexcept;
     };
 }
 

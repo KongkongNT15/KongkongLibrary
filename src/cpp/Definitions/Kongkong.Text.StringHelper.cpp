@@ -525,6 +525,8 @@ namespace KONGKONG_NAMESPACE::Text
 
         ::MultiByteToWideChar(CP_ACP, 0, str, (int)length, (wchar_t*)p, capacity);
 
+        p[capacity - 1] = u'\0';
+
         return String::WrapUnsafe(capacity, capacity - 1, p);
         
 #else
@@ -561,6 +563,8 @@ namespace KONGKONG_NAMESPACE::Text
         char16_t* p = String::AllocMemoryUnsafe(capacity);
 
         ::MultiByteToWideChar(CP_UTF8, 0, (const char*)str, (int)length, (wchar_t*)p, capacity);
+
+        p[capacity - 1] = u'\0';
 
         return String::WrapUnsafe(capacity, capacity - 1, p);
 

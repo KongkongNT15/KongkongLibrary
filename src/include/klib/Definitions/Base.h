@@ -4,7 +4,7 @@
 #define KONGKONG_VERSION_MAJOR       0
 #define KONGKONG_VERSION_MINOR       1
 #define KONGKONG_VERSION_PATCH       0
-#define KONGKONG_VERSION_BUILDNUMBER 60
+#define KONGKONG_VERSION_BUILDNUMBER 70
 
 #define KONGKONG_NAMESPACE klib::Kongkong
 
@@ -947,6 +947,7 @@ namespace KONGKONG_NAMESPACE::IO
 #if KONGKONG_IO_PIPE_SUPPORTED
     enum struct PipeDirection;
 
+    class PipeReader;
     class PipeStream;
 #endif // KONGKONG_IO_PIPE_SUPPORTED
 }

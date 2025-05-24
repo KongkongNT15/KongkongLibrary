@@ -28,6 +28,11 @@ namespace KONGKONG_NAMESPACE::Threading
         }
     }
 
+    void _awaiterBase::GetResult() const noexcept
+    {
+        Wait();
+    }
+
     void _awaiterBase::Wait() const noexcept
     {
         using namespace ::std::chrono;

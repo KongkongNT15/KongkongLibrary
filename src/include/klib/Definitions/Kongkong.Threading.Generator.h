@@ -13,6 +13,20 @@
 namespace KONGKONG_NAMESPACE::Threading
 {
     template <class T>
+    concept GtValueType = ::std::is_trivially_copy_assignable_v<T> && ::std::is_trivially_move_assignable_v<T> && ::std::is_default_constructible_v<T>;
+    
+    template <class T>
+    struct c_gpTypeS;
+
+    template <class T> requires GtValueType<T> //&& ::std::is_trivially_mo
+    struct c_gpTypeS<T> {
+        using Type = T;
+    };
+    template <class T> requires (GtValueType<T> == false)
+    struct c_gpTypeS<T> {
+        using Type = LazyObject<T>;
+    };
+    template <class T>
     struct Generator final : public ValueType {
 
         struct Iterator;
@@ -30,9 +44,21 @@ namespace KONGKONG_NAMESPACE::Threading
             [[noreturn]]
             void unhandled_exception();
 
+            ::std::suspend_always yield_value(T const& value) noexcept(::std::is_nothrow_constructible_v<T>) requires GtValueType<T>
+            {
+                _value = value;
+                return {};
+            }
+
             ::std::suspend_always yield_value(T const& value) noexcept(::std::is_nothrow_constructible_v<T>)
             {
                 _value.InitializeUnsafe(value);
+                return {};
+            }
+
+            ::std::suspend_always yield_value(T&& value) noexcept requires GtValueType<T>
+            {
+                _value = value;
                 return {};
             }
 
@@ -40,6 +66,11 @@ namespace KONGKONG_NAMESPACE::Threading
             {
                 _value.InitializeUnsafe(::std::move(value));
                 return {};
+            }
+
+            T __getValue() noexcept requires GtValueType<T>
+            {
+                return _value;
             }
 
             T __getValue()
@@ -54,7 +85,7 @@ namespace KONGKONG_NAMESPACE::Threading
             constexpr bool __noReference() const noexcept { return _pGenerator == nullptr || _pIterator == nullptr; }
 
             private:
-            LazyObject<T> _value;
+            c_gpTypeS<T>::Type _value;
 
             Generator* _pGenerator;
             Iterator* _pIterator;

@@ -81,6 +81,31 @@ namespace KONGKONG_NAMESPACE::Numeric
         [[nodiscard]]
         constexpr ssize_t Column() const noexcept { return NColumn; }
 
+        [[nodiscard]]
+        constexpr TNum Determinant() const noexcept requires (NRow == NColumn && NRow == 1)
+        {
+            return _arr[0][0];
+        }
+
+        [[nodiscard]]
+        constexpr TNum Determinant() const noexcept requires (NRow == NColumn && NRow == 2)
+        {
+            return _arr[0][0] * _arr[1][1] - _arr[0][1] * _arr[1][0];
+        }
+
+        [[nodiscard]]
+        constexpr TNum Determinant() const noexcept requires (NRow == NColumn && NRow == 3)
+        {
+            return
+                _arr[0][0] * _arr[1][1] * _arr[2][2] +
+                _arr[0][1] * _arr[1][2] * _arr[2][0] +
+                _arr[0][2] * _arr[1][0] * _arr[2][1] -
+                _arr[0][2] * _arr[1][1] * _arr[2][0] -
+                _arr[0][1] * _arr[1][0] * _arr[2][2] -
+                _arr[0][0] * _arr[1][2] * _arr[2][1]
+            ;
+        }
+
         void Fill(TNum value) noexcept
         {
             for (TNum& v : *this) v = value;

@@ -21,9 +21,48 @@ namespace KONGKONG_NAMESPACE::IO
         MemoryAllocationException::CheckNull(m_p);
     }
 
+    InputStreamBuffer::InputStreamBuffer(InputStreamBuffer const& right)
+        : m_capacity(right.m_capacity)
+        , m_length(right.m_length)
+        , m_current(right.m_current)
+        , m_p((uint8_t*)::malloc(m_capacity))
+    {
+        m_copyFrom(right);
+    }
+
     InputStreamBuffer::~InputStreamBuffer()
     {
         if (m_p != nullptr) ::free(m_p);
+    }
+
+    InputStreamBuffer& InputStreamBuffer::operator=(InputStreamBuffer const& right)
+    {
+        if (right.m_length > m_capacity) {
+            ::free(m_p);
+
+            m_p = (uint8_t*)::malloc(right.m_capacity);
+            MemoryAllocationException::CheckNull(m_p);
+        }
+
+        m_capacity = right.m_capacity;
+        m_length = right.m_length;
+        m_current = right.m_current;
+
+        m_copyFrom(right);
+
+        return *this;
+    }
+
+    InputStreamBuffer& InputStreamBuffer::operator=(InputStreamBuffer&& right) noexcept
+    {
+        ::free(m_p);
+
+        m_capacity = right.m_capacity;
+        m_length = right.m_length;
+        m_current = right.m_current;
+        m_p = right.m_p;
+
+        return *this;
     }
 
     uint32_t InputStreamBuffer::Load(IMPLEMENTATION::Stream& stream)
@@ -78,5 +117,19 @@ namespace KONGKONG_NAMESPACE::IO
     String InputStreamBuffer::ToString() const
     {
         return String::FromLiteral(u"Kongkong::IO::InputStreamBuffer");
+    }
+
+    void InputStreamBuffer::m_copyFrom(InputStreamBuffer const& right) noexcept
+    {
+        uint8_t* mp = m_p;
+        uint8_t* rp = right.m_p;
+        uint8_t* re = rp + right.m_length;
+
+        while (rp != re) {
+            *mp = *rp;
+
+            ++mp;
+            ++rp;
+        }
     }
 }

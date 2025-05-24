@@ -27,12 +27,12 @@ namespace KONGKONG_NAMESPACE::Graphics::Imaging
         if (FAILED(m_renderTarget->CreateSolidColorBrush(D2D1::ColorF(0, 0, 0, 0), &m_brush))) [[unlikely]] throw MemoryAllocationException();
     }
 
-    void BitmapImage::DrawCircle(Point2F point, float radius, float strokeWidth, ColorF const& color) const
+    void BitmapImage::DrawCircle(Point2F point, float radius, float strokeWidth, ColorF color) const
     {
         DrawEllipse(point, radius, radius, strokeWidth, color);
     }
 
-    void BitmapImage::DrawEllipse(Point2F point, float radiusX, float radiusY, float strokeWidth, ColorF const& color) const
+    void BitmapImage::DrawEllipse(Point2F point, float radiusX, float radiusY, float strokeWidth, ColorF color) const
     {
         m_brush->SetColor(color.ToDirectXColorF());
 
@@ -42,7 +42,7 @@ namespace KONGKONG_NAMESPACE::Graphics::Imaging
         if (FAILED(m_renderTarget->EndDraw())) [[unlikely]] throw ImageRenderException();
     }
 
-    void BitmapImage::DrawLine(Point2F point1, Point2F point2, float strokeWidth, ColorF const& color) const
+    void BitmapImage::DrawLine(Point2F point1, Point2F point2, float strokeWidth, ColorF color) const
     {
         m_brush->SetColor(color.ToDirectXColorF());
 
@@ -52,7 +52,7 @@ namespace KONGKONG_NAMESPACE::Graphics::Imaging
         if (FAILED(m_renderTarget->EndDraw())) [[unlikely]] throw ImageRenderException();
     }
 
-    void BitmapImage::Fill(ColorF const& color) const
+    void BitmapImage::Fill(ColorF color) const
     {
         m_renderTarget->BeginDraw();
         m_renderTarget->Clear(color.ToDirectXColorF());
